@@ -276,6 +276,38 @@
         .github-btn:hover {
             background: #7b61ff;
         }
+
+        /* ================= GRID ================= */
+
+        .projects-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 40px 100px;
+            display: grid;
+            gap: 40px;
+        }
+
+        /* 💻 Laptops (1200px and above) → 3 projects */
+        @media (min-width: 1200px) {
+            .projects-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* 📱 Tablets (768px – 1199px) → 2 projects */
+        @media (min-width: 768px) and (max-width: 1199px) {
+            .projects-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 📱 Mobiles (below 768px) → 1 project */
+        @media (max-width: 767px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px 80px;
+            }
+        }
     </style>
 </head>
 
@@ -306,18 +338,19 @@
         <!-- 1 OBJECT DETECTION -->
         <div class="project-card personal">
             <div class="project-image">
-                <img src="https://picsum.photos/500/300?1">
+                <img
+                    src="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
             </div>
             <div class="project-content">
                 <h3>Object Detection</h3>
                 <p>Real-time object detection using YOLO & OpenCV.</p>
                 <button class="view-btn" data-title="Object Detection with YOLO"
-                    data-about="Python project using YOLO and OpenCV for real-time object detection."
-                    data-description="Detects and tracks objects in video streams using deep learning."
+                    data-about="Python project using YOLO and OpenCV for real-time object detection. Detects and tracks multiple objects in video streams, calculates distances and sizes using coordinates, and overlays bounding boxes with labels. Demonstrates core computer vision concepts like detection, tracking, and visualization."
+                    data-description="The Object Detection project is designed to identify and locate various objects in images or video streams using advanced computer vision techniques. The core of this project leverages YOLO (You Only Look Once), a cutting-edge object detection algorithm known for its real-time performance. YOLO can detect multiple objects in an image or video frame while maintaining both high speed and accuracy, making it suitable for various real-world applications like surveillance, autonomous driving, and more."
                     data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
                     data-skills="Computer Vision|Deep Learning|Object Tracking"
                     data-github="https://github.com/YerraRahul23/Object_Detection"
-                    data-image="https://picsum.photos/900/600?11">
+                    data-image="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
                     View Project
                 </button>
             </div>
@@ -326,19 +359,20 @@
         <!-- 2 VOICE ASSISTANT -->
         <div class="project-card personal">
             <div class="project-image">
-                <img src="https://picsum.photos/500/300?2">
+                <img
+                    src="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
             </div>
             <div class="project-content">
                 <h3>Voice Assistant</h3>
                 <p>Voice-based assistant built using Python & NLP.</p>
                 <button class="view-btn" data-title="Voice Assistant"
-                    data-about="Hands-free voice assistant built using Python."
-                    data-description="Supports web search, reminders, emails and smart control using NLP."
+                    data-about="The project is designed to provide a seamless user experience through natural language processing (NLP) for understanding user inputs and speech synthesis for generating voice responses."
+                    data-description="The Voice Assistant project is a hands-free, voice-activated system built with Python, enabling users to interact with their device using natural language commands. This assistant is capable of performing a wide range of tasks including: Web searches Setting reminders Managing daily schedules Sending emails Controlling smart devices "
                     data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
                     data-features="Speech recognition|Speech synthesis|Web integration"
                     data-skills="NLP|API Integration|Automation"
                     data-github="https://github.com/YerraRahul23/Voice_Assistant"
-                    data-image="https://picsum.photos/900/600?12">
+                    data-image="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
                     View Project
                 </button>
             </div>
@@ -347,19 +381,20 @@
         <!-- 3 FACE RECOGNITION -->
         <div class="project-card personal">
             <div class="project-image">
-                <img src="https://picsum.photos/500/300?3">
+                <img
+                    src="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
             </div>
             <div class="project-content">
                 <h3>Face Detection & Recognition</h3>
                 <p>Real-time face recognition using DeepFace.</p>
                 <button class="view-btn" data-title="Face Detection & Recognition"
                     data-about="Real-time face recognition using OpenCV & DeepFace."
-                    data-description="Compares live webcam faces with stored images and triggers alerts."
+                    data-description="This project demonstrates real-time face detection and recognition using Python. Built with OpenCV, DeepFace, NumPy, and Pygame, it identifies faces from the webcam, compares them with known images, and triggers alerts or sound notifications. The project showcases core computer vision concepts such as: Real-time face detection Face recognition using DeepFace's pre-trained models Distance/threshold-based identity prediction Rendering overlays and bounding boxes Audio alerts using Pygame Efficient frame processing with OpenCV "
                     data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
                     data-features="Face detection|Unknown alert|Threshold matching"
                     data-skills="Computer Vision|Deep Learning"
                     data-github="https://github.com/YerraRahul23/Face-Recognition"
-                    data-image="https://picsum.photos/900/600?13">
+                    data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
                     View Project
                 </button>
             </div>
@@ -368,7 +403,8 @@
         <!-- 4 CATERING CLIENT -->
         <div class="project-card client">
             <div class="project-image">
-                <img src="https://picsum.photos/500/300?4">
+                <img
+                    src="https://imgs.search.brave.com/1jpQSHaO1owfhqO1IHObR0dpp9rxgBtnHYSHw3AE0tU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb2xv/cmxpYi5jb20vd3Av/d3AtY29udGVudC91/cGxvYWRzL3NpdGVz/LzIvZGl2aS1jYXRl/cmluZy13ZWJzaXRl/LXRlbXBsYXRlLmpw/Zw">
             </div>
             <div class="project-content">
                 <h3>Catering Services Website</h3>
@@ -377,9 +413,8 @@
                     data-about="Modern responsive catering website."
                     data-description="Includes food gallery, booking form, services section."
                     data-tech="HTML5|CSS3|JavaScript" data-features="Responsive design|Interactive UI|Booking section"
-                    data-skills="Frontend Development|Responsive UI"
-                    data-github="https://github.com/YerraRahul23/Catering_Project"
-                    data-image="https://picsum.photos/900/600?14">
+                    data-skills="Frontend Development|Responsive UI" data-demo="https://live-demo.com"
+                    data-image="https://imgs.search.brave.com/1jpQSHaO1owfhqO1IHObR0dpp9rxgBtnHYSHw3AE0tU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb2xv/cmxpYi5jb20vd3Av/d3AtY29udGVudC91/cGxvYWRzL3NpdGVz/LzIvZGl2aS1jYXRl/cmluZy13ZWJzaXRl/LXRlbXBsYXRlLmpw/Zw">
                     View Project
                 </button>
             </div>
@@ -410,7 +445,13 @@
                     <ul id="modal-skills-list"></ul>
                     <h3>Tech Stack</h3>
                     <ul id="modal-tech-right"></ul>
-                    <a id="modal-github-link" target="_blank" class="github-btn">View on GitHub →</a>
+                    <a id="modal-github-link" target="_blank" class="github-btn">
+                        GitHub →
+                    </a>
+
+                    <a id="modal-demo-link" target="_blank" class="github-btn demo-btn">
+                        Website →
+                    </a>
                 </div>
             </div>
         </div>
@@ -476,6 +517,24 @@
 
                 modal.style.display = "block";
                 overlay.style.display = "block";
+                const githubLink = document.getElementById("modal-github-link");
+                const demoLink = document.getElementById("modal-demo-link");
+
+                /* GITHUB */
+                if (btn.dataset.github) {
+                    githubLink.href = btn.dataset.github;
+                    githubLink.style.display = "inline-block";
+                } else {
+                    githubLink.style.display = "none";
+                }
+
+                /* DEMO */
+                if (btn.dataset.demo) {
+                    demoLink.href = btn.dataset.demo;
+                    demoLink.style.display = "inline-block";
+                } else {
+                    demoLink.style.display = "none";
+                }
             });
         });
 
