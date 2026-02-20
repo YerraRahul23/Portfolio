@@ -6,12 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Yerra Rahul</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 
     <style>
         * {
@@ -27,38 +23,21 @@
             overflow-x: hidden;
         }
 
-        /* ================= HEADER ================= */
-
-        .projects-header {
-            text-align: center;
-            padding: 100px 20px 30px;
-        }
-
-        .projects-header h1 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .projects-header p {
-            color: #666;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        /* ================= NAVBAR ================= */
-
+        /* HEADER */
         .header {
             padding: 20px 80px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
-            /* 🔥 makes it sticky */
             top: 0;
             z-index: 1000;
             background: #e7e4db;
-            /* prevent transparency */
+        }
+
+        .logo {
+            font-family: "Great Vibes", cursive;
+            font-size: 34px;
         }
 
         .pill-nav {
@@ -78,11 +57,6 @@
             font-size: 12px;
             letter-spacing: 2px;
             color: #1e2f2f;
-            transition: 0.3s;
-        }
-
-        .pill-nav a:hover {
-            color: #7b61ff;
         }
 
         .menu-toggle {
@@ -91,21 +65,7 @@
             cursor: pointer;
         }
 
-        .logo {
-            font-family: "Great Vibes", cursive;
-            font-size: 34px;
-        }
-
-        /* ================= MOBILE NAV ================= */
-
-        /* ================= MOBILE NAV ================= */
-
-        @media (max-width: 900px) {
-
-            .header {
-                padding: 20px;
-            }
-
+        @media(max-width:900px) {
             .pill-nav {
                 position: fixed;
                 top: 80px;
@@ -113,34 +73,33 @@
                 transform: translateX(-50%);
                 flex-direction: column;
                 width: 90%;
-                background: white;
                 padding: 25px;
                 border-radius: 20px;
                 gap: 20px;
-
                 display: none;
-                /* hidden by default */
             }
 
             .pill-nav.active {
                 display: flex;
-                /* shown when active */
             }
 
             .menu-toggle {
                 display: block;
             }
-
-            .logo {
-                font-family: "Great Vibes", cursive;
-                font-size: 34px;
-            }
         }
 
+        /* HEADER TEXT */
+        .projects-header {
+            text-align: center;
+            padding: 100px 20px 30px;
+        }
 
+        .projects-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
 
-        /* ================= FILTER ================= */
-
+        /* FILTER */
         .project-filters {
             display: flex;
             justify-content: center;
@@ -154,7 +113,6 @@
             border: 1px solid #1e2f2f;
             background: transparent;
             cursor: pointer;
-            transition: 0.3s;
         }
 
         .filter-btn.active,
@@ -163,32 +121,34 @@
             color: white;
         }
 
-        /* ================= GRID ================= */
-
+        /* GRID */
         .projects-container {
             max-width: 1200px;
             margin: auto;
             padding: 0 40px 100px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
         }
 
+        @media(max-width:768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px 80px;
+            }
+        }
+
+        /* CARD */
         .project-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: 0.4s;
-        }
-
-        .project-card.hide {
-            display: none;
+            transition: 0.3s;
         }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
         }
 
         .project-image {
@@ -205,38 +165,20 @@
             padding: 25px;
         }
 
-        .project-content span {
-            font-size: 12px;
-            color: #888;
-        }
-
-        .project-content h3 {
-            margin: 10px 0;
-            font-size: 22px;
-        }
-
-        .project-content p {
-            font-size: 14px;
-            color: #555;
-            margin-bottom: 15px;
-        }
-
         .view-btn {
-            border: none;
             background: #7b61ff;
             color: white;
+            border: none;
             padding: 8px 18px;
             border-radius: 20px;
             cursor: pointer;
         }
 
-        /* ================= MODAL ================= */
-
+        /* MODAL */
         .project-modal-overlay {
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(5px);
             display: none;
             z-index: 999;
         }
@@ -246,8 +188,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 90%;
-            max-width: 1100px;
+            width: 95%;
+            max-width: 1200px;
             background: white;
             border-radius: 20px;
             padding: 40px;
@@ -271,81 +213,86 @@
             gap: 40px;
         }
 
+        @media(max-width:900px) {
+            .modal-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .modal-left img {
             width: 100%;
             border-radius: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .modal-description p {
-            color: #555;
+        .modal-left h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .modal-left p {
             line-height: 1.6;
+            margin-bottom: 10px;
+            color: #555;
         }
 
-        .price-box {
+        .modal-left ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-left li {
+            margin-bottom: 6px;
+            color: #555;
+        }
+
+        .info-box {
             background: #f6f6f6;
             padding: 25px;
             border-radius: 15px;
         }
 
-        .price-box h3 {
-            font-size: 28px;
+        .info-box h3 {
             margin-bottom: 10px;
+            margin-top: 15px;
         }
 
-        .hire-btn {
-            margin-top: 20px;
-            background: #ff3c83;
+        .info-box ul {
+            padding-left: 18px;
+            margin-bottom: 15px;
+        }
+
+        .github-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #1e2f2f;
             color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 30px;
-            cursor: pointer;
-            width: 100%;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
         }
 
-        /* ================= RESPONSIVE ================= */
-
-        @media(max-width:1024px) {
-            .projects-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:768px) {
-            .projects-container {
-                grid-template-columns: 1fr;
-                padding: 0 20px 80px;
-            }
-
-            .modal-container {
-                grid-template-columns: 1fr;
-            }
-
-            .project-modal {
-                padding: 25px;
-            }
+        .github-btn:hover {
+            background: #7b61ff;
         }
     </style>
 </head>
 
 <body>
+
     <header class="header">
         <div class="logo">Yerra Rahul</div>
         <div class="menu-toggle">☰</div>
-
         <nav class="pill-nav">
             <a href="../index.html">HOME</a>
-            <!-- <a href="#development">WORKS</a>
-            <a href="#projects">PROJECTS</a> -->
             <a href="../pages/Contact.html">CONTACT</a>
         </nav>
     </header>
 
-
     <section class="projects-header">
         <h1>My Projects</h1>
-        <p>Here are some of my featured works including AI systems, modern web applications and interactive designs.</p>
+        <p>AI systems, web applications and modern software solutions.</p>
     </section>
 
     <div class="project-filters">
@@ -356,99 +303,83 @@
 
     <section class="projects-container">
 
-        <!-- 6 Projects -->
-
+        <!-- 1 OBJECT DETECTION -->
         <div class="project-card personal">
             <div class="project-image">
                 <img src="https://picsum.photos/500/300?1">
             </div>
             <div class="project-content">
-                <span>Personal</span>
-                <h3>AI Chat System</h3>
-                <p>GPT-powered chat app with authentication and memory.</p>
-                <button class="view-btn" data-title="AI Chat System"
-                    data-desc="Full AI system built using GPT, LangChain and vector database with secure authentication."
+                <h3>Object Detection</h3>
+                <p>Real-time object detection using YOLO & OpenCV.</p>
+                <button class="view-btn" data-title="Object Detection with YOLO"
+                    data-about="Python project using YOLO and OpenCV for real-time object detection."
+                    data-description="Detects and tracks objects in video streams using deep learning."
+                    data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
+                    data-skills="Computer Vision|Deep Learning|Object Tracking"
+                    data-github="https://github.com/YerraRahul23/Object_Detection"
                     data-image="https://picsum.photos/900/600?11">
                     View Project
                 </button>
             </div>
         </div>
 
-        <div class="project-card client">
+        <!-- 2 VOICE ASSISTANT -->
+        <div class="project-card personal">
             <div class="project-image">
                 <img src="https://picsum.photos/500/300?2">
             </div>
             <div class="project-content">
-                <span>Client</span>
-                <h3>Face Recognition</h3>
-                <p>Real-time recognition system using OpenCV.</p>
-                <button class="view-btn" data-title="Face Recognition System"
-                    data-desc="Deep learning based face recognition built for enterprise security solutions."
+                <h3>Voice Assistant</h3>
+                <p>Voice-based assistant built using Python & NLP.</p>
+                <button class="view-btn" data-title="Voice Assistant"
+                    data-about="Hands-free voice assistant built using Python."
+                    data-description="Supports web search, reminders, emails and smart control using NLP."
+                    data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
+                    data-features="Speech recognition|Speech synthesis|Web integration"
+                    data-skills="NLP|API Integration|Automation"
+                    data-github="https://github.com/YerraRahul23/Voice_Assistant"
                     data-image="https://picsum.photos/900/600?12">
                     View Project
                 </button>
             </div>
         </div>
 
+        <!-- 3 FACE RECOGNITION -->
         <div class="project-card personal">
             <div class="project-image">
                 <img src="https://picsum.photos/500/300?3">
             </div>
             <div class="project-content">
-                <span>Personal</span>
-                <h3>Portfolio Website</h3>
-                <p>Modern animated portfolio design.</p>
-                <button class="view-btn" data-title="Portfolio Website"
-                    data-desc="Fully responsive portfolio with animations and optimized performance."
+                <h3>Face Detection & Recognition</h3>
+                <p>Real-time face recognition using DeepFace.</p>
+                <button class="view-btn" data-title="Face Detection & Recognition"
+                    data-about="Real-time face recognition using OpenCV & DeepFace."
+                    data-description="Compares live webcam faces with stored images and triggers alerts."
+                    data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
+                    data-features="Face detection|Unknown alert|Threshold matching"
+                    data-skills="Computer Vision|Deep Learning"
+                    data-github="https://github.com/YerraRahul23/Face-Recognition"
                     data-image="https://picsum.photos/900/600?13">
                     View Project
                 </button>
             </div>
         </div>
 
+        <!-- 4 CATERING CLIENT -->
         <div class="project-card client">
             <div class="project-image">
                 <img src="https://picsum.photos/500/300?4">
             </div>
             <div class="project-content">
-                <span>Client</span>
-                <h3>Flutter E-Commerce</h3>
-                <p>Mobile shopping app built with Flutter.</p>
-                <button class="view-btn" data-title="Flutter E-Commerce"
-                    data-desc="Cross-platform grocery shopping application built using Flutter and Firebase backend."
+                <h3>Catering Services Website</h3>
+                <p>Responsive catering website built using HTML CSS JS.</p>
+                <button class="view-btn" data-title="Catering Services – Client Project"
+                    data-about="Modern responsive catering website."
+                    data-description="Includes food gallery, booking form, services section."
+                    data-tech="HTML5|CSS3|JavaScript" data-features="Responsive design|Interactive UI|Booking section"
+                    data-skills="Frontend Development|Responsive UI"
+                    data-github="https://github.com/YerraRahul23/Catering_Project"
                     data-image="https://picsum.photos/900/600?14">
-                    View Project
-                </button>
-            </div>
-        </div>
-
-        <div class="project-card personal">
-            <div class="project-image">
-                <img src="https://picsum.photos/500/300?5">
-            </div>
-            <div class="project-content">
-                <span>Personal</span>
-                <h3>PersonaGPT</h3>
-                <p>Custom AI persona builder.</p>
-                <button class="view-btn" data-title="PersonaGPT"
-                    data-desc="AI persona builder with intent detection and vector memory."
-                    data-image="https://picsum.photos/900/600?15">
-                    View Project
-                </button>
-            </div>
-        </div>
-
-        <div class="project-card client">
-            <div class="project-image">
-                <img src="https://picsum.photos/500/300?6">
-            </div>
-            <div class="project-content">
-                <span>Client</span>
-                <h3>Smart City IoT</h3>
-                <p>IoT-based traffic & environmental system.</p>
-                <button class="view-btn" data-title="Smart City IoT System"
-                    data-desc="IoT solution for traffic monitoring and environmental data analytics."
-                    data-image="https://picsum.photos/900/600?16">
                     View Project
                 </button>
             </div>
@@ -456,39 +387,36 @@
 
     </section>
 
-    <!-- MODAL -->
-
     <div class="project-modal-overlay"></div>
 
     <div class="project-modal">
         <div class="modal-close">✕</div>
-
         <div class="modal-container">
-
             <div class="modal-left">
-                <img id="modal-image" src="">
-                <div class="modal-description">
-                    <h3>About This Project</h3>
-                    <p id="modal-desc"></p>
-                </div>
-            </div>
-
-            <div class="modal-right">
+                <img id="modal-image">
                 <h2 id="modal-title"></h2>
-                <div class="price-box">
-                    <h3>$600</h3>
-                    <p>Project Duration: 4 Days</p>
-                    <button class="hire-btn">Hire Now</button>
+                <h3>About</h3>
+                <p id="modal-about"></p>
+                <h3>Description</h3>
+                <p id="modal-description"></p>
+                <h3>Key Technologies</h3>
+                <ul id="modal-tech-list"></ul>
+                <h3>Features</h3>
+                <ul id="modal-features-list"></ul>
+            </div>
+            <div class="modal-right">
+                <div class="info-box">
+                    <h3>Skills</h3>
+                    <ul id="modal-skills-list"></ul>
+                    <h3>Tech Stack</h3>
+                    <ul id="modal-tech-right"></ul>
+                    <a id="modal-github-link" target="_blank" class="github-btn">View on GitHub →</a>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
-
-        /* FILTER */
-
         const filterButtons = document.querySelectorAll(".filter-btn");
         const cards = document.querySelectorAll(".project-card");
 
@@ -496,20 +424,14 @@
             button.addEventListener("click", () => {
                 filterButtons.forEach(btn => btn.classList.remove("active"));
                 button.classList.add("active");
-
                 const filter = button.dataset.filter;
-
                 cards.forEach(card => {
                     if (filter === "all" || card.classList.contains(filter)) {
-                        card.classList.remove("hide");
-                    } else {
-                        card.classList.add("hide");
-                    }
+                        card.style.display = "block";
+                    } else { card.style.display = "none"; }
                 });
             });
         });
-
-        /* MODAL */
 
         const modal = document.querySelector(".project-modal");
         const overlay = document.querySelector(".project-modal-overlay");
@@ -519,8 +441,38 @@
         viewBtns.forEach(btn => {
             btn.addEventListener("click", () => {
                 document.getElementById("modal-title").textContent = btn.dataset.title;
-                document.getElementById("modal-desc").textContent = btn.dataset.desc;
                 document.getElementById("modal-image").src = btn.dataset.image;
+                document.getElementById("modal-about").textContent = btn.dataset.about;
+                document.getElementById("modal-description").textContent = btn.dataset.description;
+
+                const techList = document.getElementById("modal-tech-list");
+                const techRight = document.getElementById("modal-tech-right");
+                techList.innerHTML = "";
+                techRight.innerHTML = "";
+                btn.dataset.tech.split("|").forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    techList.appendChild(li.cloneNode(true));
+                    techRight.appendChild(li);
+                });
+
+                const featureList = document.getElementById("modal-features-list");
+                featureList.innerHTML = "";
+                btn.dataset.features.split("|").forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    featureList.appendChild(li);
+                });
+
+                const skillsList = document.getElementById("modal-skills-list");
+                skillsList.innerHTML = "";
+                btn.dataset.skills.split("|").forEach(item => {
+                    const li = document.createElement("li");
+                    li.textContent = item;
+                    skillsList.appendChild(li);
+                });
+
+                document.getElementById("modal-github-link").href = btn.dataset.github;
 
                 modal.style.display = "block";
                 overlay.style.display = "block";
@@ -531,40 +483,18 @@
             modal.style.display = "none";
             overlay.style.display = "none";
         }
-
         closeBtn.addEventListener("click", closeModal);
         overlay.addEventListener("click", closeModal);
-
         document.addEventListener("keydown", e => {
-            if (e.key === "Escape") {
-                closeModal();
-            }
+            if (e.key === "Escape") { closeModal(); }
         });
-
-        /* ================= NAV TOGGLE ================= */
 
         const toggle = document.querySelector(".menu-toggle");
         const nav = document.querySelector(".pill-nav");
-        const navLinks = document.querySelectorAll(".pill-nav a");
-
         toggle.addEventListener("click", () => {
             nav.classList.toggle("active");
-
-            if (nav.classList.contains("active")) {
-                toggle.textContent = "✕";
-            } else {
-                toggle.textContent = "☰";
-            }
+            toggle.textContent = nav.classList.contains("active") ? "✕" : "☰";
         });
-
-        navLinks.forEach(link => {
-            link.addEventListener("click", () => {
-                nav.classList.remove("active");
-                toggle.textContent = "☰";
-            });
-        });
-
-
     </script>
 
 </body>
