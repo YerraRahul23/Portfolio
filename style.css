@@ -744,7 +744,7 @@ body {
     .project-row,
     .project-row.reverse {
         flex-direction: column;
-        text-align: center;
+        /* text-align: center; */
         gap: 40px;
     }
 
