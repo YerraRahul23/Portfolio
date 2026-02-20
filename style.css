@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    justify-content: center;
+    /* justify-content: center; */
+    /* align-self: start; */
     font-family: "Poppins", sans-serif;
 }
 
@@ -869,7 +870,7 @@ body {
 .footer-top {
     display: flex;
     justify-content: space-between;
-    gap: 60px;
+    align-items: start;
     flex-wrap: wrap;
     margin-bottom: 60px;
 }
@@ -877,7 +878,7 @@ body {
 .footer-right {
     display: flex;
     gap: 60px;
-    align-items: center;
+    align-items: start;
 }
 
 .footer-email span {
@@ -891,10 +892,11 @@ body {
     color: #0e3b2e;
 }
 
-.footer-links,
-.footer-social {
+.footer-links {
     display: flex;
     flex-direction: column;
+    /* justify-content: start;
+    align-items: start; */
     gap: 10px;
 }
 
