@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Yerra Rahul</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #e7e4db;
+            color: #1e2f2f;
+            overflow-x: hidden;
+        }
+
+        /* ================= HEADER ================= */
+
+        .projects-header {
+            text-align: center;
+            padding: 100px 20px 30px;
+        }
+
+        .projects-header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .projects-header p {
+            color: #666;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .header {
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            /* 🔥 makes it sticky */
+            top: 0;
+            z-index: 1000;
+            background: #e7e4db;
+            /* prevent transparency */
+        }
+
+        .pill-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: flex;
+            gap: 35px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .pill-nav a {
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #1e2f2f;
+            transition: 0.3s;
+        }
+
+        .pill-nav a:hover {
+            color: #7b61ff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        .logo {
+            font-family: "Great Vibes", cursive;
+            font-size: 34px;
+        }
+
+        /* ================= MOBILE NAV ================= */
+
+        /* ================= MOBILE NAV ================= */
+
+        @media (max-width: 900px) {
+
+            .header {
+                padding: 20px;
+            }
+
+            .pill-nav {
+                position: fixed;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: column;
+                width: 90%;
+                background: white;
+                padding: 25px;
+                border-radius: 20px;
+                gap: 20px;
+
+                display: none;
+                /* hidden by default */
+            }
+
+            .pill-nav.active {
+                display: flex;
+                /* shown when active */
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .logo {
+                font-family: "Great Vibes", cursive;
+                font-size: 34px;
+            }
+        }
+
+
+
+        /* ================= FILTER ================= */
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0 60px;
+        }
+
+        .filter-btn {
+            padding: 8px 22px;
+            border-radius: 25px;
+            border: 1px solid #1e2f2f;
+            background: transparent;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: #1e2f2f;
+            color: white;
+        }
+
+        /* ================= GRID ================= */
+
+        .projects-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 40px 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: 0.4s;
+        }
+
+        .project-card.hide {
+            display: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-image {
+            height: 220px;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-content span {
+            font-size: 12px;
+            color: #888;
+        }
+
+        .project-content h3 {
+            margin: 10px 0;
+            font-size: 22px;
+        }
+
+        .project-content p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .view-btn {
+            border: none;
+            background: #7b61ff;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* ================= MODAL ================= */
+
+        .project-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            display: none;
+            z-index: 999;
+        }
+
+        .project-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 1100px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            display: none;
+            z-index: 1000;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .modal-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .modal-left img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        .modal-description p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .price-box {
+            background: #f6f6f6;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .price-box h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .hire-btn {
+            margin-top: 20px;
+            background: #ff3c83;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:1024px) {
+            .projects-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+                padding: 0 20px 80px;
+            }
+
+            .modal-container {
+                grid-template-columns: 1fr;
+            }
+
+            .project-modal {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">Yerra Rahul</div>
+        <div class="menu-toggle">☰</div>
+
+        <nav class="pill-nav">
+            <a href="../src/index.html">HOME</a>
+            <!-- <a href="#development">WORKS</a>
+            <a href="#projects">PROJECTS</a> -->
+            <a href="../pages/Contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+
+    <section class="projects-header">
+        <h1>My Projects</h1>
+        <p>Here are some of my featured works including AI systems, modern web applications and interactive designs.</p>
+    </section>
+
+    <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="client">Client</button>
+        <button class="filter-btn" data-filter="personal">Personal</button>
+    </div>
+
+    <section class="projects-container">
+
+        <!-- 6 Projects -->
+
+        <div class="project-card personal">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?1">
+            </div>
+            <div class="project-content">
+                <span>Personal</span>
+                <h3>AI Chat System</h3>
+                <p>GPT-powered chat app with authentication and memory.</p>
+                <button class="view-btn" data-title="AI Chat System"
+                    data-desc="Full AI system built using GPT, LangChain and vector database with secure authentication."
+                    data-image="https://picsum.photos/900/600?11">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+        <div class="project-card client">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?2">
+            </div>
+            <div class="project-content">
+                <span>Client</span>
+                <h3>Face Recognition</h3>
+                <p>Real-time recognition system using OpenCV.</p>
+                <button class="view-btn" data-title="Face Recognition System"
+                    data-desc="Deep learning based face recognition built for enterprise security solutions."
+                    data-image="https://picsum.photos/900/600?12">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+        <div class="project-card personal">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?3">
+            </div>
+            <div class="project-content">
+                <span>Personal</span>
+                <h3>Portfolio Website</h3>
+                <p>Modern animated portfolio design.</p>
+                <button class="view-btn" data-title="Portfolio Website"
+                    data-desc="Fully responsive portfolio with animations and optimized performance."
+                    data-image="https://picsum.photos/900/600?13">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+        <div class="project-card client">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?4">
+            </div>
+            <div class="project-content">
+                <span>Client</span>
+                <h3>Flutter E-Commerce</h3>
+                <p>Mobile shopping app built with Flutter.</p>
+                <button class="view-btn" data-title="Flutter E-Commerce"
+                    data-desc="Cross-platform grocery shopping application built using Flutter and Firebase backend."
+                    data-image="https://picsum.photos/900/600?14">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+        <div class="project-card personal">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?5">
+            </div>
+            <div class="project-content">
+                <span>Personal</span>
+                <h3>PersonaGPT</h3>
+                <p>Custom AI persona builder.</p>
+                <button class="view-btn" data-title="PersonaGPT"
+                    data-desc="AI persona builder with intent detection and vector memory."
+                    data-image="https://picsum.photos/900/600?15">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+        <div class="project-card client">
+            <div class="project-image">
+                <img src="https://picsum.photos/500/300?6">
+            </div>
+            <div class="project-content">
+                <span>Client</span>
+                <h3>Smart City IoT</h3>
+                <p>IoT-based traffic & environmental system.</p>
+                <button class="view-btn" data-title="Smart City IoT System"
+                    data-desc="IoT solution for traffic monitoring and environmental data analytics."
+                    data-image="https://picsum.photos/900/600?16">
+                    View Project
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- MODAL -->
+
+    <div class="project-modal-overlay"></div>
+
+    <div class="project-modal">
+        <div class="modal-close">✕</div>
+
+        <div class="modal-container">
+
+            <div class="modal-left">
+                <img id="modal-image" src="">
+                <div class="modal-description">
+                    <h3>About This Project</h3>
+                    <p id="modal-desc"></p>
+                </div>
+            </div>
+
+            <div class="modal-right">
+                <h2 id="modal-title"></h2>
+                <div class="price-box">
+                    <h3>$600</h3>
+                    <p>Project Duration: 4 Days</p>
+                    <button class="hire-btn">Hire Now</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+
+        /* FILTER */
+
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".project-card");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                const filter = button.dataset.filter;
+
+                cards.forEach(card => {
+                    if (filter === "all" || card.classList.contains(filter)) {
+                        card.classList.remove("hide");
+                    } else {
+                        card.classList.add("hide");
+                    }
+                });
+            });
+        });
+
+        /* MODAL */
+
+        const modal = document.querySelector(".project-modal");
+        const overlay = document.querySelector(".project-modal-overlay");
+        const closeBtn = document.querySelector(".modal-close");
+        const viewBtns = document.querySelectorAll(".view-btn");
+
+        viewBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.getElementById("modal-title").textContent = btn.dataset.title;
+                document.getElementById("modal-desc").textContent = btn.dataset.desc;
+                document.getElementById("modal-image").src = btn.dataset.image;
+
+                modal.style.display = "block";
+                overlay.style.display = "block";
+            });
+        });
+
+        function closeModal() {
+            modal.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+        closeBtn.addEventListener("click", closeModal);
+        overlay.addEventListener("click", closeModal);
+
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") {
+                closeModal();
+            }
+        });
+
+        /* ================= NAV TOGGLE ================= */
+
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".pill-nav");
+        const navLinks = document.querySelectorAll(".pill-nav a");
+
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+
+            if (nav.classList.contains("active")) {
+                toggle.textContent = "✕";
+            } else {
+                toggle.textContent = "☰";
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                nav.classList.remove("active");
+                toggle.textContent = "☰";
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>

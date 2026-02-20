@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Yerra Rahul</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #e7e4db;
+            color: #1e2f2f;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .header {
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #e7e4db;
+        }
+
+        .logo {
+            font-family: "Great Vibes", cursive;
+            font-size: 34px;
+        }
+
+        .pill-nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            display: flex;
+            gap: 35px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .pill-nav a {
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #1e2f2f;
+            transition: 0.3s;
+        }
+
+        .pill-nav a:hover {
+            color: #7b61ff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* ================= CONTACT SECTION ================= */
+
+        .contact-section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        /* LEFT SIDE */
+
+        .contact-left h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .contact-left p {
+            color: #555;
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-item i {
+            color: #7b61ff;
+            font-size: 18px;
+        }
+
+        /* RIGHT SIDE FORM */
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form h2 {
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #7b61ff;
+            box-shadow: 0 0 0 3px rgba(123, 97, 255, 0.1);
+        }
+
+        textarea {
+            resize: none;
+            height: 120px;
+        }
+
+        .submit-btn {
+            background: #7b61ff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #5a46d8;
+        }
+
+        /* SOCIAL ICONS */
+
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #1e2f2f;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-icons a:hover {
+            background: #7b61ff;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:900px) {
+
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+
+            .pill-nav {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">Yerra Rahul</div>
+        <div class="menu-toggle">☰</div>
+
+        <nav class="pill-nav">
+            <a href="../src/index.html">HOME</a>
+            <a href="../pages/Projects.html">PROJECTS</a>
+            <a href="#">CONTACT</a>
+        </nav>
+    </header>
+
+    <section class="contact-section">
+
+        <div class="contact-left">
+            <h1>Let's Work Together</h1>
+            <p>Feel free to reach out for collaborations, projects, or just a friendly hello 👋</p>
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>yerra@email.com</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 98765 43210</span>
+                </div>
+
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>India</span>
+                </div>
+            </div>
+
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+
+        </div>
+
+        <form id="contact-form">
+            <div class="form-group">
+                <input type="text" placeholder="Your Name" name="name" required>
+
+            </div>
+
+            <div class="form-group">
+                <input type="email" placeholder="Your Email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <textarea name="message" placeholder="Your Message" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <p id="form-status" style="margin-top:15px;"></p>
+
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // ✅ Initialize EmailJS with your PUBLIC key
+            emailjs.init("keyR0MbznfDBREtsx");
+
+            const form = document.getElementById("contact-form");
+            const status = document.getElementById("form-status");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                status.innerHTML = "Sending...";
+                status.style.color = "#555";
+
+                emailjs.sendForm(
+                    "service_tc98yrj",     // ✅ Your Service ID
+                    "template_jzku8vp",    // ✅ Your Template ID
+                    this
+                )
+                    .then(function () {
+                        status.innerHTML = "✅ Message sent successfully!";
+                        status.style.color = "green";
+                        form.reset();
+                    })
+                    .catch(function (error) {
+                        console.error("EmailJS Error:", error);
+                        status.innerHTML = "❌ Failed to send. Try again.";
+                        status.style.color = "red";
+                    });
+
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>
