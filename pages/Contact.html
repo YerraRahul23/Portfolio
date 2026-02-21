@@ -55,6 +55,7 @@
             display: flex;
             gap: 35px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: 0.3s ease;
         }
 
         .pill-nav a {
@@ -86,8 +87,6 @@
             gap: 60px;
         }
 
-        /* LEFT SIDE */
-
         .contact-left h1 {
             font-size: 48px;
             margin-bottom: 20px;
@@ -118,8 +117,6 @@
             color: #7b61ff;
             font-size: 18px;
         }
-
-        /* RIGHT SIDE FORM */
 
         .contact-form {
             background: white;
@@ -172,8 +169,6 @@
             background: #5a46d8;
         }
 
-        /* SOCIAL ICONS */
-
         .social-icons {
             margin-top: 30px;
             display: flex;
@@ -203,18 +198,35 @@
 
         @media(max-width:900px) {
 
-            .contact-section {
-                grid-template-columns: 1fr;
+            .header {
+                padding: 20px 30px;
             }
 
-            .pill-nav {
-                display: none;
+            .contact-section {
+                grid-template-columns: 1fr;
             }
 
             .menu-toggle {
                 display: block;
             }
 
+            .pill-nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: column;
+                gap: 20px;
+                width: 90%;
+                text-align: start;
+                padding: 25px;
+                border-radius: 20px;
+            }
+
+            .pill-nav.active {
+                display: flex;
+            }
         }
     </style>
 </head>
@@ -228,7 +240,7 @@
         <nav class="pill-nav">
             <a href="../index.html">HOME</a>
             <a href="projects.html">PROJECTS</a>
-            <a href="#">CONTACT</a>
+            <a href="Contact.html">CONTACT</a>
         </nav>
     </header>
 
@@ -236,7 +248,7 @@
 
         <div class="contact-left">
             <h1>Let's Work Together</h1>
-            <p>Feel free to reach out for collaborations, projects, or just a friendly hello 👋</p>
+            <p>Feel free to reach out for collaborations or projects 👋</p>
 
             <div class="contact-info">
                 <div class="info-item">
@@ -254,20 +266,13 @@
                     <span>India</span>
                 </div>
             </div>
-
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
-            </div>
-
         </div>
 
-        <form id="contact-form">
+        <form id="contact-form" class="contact-form">
+            <h2>Send Message</h2>
+
             <div class="form-group">
                 <input type="text" placeholder="Your Name" name="name" required>
-
             </div>
 
             <div class="form-group">
@@ -279,51 +284,47 @@
             </div>
 
             <button type="submit" class="submit-btn">Send Message</button>
+            <p id="form-status" style="margin-top:15px;"></p>
         </form>
-
-        <p id="form-status" style="margin-top:15px;"></p>
-
 
     </section>
 
+    <!-- EmailJS -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
+        emailjs.init("keyR0MbznfDBREtsx");
 
-            // ✅ Initialize EmailJS with your PUBLIC key
-            emailjs.init("keyR0MbznfDBREtsx");
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("form-status");
 
-            const form = document.getElementById("contact-form");
-            const status = document.getElementById("form-status");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
 
-            form.addEventListener("submit", function (e) {
-                e.preventDefault();
+            status.innerHTML = "Sending...";
+            status.style.color = "#555";
 
-                status.innerHTML = "Sending...";
-                status.style.color = "#555";
+            emailjs.sendForm("service_tc98yrj", "template_jzku8vp", this)
+                .then(() => {
+                    status.innerHTML = "✅ Message sent successfully!";
+                    status.style.color = "green";
+                    form.reset();
+                })
+                .catch(() => {
+                    status.innerHTML = "❌ Failed to send. Try again.";
+                    status.style.color = "red";
+                });
+        });
 
-                emailjs.sendForm(
-                    "service_tc98yrj",     // ✅ Your Service ID
-                    "template_jzku8vp",    // ✅ Your Template ID
-                    this
-                )
-                    .then(function () {
-                        status.innerHTML = "✅ Message sent successfully!";
-                        status.style.color = "green";
-                        form.reset();
-                    })
-                    .catch(function (error) {
-                        console.error("EmailJS Error:", error);
-                        status.innerHTML = "❌ Failed to send. Try again.";
-                        status.style.color = "red";
-                    });
+        // Mobile Navbar Toggle
+        const toggle = document.querySelector(".menu-toggle");
+        const nav = document.querySelector(".pill-nav");
 
-            });
-
+        toggle.addEventListener("click", () => {
+            nav.classList.toggle("active");
+            toggle.textContent = nav.classList.contains("active") ? "✕" : "☰";
         });
     </script>
-    <script src="../script.js"></script>
 
 </body>
 
