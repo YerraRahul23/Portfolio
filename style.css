@@ -923,7 +923,7 @@ body {
 
 /* ================= RESPONSIVE ================= */
 
-@media (max-width: 1000px) {
+@media (max-width: 885px) {
 
     .cta-container {
         flex-direction: column;
@@ -953,7 +953,7 @@ body {
 
 /* ================= MOBILE FIX ================= */
 
-@media (max-width: 768px) {
+@media (max-width: 885px) {
 
     .footer {
         padding: 60px 20px 30px;
