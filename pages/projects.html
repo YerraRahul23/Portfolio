@@ -9,7 +9,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
-
+    <link rel="stylesheet" href="../style.css">
     <style>
         * {
             margin: 0;
@@ -92,7 +92,8 @@
         /* HEADER TEXT */
         .projects-header {
             text-align: center;
-            padding: 100px 20px 30px;
+            margin: 0px;
+            padding: 50px 20px 0px 30px;
         }
 
         .projects-header h1 {
@@ -309,6 +310,10 @@
                 padding: 0 20px 80px;
             }
         }
+
+        .footer {
+            background-color: #f2f0ea;
+        }
     </style>
 </head>
 
@@ -318,10 +323,10 @@
         <div class="logo">Yerra Rahul</div>
         <div class="menu-toggle">☰</div>
         <nav class="pill-nav">
-            <a href="../index.html">HOME</a>
-            <a href="../pages/about.html">ABOUT</a>
-
-            <a href="../pages/Contact.html">CONTACT</a>
+            <a href="../index.html#projects">BACK</a>
+            <a href="../index.html" class="active">HOME</a>
+            <!-- <a href="../index.html#projects">PROJECTS</a> -->
+            <a href="Contact.html">CONTACT</a>
         </nav>
     </header>
 
@@ -463,6 +468,33 @@
             </div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-email">
+                    <span>Email me for quick conversation</span>
+                    <h3>yerrarahul23@gmail.com</h3>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <a href="../index.html#projects">Back</a>
+                        <a href="../index.html">Home</a>
+                        <a href="Contact.html">Contact</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Follow</h4>
+                        <a href="https://www.linkedin.com/in/yerrarahul/">LinkedIn</a>
+                        <a href="https://github.com/YerraRahul23">GitHub</a>
+                        <a href="https://www.instagram.com/calvin__rahul/">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Yerra Rahul | All Rights Reserved
+            </div>
+        </div>
+    </footer>
 
     <script>
         const filterButtons = document.querySelectorAll(".filter-btn");
