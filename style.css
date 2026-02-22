@@ -7,6 +7,31 @@
     font-family: "Poppins", sans-serif;
 }
 
+#typing-role::after {
+    content: "|";
+    margin-left: 6px;
+    animation: blink 1s infinite;
+    /* font-size: small; */
+}
+
+#typing-role {
+    font-size: 30px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 body {
     background: #e7e4db;
     color: #1e2f2f;
