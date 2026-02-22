@@ -22,12 +22,42 @@ Deno.serve(async (req) => {
     const { name, email, message } = await req.json()
     console.log(`Received message from ${name} (${email}): ${message}`)
 
-    const data = {
-      message: `Thanks for reaching out, ${name}! I'll get back to you at ${email} soon.`,
+    const RESEND_API_KEY = Deno.env.get('RESEND_API_KEY')
+
+    if (!RESEND_API_KEY) {
+      throw new Error('Missing RESEND_API_KEY environment variable')
+    }
+
+    // Send email using Resend
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: 'Contact Form <onboarding@resend.dev>',
+        to: 'yerrarahul23@gmail.com',
+        subject: `New Message from ${name}`,
+        html: `
+          <h3>New Contact Form Submission</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      }),
+    })
+
+    const emailResult = await emailResponse.json()
+    console.log('Email sent result:', emailResult)
+
+    if (!emailResponse.ok) {
+        throw new Error(`Resend Error: ${JSON.stringify(emailResult)}`)
     }
 
     return new Response(
-      JSON.stringify(data),
+      JSON.stringify({ message: "Email sent successfully!" }),
       { 
         headers: { 
           ...corsHeaders,
@@ -36,6 +66,7 @@ Deno.serve(async (req) => {
       },
     )
   } catch (error) {
+    console.error('Error in send-email function:', error.message)
     return new Response(
       JSON.stringify({ error: error.message }),
       { 
