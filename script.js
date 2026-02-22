@@ -1,11 +1,13 @@
 const person = document.querySelector(".person");
 
-window.addEventListener("mousemove", e => {
-    let x = (e.clientX / window.innerWidth - 0.5) * 20;
-    let y = (e.clientY / window.innerHeight - 0.5) * 20;
+if (person) {
+    window.addEventListener("mousemove", e => {
+        let x = (e.clientX / window.innerWidth - 0.5) * 20;
+        let y = (e.clientY / window.innerHeight - 0.5) * 20;
 
-    person.style.transform = `translate(${x}px, ${y}px)`;
-});
+        person.style.transform = `translate(${x}px, ${y}px)`;
+    });
+}
 
 const toggle = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".pill-nav");

@@ -7,14 +7,15 @@
     font-family: "Poppins", sans-serif;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
 body {
     background: #e7e4db;
+    color: #1e2f2f;
     overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #1e2f2f;
 }
 
 /* HEADER */
@@ -57,7 +58,11 @@ body {
     font-size: 12px;
     letter-spacing: 2px;
     text-decoration: none;
-    color: black;
+    transition: 0.3s;
+}
+
+.pill-nav a:hover {
+    color: #7b61ff;
 }
 
 

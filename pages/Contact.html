@@ -16,63 +16,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Poppins", sans-serif;
-        }
-
-        body {
-            background: #e7e4db;
-            color: #1e2f2f;
-        }
-
-        .header {
-            padding: 20px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: #e7e4db;
-        }
-
-        .logo {
-            font-family: "Great Vibes", cursive;
-            font-size: 34px;
-        }
-
-        .pill-nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            display: flex;
-            gap: 35px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-        }
-
-        .pill-nav a {
-            text-decoration: none;
-            font-size: 12px;
-            letter-spacing: 2px;
-            color: #1e2f2f;
-        }
-
-        .pill-nav a:hover {
-            color: #7b61ff;
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-        }
-
         .contact-section {
             max-width: 1200px;
             margin: 100px auto;
@@ -90,26 +33,6 @@
         .contact-left p {
             color: #555;
             margin-bottom: 40px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-
-        .info-item i {
-            color: #7b61ff;
         }
 
         .contact-form {
@@ -148,32 +71,74 @@
             padding: 12px 20px;
             border-radius: 25px;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         .submit-btn:hover {
             background: #5a46d8;
         }
 
+        .contact-info {
+            display: flex;
+            flex-direction: row;
+            /* width: 50%; */
+            /* justify-content: space-between; */
+            gap: 30px;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #1e2f2f;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .icon:hover {
+            background: #7b61ff;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .footer {
+            background-color: #f2f0ea;
+        }
+
+        .open-to h4 {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .open-to ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .open-to li {
+            margin-bottom: 6px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .open-to li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #6c63ff;
+            /* your accent color */
+        }
+
         @media(max-width:900px) {
             .contact-section {
                 grid-template-columns: 1fr;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .pill-nav {
-                display: none;
-                flex-direction: column;
-                gap: 20px;
-                width: 90%;
-                padding: 25px;
-                border-radius: 20px;
-            }
-
-            .pill-nav.active {
-                display: flex;
+                margin: 50px auto;
             }
         }
     </style>
@@ -197,6 +162,46 @@
         <div class="contact-left">
             <h1>Let's Work Together</h1>
             <p>Feel free to reach out for collaborations or projects 👋</p>
+            <div class="open-to">
+                <h4>Open to:</h4>
+                <ul>
+                    <li>AI/ML Projects</li>
+                    <li>Full-Stack Web Development</li>
+                    <li>Internship Opportunities</li>
+                </ul>
+            </div>
+            <br>
+            <div class="contact-info">
+
+                <div class="info-item">
+                    <a href="mailto:yerrarahul23@gmail.com?subject=Hiring%20Inquiry&body=Hi%20Rahul,%0A%0AI%20would%20like%20to%20discuss%20a%20project%20with%20you."
+                        target="_blank">
+                        <i class="fas fa-envelope icon"></i>
+                    </a>
+                </div>
+                <div class="info-item">
+                    <a href="https://github.com/YerraRahul23" target="_blank">
+                        <i class="fab fa-github icon"></i>
+                    </a>
+                </div>
+
+                <div class="info-item">
+                    <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank">
+                        <i class="fab fa-linkedin-in icon"></i>
+                    </a>
+                </div>
+
+                <div class="info-item">
+                    <a href="https://www.instagram.com/calvin__rahul/" target="_blank">
+                        <i class="fab fa-instagram icon"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div style="margin-top: 20px;">
+                <h3>Typically respond within 24 hours.</h3>
+            </div>
         </div>
 
         <form id="contact-form" class="contact-form">
@@ -214,11 +219,42 @@
                 <textarea name="message" placeholder="Your Message" required></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"
+                    style="margin-left: 5px;"></i></button>
             <p id="form-status" style="margin-top:15px;"></p>
         </form>
 
     </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-email">
+                    <span>Email me for quick conversation</span>
+                    <h3>yerrarahul23@gmail.com</h3>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <h4>Quick Links</h4>
+                        <a href="../index.html#development">Back</a>
+                        <a href="../index.html">Home</a>
+                        <a href="Contact.html">Contact</a>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Follow</h4>
+                        <a href="https://www.linkedin.com/in/yerrarahul/">LinkedIn</a>
+                        <a href="https://github.com/YerraRahul23">GitHub</a>
+                        <a href="https://www.instagram.com/calvin__rahul/">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 Yerra Rahul | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+    <script src="../script.js"></script>
     <script>
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
@@ -260,14 +296,6 @@
                 status.style.color = "red";
                 console.error(error);
             }
-        });
-
-        const toggle = document.querySelector(".menu-toggle");
-        const nav = document.querySelector(".pill-nav");
-
-        toggle.addEventListener("click", () => {
-            nav.classList.toggle("active");
-            toggle.textContent = nav.classList.contains("active") ? "✕" : "☰";
         });
     </script>
 </body>
