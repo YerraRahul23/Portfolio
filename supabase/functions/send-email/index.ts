@@ -7,16 +7,46 @@ import "@supabase/functions-js/edge-runtime.d.ts"
 
 console.log("Hello from Functions!")
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+}
+
 Deno.serve(async (req) => {
-  const { name } = await req.json()
-  const data = {
-    message: `Hello ${name}!`,
+  // Handle CORS preflight requests
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders })
   }
 
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  )
+  try {
+    const { name, email, message } = await req.json()
+    console.log(`Received message from ${name} (${email}): ${message}`)
+
+    const data = {
+      message: `Thanks for reaching out, ${name}! I'll get back to you at ${email} soon.`,
+    }
+
+    return new Response(
+      JSON.stringify(data),
+      { 
+        headers: { 
+          ...corsHeaders,
+          "Content-Type": "application/json" 
+        } 
+      },
+    )
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: error.message }),
+      { 
+        status: 400,
+        headers: { 
+          ...corsHeaders,
+          "Content-Type": "application/json" 
+        } 
+      },
+    )
+  }
 })
 
 /* To invoke locally:
