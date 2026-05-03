@@ -483,8 +483,12 @@
                         GitHub →
                     </a>
 
-                    <a id="modal-demo-link" target="_blank" class="github-btn demo-btn">
+                    <a id="modal-demo-link" target="_blank" class="github-btn">
                         Website →
+                    </a>
+
+                    <a id="modal-app-link" target="_blank" class="github-btn">
+                        App →
                     </a>
                 </div>
             </div>
@@ -575,11 +579,13 @@
                 });
 
                 document.getElementById("modal-github-link").href = btn.dataset.github;
-
+                document.getElementById("modal-demo-link").href = btn.dataset.demo;
+                document.getElementById("modal-app-link").href = btn.dataset.app;
                 modal.style.display = "block";
                 overlay.style.display = "block";
                 const githubLink = document.getElementById("modal-github-link");
                 const demoLink = document.getElementById("modal-demo-link");
+                const appLink = document.getElementById("modal-app-link");
 
                 /* GITHUB */
                 if (btn.dataset.github) {
@@ -595,6 +601,14 @@
                     demoLink.style.display = "inline-block";
                 } else {
                     demoLink.style.display = "none";
+                }
+
+                /* APP */
+                if (btn.dataset.app) {
+                    appLink.href = btn.dataset.app;
+                    appLink.style.display = "inline-block";
+                } else {
+                    appLink.style.display = "none";
                 }
             });
         });
