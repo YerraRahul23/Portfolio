@@ -672,6 +672,73 @@ a {
     line-height: 1.6;
 }
 
+/* 3D hover: skill badges lift */
+.badge-container span {
+    display: inline-block;
+    padding: 4px 12px;
+    margin: 4px 4px 4px 0;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    font-size: 12px;
+    transition: transform 0.25s ease-out, box-shadow 0.25s ease-out;
+}
+
+.badge-container span:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    background: rgba(123, 97, 255, 0.1);
+}
+
+/* 3D depth: section headings with layered pseudo-elements */
+.projects-header h2 {
+    position: relative;
+    display: inline-block;
+}
+
+.projects-header h2::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    font-size: inherit;
+    font-weight: inherit;
+    color: rgba(123, 97, 255, 0.08);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.dev-title {
+    position: relative;
+}
+
+.dev-title::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    font-size: inherit;
+    font-weight: inherit;
+    color: rgba(0, 0, 0, 0.04);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.cta-left h2 {
+    position: relative;
+}
+
+.cta-left h2::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    font-size: inherit;
+    font-weight: inherit;
+    color: rgba(0, 0, 0, 0.04);
+    z-index: -1;
+    pointer-events: none;
+}
+
 /* Project Row */
 
 .project-row {
@@ -716,17 +783,22 @@ a {
 
 .project-image {
     flex: 1;
+    perspective: 1000px;
 }
 
+/* 3D tilt: project card image on hover */
 .project-image img {
     width: 100%;
     border-radius: 20px;
-    transition: 0.4s ease;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 }
 
 .project-image img:hover {
-    transform: translateY(-10px);
+    transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateZ(8px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
 
 /* View More */
