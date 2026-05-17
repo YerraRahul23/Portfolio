@@ -11,6 +11,22 @@
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <style>
+        :root {
+            --bg-primary: #ECE8DF;
+            --bg-gradient: linear-gradient(135deg, #ECE8DF 0%, #E0DCD3 50%, #D8D4CB 100%);
+            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-border: rgba(255, 255, 255, 0.4);
+            --accent-primary: #7B61FF;
+            --accent-secondary: #A855F7;
+            --accent-cyan: #00C2FF;
+            --text-primary: #1e2f2f;
+            --text-secondary: #555;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 48px rgba(123, 97, 255, 0.15);
+            --radius-lg: 28px;
+            --radius-md: 16px;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -19,12 +35,13 @@
         }
 
         body {
-            background: #e7e4db;
-            color: #1e2f2f;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
+            padding-inline: clamp(16px, 4vw, 40px);
         }
 
-        /* HEADER */
+        /* Header */
         .header {
             padding: 20px 80px;
             display: flex;
@@ -33,7 +50,9 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: #e7e4db;
+            background: transparent;
+            /* backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px); */
         }
 
         .logo {
@@ -45,145 +64,434 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            background: white;
+            background: rgba(236, 232, 223, 0.85);
             padding: 12px 30px;
             border-radius: 50px;
             display: flex;
             gap: 35px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .pill-nav a {
             text-decoration: none;
             font-size: 12px;
             letter-spacing: 2px;
-            color: #1e2f2f;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .pill-nav a:hover {
+            color: var(--accent-primary);
         }
 
         .menu-toggle {
+            /* background-color: #D8D4CB; */
+            /* border-radius: 70px; */
             display: none;
             font-size: 26px;
             cursor: pointer;
+            /* padding: 3px 8px 5px 8px; */
         }
 
-        @media(max-width:900px) {
-            .pill-nav {
-                position: fixed;
-                top: 80px;
-                left: 50%;
-                transform: translateX(-50%);
-                flex-direction: column;
-                width: 90%;
-                padding: 25px;
-                border-radius: 20px;
-                gap: 20px;
-                display: none;
+        /* Background Decorations */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .blob-1 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            top: -150px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-primary));
+            bottom: 20%;
+            left: -100px;
+            animation-delay: -7s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-secondary);
+            top: 40%;
+            right: 20%;
+            animation-delay: -14s;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
             }
 
-            .pill-nav.active {
-                display: flex;
+            33% {
+                transform: translate(30px, -30px) scale(1.05);
             }
 
-            .menu-toggle {
-                display: block;
+            66% {
+                transform: translate(-20px, 20px) scale(0.95);
             }
         }
 
-        /* HEADER TEXT */
+        /* Header Text */
         .projects-header {
             text-align: center;
-            margin: 0px;
-            padding: 50px 20px 0px 30px;
+            margin: 0;
+            padding: 60px 20px 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .projects-header h1 {
-            font-size: 48px;
-            margin-bottom: 15px;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* FILTER */
+        .projects-header p {
+            font-size: clamp(14px, 2vw, 18px);
+            color: var(--text-secondary);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Filter */
         .project-filters {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0 60px;
+            gap: 12px;
+            margin: 30px 0 50px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+            padding: 0 20px;
         }
 
         .filter-btn {
-            padding: 8px 22px;
-            border-radius: 25px;
-            border: 1px solid #1e2f2f;
-            background: transparent;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1.5px solid rgba(30, 47, 47, 0.15);
+            background: rgba(255, 255, 255, 0.5);
             cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
         .filter-btn.active,
         .filter-btn:hover {
-            background: #1e2f2f;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             color: white;
+            border-color: transparent;
+            box-shadow: 0 8px 24px rgba(123, 97, 255, 0.3);
+            transform: translateY(-2px);
         }
 
-        /* GRID */
+        /* Bento Grid */
         .projects-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: auto;
-            padding: 0 40px 100px;
+            padding: 0 30px 100px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            grid-auto-flow: dense;
+            align-items: start;
+            position: relative;
+            z-index: 1;
         }
 
-        @media(max-width:768px) {
-            .projects-container {
-                grid-template-columns: 1fr;
-                padding: 0 20px 80px;
-            }
-        }
-
-        /* CARD */
+        /* Card Base Styles */
         .project-card {
-            background: white;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
+            border: 1px solid var(--card-border);
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: cardReveal 0.6s ease forwards;
+            cursor: pointer;
+            user-select: none;
+            height: fit-content;
+        }
+
+        .project-card:active {
+            transform: scale(0.98);
+            transition: transform 0.1s ease;
+        }
+
+        .project-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .project-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .project-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .project-card:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .project-card:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .project-card:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .project-card:nth-child(7) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes cardReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .project-card:hover {
             transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(123, 97, 255, 0.3);
         }
 
+        /* Image Container */
         .project-image {
-            height: 220px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
         }
 
         .project-image img {
             width: 100%;
             height: 100%;
-            border-radius: 0px;
             object-fit: cover;
+            display: block;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .project-content {
-            padding: 25px;
+        .project-card:hover .project-image img {
+            transform: scale(1.08);
         }
 
-        .view-btn {
-            background: #7b61ff;
+        /* Image Overlay */
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.4) 40%,
+                    rgba(0, 0, 0, 0.1) 70%,
+                    transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            transition: background 0.4s ease;
+        }
+
+        .project-card:hover .image-overlay {
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.92) 0%,
+                    rgba(0, 0, 0, 0.5) 35%,
+                    rgba(0, 0, 0, 0.2) 60%,
+                    transparent 100%);
+        }
+
+        /* Category Badge */
+        .category-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .category-badge.ai {
+            background: linear-gradient(135deg, #7B61FF, #A855F7);
             color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
-            cursor: pointer;
         }
 
-        /* MODAL */
+        .category-badge.web {
+            background: linear-gradient(135deg, #00C2FF, #7B61FF);
+            color: white;
+        }
+
+        .category-badge.mobile {
+            background: linear-gradient(135deg, #10B981, #00C2FF);
+            color: white;
+        }
+
+        .category-badge.client {
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+            color: white;
+        }
+
+        /* Overlay Content */
+        .overlay-content {
+            color: rgb(255, 255, 255);
+        }
+
+        .overlay-content h3 {
+            font-size: clamp(18px, 2.5vw, 24px);
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .overlay-content p {
+            font-size: clamp(12px, 1.5vw, 14px);
+            opacity: 0.85;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 12px;
+        }
+
+        /* Tech Pills */
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-pill {
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-size: 10px;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .tech-pill {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.05);
+        }
+
+        /* ========== BENTO SIZES ========== */
+
+        /* CARD SIZES - Mathematically balanced (6+6=12) */
+        .project-card.featured,
+        .project-card.wide,
+        .project-card.normal,
+        .project-card.tall {
+            grid-column: span 6;
+        }
+
+        /* IMAGE RATIOS - Universal 16/10 for equal heights */
+        .project-card .project-image {
+            aspect-ratio: 16 / 10;
+        }
+
+        .project-card.featured .overlay-content h3 {
+            font-size: clamp(22px, 3vw, 32px);
+        }
+
+        .project-card.featured::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: var(--radius-lg);
+            padding: 2px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary), var(--accent-cyan));
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .project-card.featured:hover::before {
+            opacity: 1;
+        }
+
+        /* Hidden state for filters */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* Modal */
         .project-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: none;
             z-index: 999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .project-modal {
@@ -192,51 +500,144 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 95%;
-            max-width: 1200px;
-            background: white;
-            border-radius: 20px;
+            max-width: 1100px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 28px;
             padding: 40px;
             display: none;
             z-index: 1000;
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+            animation: modalSlide 0.4s ease;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -48%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 22px;
+            top: 24px;
+            right: 28px;
+            font-size: 24px;
             cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(123, 97, 255, 0.1);
+            transform: rotate(90deg);
         }
 
         .modal-container {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 40px;
         }
 
-        @media(max-width:900px) {
+        @media(max-width: 900px) {
             .modal-container {
                 grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .pill-nav {
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - 48px);
+                max-width: 360px;
+                padding: 16px;
+                gap: 12px;
+                display: none;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            }
+
+            .pill-nav.active {
+                display: flex;
+            }
+
+            .pill-nav a {
+                font-size: 13px;
+                padding: 8px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 24px;
+            }
+
+            .projects-header {
+                padding: 40px 0 20px;
+            }
+
+            .projects-header h1 {
+                font-size: clamp(28px, 7vw, 36px);
+                margin-bottom: 8px;
+            }
+
+            .projects-header p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .project-filters {
+                margin: 20px 0 30px;
+                gap: 8px;
             }
         }
 
         .modal-left img {
             width: 100%;
-            /* border-radius: 15px; */
+            border-radius: 16px;
             margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-left h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
         .modal-left h3 {
-            margin-top: 20px;
-            margin-bottom: 8px;
+            margin-top: 24px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 600;
         }
 
         .modal-left p {
-            line-height: 1.6;
-            margin-bottom: 10px;
-            color: #555;
+            line-height: 1.7;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
         }
 
         .modal-left ul {
@@ -245,80 +646,457 @@
         }
 
         .modal-left li {
-            margin-bottom: 6px;
-            color: #555;
+            margin-bottom: 8px;
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
         .info-box {
-            background: #f6f6f6;
-            padding: 25px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(123, 97, 255, 0.08), rgba(168, 85, 247, 0.08));
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid rgba(123, 97, 255, 0.1);
         }
 
         .info-box h3 {
-            margin-bottom: 10px;
-            margin-top: 15px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: var(--text-primary);
         }
 
         .info-box ul {
-            padding-left: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .info-box li {
+            font-size: 14px;
+            margin-bottom: 6px;
         }
 
         .github-btn {
             display: inline-block;
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: #1e2f2f;
+            margin-top: 12px;
+            margin-right: 10px;
+            padding: 12px 22px;
+            background: linear-gradient(135deg, var(--text-primary), #333);
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            transition: 0.3s;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
 
         .github-btn:hover {
-            background: #7b61ff;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(123, 97, 255, 0.3);
         }
 
-        /* ================= GRID ================= */
-
-        .projects-container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 40px 100px;
-            display: grid;
-            gap: 40px;
-        }
-
-        /* 💻 Laptops (1200px and above) → 3 projects */
-        @media (min-width: 1200px) {
-            .projects-container {
-                grid-template-columns: repeat(3, 1fr);
+        /* Footer */
+        /* .footer {
+                background: linear-gradient(180deg, #f2f0ea 0%, #e7e4db 100%);
+                position: relative;
+                z-index: 1;
             }
-        }
 
-        /* 📱 Tablets (768px – 1199px) → 2 projects */
-        @media (min-width: 750px) and (max-width: 1199px) {
+            .footer-container {
+                max-width: 1200px;
+                margin: auto;
+                padding: 80px 40px 40px;
+            }
+
+            .footer-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: start;
+                flex-wrap: wrap;
+                margin-bottom: 60px;
+            }
+
+            .footer-email span {
+                font-size: 14px;
+                color: #777;
+            }
+
+            .footer-email h3 {
+                font-size: clamp(20px, 3vw, 28px);
+                margin-top: 10px;
+                color: var(--text-primary);
+            }
+
+            .footer-right {
+                display: flex;
+                gap: 60px;
+                align-items: start;
+            }
+
+            .footer-links {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .footer-links h4 {
+                margin-bottom: 8px;
+                font-size: 15px;
+            }
+
+            .footer-links a {
+                text-decoration: none;
+                color: #444;
+                font-size: 14px;
+                transition: color 0.3s ease;
+            }
+
+            .footer-links a:hover {
+                color: var(--accent-primary);
+            }
+
+            .footer-bottom {
+                text-align: center;
+                padding-top: 30px;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                font-size: 14px;
+                color: #666;
+            } */
+
+        /* ========== RESPONSIVE ========== */
+
+        /* Tablet (768px - 1024px) - 2 column simplified */
+        /* @media(max-width: 1024px) {
             .projects-container {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 0 20px 60px;
             }
-        }
 
-        /* 📱 Mobiles (below 768px) → 1 project */
-        @media (max-width: 751px) {
+            .project-card {
+                grid-column: span 1 !important;
+            }
+
+            .project-card .project-image {
+                aspect-ratio: 16 / 10 !important;
+            }
+        } */
+
+        @media(max-width: 1024px) {
+
+            /* .projects-container {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px;
+                padding: 0 20px 60px;
+                align-items: flex-start;
+                justify-content: space-between;
+            }
+
+            .project-card {
+                width: calc(50% - 12px);
+                flex: 0 0 calc(50% - 12px);
+
+                grid-column: unset !important;
+                grid-row: unset !important;
+
+                height: fit-content;
+            }
+
+            .project-card .project-image {
+                aspect-ratio: 16 / 10 !important;
+            }
+
+            .project-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            } */
             .projects-container {
-                grid-template-columns: 1fr;
-                padding: 0 20px 80px;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+                padding: 0 20px 60px;
+            }
+
+            .project-card {
+                width: 100%;
+                grid-column: unset !important;
+                grid-row: unset !important;
+            }
+
+            .project-card .project-image {
+                aspect-ratio: 16 / 10;
             }
         }
 
-        .footer {
-            background-color: #f2f0ea;
+
+        /* Mobile (≤768px) - single column stack */
+        @media(max-width: 768px) {
+            body {
+                padding-inline: clamp(14px, 4vw, 20px);
+            }
+
+            .header {
+                padding: 12px 0;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .pill-nav {
+                position: fixed;
+                top: 60px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - 48px);
+                max-width: 360px;
+                padding: 16px;
+                gap: 12px;
+                display: none;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 16px;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+            }
+
+            .pill-nav.active {
+                display: flex;
+            }
+
+            .pill-nav a {
+                font-size: 13px;
+                padding: 8px 0;
+                text-align: center;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 24px;
+            }
+
+            .projects-header {
+                padding: 40px 0 20px;
+            }
+
+            .projects-header h1 {
+                font-size: clamp(28px, 7vw, 36px);
+                margin-bottom: 8px;
+            }
+
+            .projects-header p {
+                font-size: 14px;
+                max-width: 100%;
+            }
+
+            .project-filters {
+                margin: 20px 0 30px;
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .projects-container {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                padding: 0 0 50px;
+            }
+
+            .project-card {
+                width: 100%;
+                grid-column: unset !important;
+                grid-row: unset !important;
+                border-radius: 20px;
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+
+            .project-image {
+                width: 100%;
+                overflow: hidden;
+                border-radius: inherit;
+            }
+
+            .project-card .project-image {
+                /* width: 100%; */
+                aspect-ratio: 16/10 !important;
+            }
+
+            .project-card .project-image img {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                border-radius: 0;
+                border: none;
+                box-sizing: border-box;
+            }
+
+            .project-card:hover {
+                transform: translateY(-4px);
+            }
+
+            .project-card:hover .project-image img {
+                transform: scale(1.03);
+            }
+
+            .image-overlay {
+                padding: 16px;
+            }
+
+            .category-badge {
+                top: 12px;
+                left: 12px;
+                padding: 4px 10px;
+                font-size: 10px;
+            }
+
+            .overlay-content h3 {
+                font-size: clamp(16px, 4vw, 20px);
+                margin-bottom: 6px;
+            }
+
+            .overlay-content p {
+                font-size: 12px;
+                margin-bottom: 8px;
+                -webkit-line-clamp: 2;
+            }
+
+            .tech-pills {
+                gap: 4px;
+            }
+
+            .tech-pill {
+                padding: 3px 8px;
+                font-size: 9px;
+            }
+
+            /* Modal mobile */
+            .project-modal {
+                width: 100%;
+                height: 100%;
+                max-height: 100%;
+                border-radius: 0;
+                padding: 60px 16px 20px;
+            }
+
+            .modal-close {
+                top: 16px;
+                right: 16px;
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+
+            .modal-container {
+                gap: 20px;
+            }
+
+            .modal-left h2 {
+                font-size: 20px;
+            }
+
+            .modal-left h3 {
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+            .info-box {
+                padding: 20px;
+                border-radius: 16px;
+            }
+
+            .github-btn {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin: 8px 0;
+                padding: 10px 16px;
+            }
+
+            /* Footer mobile */
+            /* .footer {
+                    padding: 0;
+                }
+
+                .footer-container {
+                    padding: 30px 16px 20px;
+                }
+
+                .footer-top {
+                    flex-direction: column;
+                    gap: 24px;
+                    margin-bottom: 24px;
+                    text-align: center;
+                }
+
+                .footer-email h3 {
+                    font-size: 18px;
+                    word-break: break-word;
+                }
+
+                .footer-right {
+                    flex-direction: column;
+                    gap: 20px;
+                }
+
+                .footer-links {
+                    align-items: center;
+                }
+
+                .footer-links h4 {
+                    font-size: 14px;
+                    margin-bottom: 6px;
+                }
+
+                .footer-bottom {
+                    font-size: 12px;
+                    padding-top: 20px;
+                } */
+
+            .blob {
+                opacity: 0.1;
+            }
+        }
+
+        /* Extra small mobile (≤480px) */
+        @media(max-width: 480px) {
+            .projects-header h1 {
+                font-size: 26px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 11px;
+            }
+
+            .category-badge {
+                font-size: 9px;
+                padding: 3px 8px;
+            }
+
+            .tech-pill {
+                font-size: 8px;
+                padding: 2px 6px;
+            }
         }
     </style>
 </head>
 
 <body>
+
+    <div class="bg-decoration">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
 
     <header class="header">
         <div class="logo">Yerra Rahul</div>
@@ -326,7 +1104,6 @@
         <nav class="pill-nav">
             <a href="../index.html#projects">BACK</a>
             <a href="../index.html" class="active">HOME</a>
-            <!-- <a href="../index.html#projects">PROJECTS</a> -->
             <a href="Contact.html">CONTACT</a>
         </nav>
     </header>
@@ -344,164 +1121,185 @@
 
     <section class="projects-container">
 
-        <!-- 1 OBJECT DETECTION -->
-        <div class="project-card personal">
+        <!-- 1 ASKACE - FEATURED (LARGE) -->
+        <div class="project-card featured personal" data-title="AskAce - AI College Assistant"
+            data-about="A full-featured mobile application developed for ACE Engineering College that combines an AI chatbot, real-time data system, and role-based dashboards for students, faculty, and administrators."
+            data-description="AskAce is a scalable Flutter + Firebase application designed to digitize campus operations. It includes a public information portal, AI chatbot for queries, department modules, placement tracking, and secure login with role-based access. The app integrates backend APIs for AI responses and uses Firestore for dynamic content rendering."
+            data-tech="Flutter|Dart|Firebase Authentication|Cloud Firestore|Cloud Functions|REST API|Speech-to-Text|Markdown Renderer"
+            data-features="AI Chatbot (AskAce)|Voice Input|Role-Based Dashboards (Student/Faculty/Admin)|Real-Time Data Fetching|Department Modules|Placement Section|Authentication System|Admin Panel|PYQ Management"
+            data-skills="Mobile App Development|API Integration|Firebase Backend|State Management|UI/UX Design|AI Integration|Problem Solving"
+            data-app="https://drive.google.com/file/d/17Kx4aNQISlqp2oqBSCdIlDXP_GILiqFO/view?usp=sharing"
+            data-image="../public/media/AskAce2.png">
+            <div class="project-image">
+                <img src="../public/media/AskAce2.png" alt="AskAce App">
+                <div class="image-overlay">
+                    <span class="category-badge ai">AI</span>
+                    <div class="overlay-content">
+                        <h3>AskAce - AI College Assistant</h3>
+                        <p>AI-powered college assistant with chatbot, role-based dashboards, and real-time campus info.
+                        </p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Flutter</span>
+                            <span class="tech-pill">Firebase</span>
+                            <span class="tech-pill">AI Chatbot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 OBJECT DETECTION - TALL -->
+        <div class="project-card tall personal" data-title="Object Detection with YOLO"
+            data-about="Python project using YOLO and OpenCV for real-time object detection. Detects and tracks multiple objects in video streams, calculates distances and sizes using coordinates, and overlays bounding boxes with labels."
+            data-description="The Object Detection project is designed to identify and locate various objects in images or video streams using advanced computer vision techniques. The core of this project leverages YOLO (You Only Look Once), a cutting-edge object detection algorithm known for its real-time performance."
+            data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
+            data-skills="Computer Vision|Deep Learning|Object Tracking"
+            data-github="https://github.com/YerraRahul23/Object_Detection"
+            data-image="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
             <div class="project-image">
                 <img
                     src="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
-            </div>
-            <div class="project-content">
-                <h3>Object Detection</h3>
-                <p>Real-time object detection using YOLO & OpenCV.</p>
-                <br>
-                <button class="view-btn" data-title="Object Detection with YOLO"
-                    data-about="Python project using YOLO and OpenCV for real-time object detection. Detects and tracks multiple objects in video streams, calculates distances and sizes using coordinates, and overlays bounding boxes with labels. Demonstrates core computer vision concepts like detection, tracking, and visualization."
-                    data-description="The Object Detection project is designed to identify and locate various objects in images or video streams using advanced computer vision techniques. The core of this project leverages YOLO (You Only Look Once), a cutting-edge object detection algorithm known for its real-time performance. YOLO can detect multiple objects in an image or video frame while maintaining both high speed and accuracy, making it suitable for various real-world applications like surveillance, autonomous driving, and more."
-                    data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
-                    data-skills="Computer Vision|Deep Learning|Object Tracking"
-                    data-github="https://github.com/YerraRahul23/Object_Detection"
-                    data-image="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
-                    View Project
-                </button>
+                <div class="image-overlay">
+                    <span class="category-badge ai">Computer Vision</span>
+                    <div class="overlay-content">
+                        <h3>Object Detection</h3>
+                        <p>Real-time object detection using YOLO & OpenCV.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">YOLO</span>
+                            <span class="tech-pill">OpenCV</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 2 VOICE ASSISTANT -->
-        <div class="project-card personal">
+        <!-- 3 VOICE ASSISTANT - NORMAL -->
+        <div class="project-card normal personal" data-title="Voice Assistant"
+            data-about="The project is designed to provide a seamless user experience through natural language processing (NLP) for understanding user inputs and speech synthesis for generating voice responses."
+            data-description="The Voice Assistant project is a hands-free, voice-activated system built with Python, enabling users to interact with their device using natural language commands."
+            data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
+            data-features="Speech recognition|Speech synthesis|Web integration"
+            data-skills="NLP|API Integration|Automation" data-github="https://github.com/YerraRahul23/Voice_Assistant"
+            data-image="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
             <div class="project-image">
                 <img
                     src="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
-            </div>
-            <div class="project-content">
-                <h3>Voice Assistant</h3>
-                <p>Voice-based assistant built using Python & NLP.</p>
-                <br>
-                <button class="view-btn" data-title="Voice Assistant"
-                    data-about="The project is designed to provide a seamless user experience through natural language processing (NLP) for understanding user inputs and speech synthesis for generating voice responses."
-                    data-description="The Voice Assistant project is a hands-free, voice-activated system built with Python, enabling users to interact with their device using natural language commands. This assistant is capable of performing a wide range of tasks including: Web searches Setting reminders Managing daily schedules Sending emails Controlling smart devices "
-                    data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
-                    data-features="Speech recognition|Speech synthesis|Web integration"
-                    data-skills="NLP|API Integration|Automation"
-                    data-github="https://github.com/YerraRahul23/Voice_Assistant"
-                    data-image="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
-                    View Project
-                </button>
+                <div class="image-overlay">
+                    <span class="category-badge ai">NLP</span>
+                    <div class="overlay-content">
+                        <h3>Voice Assistant</h3>
+                        <p>Voice-based assistant built using Python & NLP.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">NLP</span>
+                            <span class="tech-pill">Speech API</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 3 FACE RECOGNITION -->
-        <div class="project-card personal">
+        <!-- 4 CATERING - NORMAL -->
+        <div class="project-card normal client" data-title="Catering Services – Client Project"
+            data-about="Modern responsive catering website."
+            data-description="Includes food gallery, booking form, services section." data-tech="HTML5|CSS3|JavaScript"
+            data-features="Responsive design|Interactive UI|Booking section"
+            data-skills="Frontend Development|Responsive UI" data-demo="https://pappas-kitchen.vercel.app/"
+            data-image="../public/media/Untitled design.png">
+            <div class="project-image">
+                <img src="../public/media/Untitled design.png" alt="Catering Website Project">
+                <div class="image-overlay">
+                    <span class="category-badge client">Client</span>
+                    <div class="overlay-content">
+                        <h3>Catering Services Website</h3>
+                        <p>Responsive catering website built using HTML CSS JS.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">HTML5</span>
+                            <span class="tech-pill">CSS3</span>
+                            <span class="tech-pill">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 CONTESTHUB - WIDE -->
+        <div class="project-card wide personal" data-title="Contesthub"
+            data-about="Coding contest aggregator website for exploring contests and problems."
+            data-description="Designed to fetch and display coding contest data using APIs, allowing users to explore contests and problems through a responsive and interactive interface."
+            data-tech="HTML5|CSS3|JavaScript|APIs"
+            data-features="User authentication (Login/Signup)|Contest listing & details page|Problem browsing interface|Responsive design for all devices|Interactive UI with dynamic updates"
+            data-skills="Frontend Development|Responsive UI" data-demo="https://contesthub-h4i5.onrender.com/"
+            data-github="https://github.com/YerraRahul23/ContestHub" data-image="../public/media/contest-hub.png">
+            <div class="project-image">
+                <img src="../public/media/contest-hub.png" alt="Contesthub">
+                <div class="image-overlay">
+                    <span class="category-badge web">Web App</span>
+                    <div class="overlay-content">
+                        <h3>Contesthub</h3>
+                        <p>Coding contest aggregator website for exploring contests and problems.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">HTML5</span>
+                            <span class="tech-pill">CSS3</span>
+                            <span class="tech-pill">JavaScript</span>
+                            <span class="tech-pill">APIs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 FACIAL RECOGNITION - NORMAL -->
+        <div class="project-card normal personal" data-title="Face Detection & Recognition"
+            data-about="Real-time face recognition using OpenCV & DeepFace."
+            data-description="This project demonstrates real-time face detection and recognition using Python. Built with OpenCV, DeepFace, NumPy, and Pygame, it identifies faces from the webcam, compares them with known images, and triggers alerts."
+            data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
+            data-features="Face detection|Unknown alert|Threshold matching" data-skills="Computer Vision|Deep Learning"
+            data-github="https://github.com/YerraRahul23/Face-Recognition-"
+            data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
             <div class="project-image">
                 <img
                     src="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
-            </div>
-            <div class="project-content">
-                <h3>Face Detection & Recognition</h3>
-                <p>Real-time face recognition using DeepFace.</p>
-                <br>
-                <button class="view-btn" data-title="Face Detection & Recognition"
-                    data-about="Real-time face recognition using OpenCV & DeepFace."
-                    data-description="This project demonstrates real-time face detection and recognition using Python. Built with OpenCV, DeepFace, NumPy, and Pygame, it identifies faces from the webcam, compares them with known images, and triggers alerts or sound notifications. The project showcases core computer vision concepts such as: Real-time face detection Face recognition using DeepFace's pre-trained models Distance/threshold-based identity prediction Rendering overlays and bounding boxes Audio alerts using Pygame Efficient frame processing with OpenCV "
-                    data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
-                    data-features="Face detection|Unknown alert|Threshold matching"
-                    data-skills="Computer Vision|Deep Learning"
-                    data-github="https://github.com/YerraRahul23/Face-Recognition-"
-                    data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
-                    View Project
-                </button>
+                <div class="image-overlay">
+                    <span class="category-badge ai">Computer Vision</span>
+                    <div class="overlay-content">
+                        <h3>Face Detection & Recognition</h3>
+                        <p>Real-time face recognition using DeepFace.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">OpenCV</span>
+                            <span class="tech-pill">DeepFace</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 4 CATERING CLIENT -->
-        <div class="project-card client">
-            <div class="project-image">
-                <img src="../public/media/Untitled design.png" alt="Catering Website Project">
-            </div>
-            <div class="project-content">
-                <h3>Catering Services Website</h3>
-                <p>Responsive catering website built using HTML CSS JS.</p>
-                <br>
-                <br>
-                <button class="view-btn" data-title="Catering Services – Client Project"
-                    data-about="Modern responsive catering website."
-                    data-description="Includes food gallery, booking form, services section."
-                    data-tech="HTML5|CSS3|JavaScript" data-features="Responsive design|Interactive UI|Booking section"
-                    data-skills="Frontend Development|Responsive UI" data-demo="https://pappas-kitchen.vercel.app/"
-                    data-image="../public/media/Untitled design.png">
-                    View Project
-                </button>
-            </div>
-        </div>
-
-        <!-- 5 contesthub -->
-        <div class="project-card personal">
-            <div class="project-image">
-                <img src="../public/media/contest-hub.png" alt="Contesthub">
-            </div>
-            <div class="project-content">
-                <h3>Contesthub</h3>
-                <p>Coding contest aggregator website for exploring contests and problems.</p>
-                <br>
-                <br>
-                <button class="view-btn" data-title="Contesthub"
-                    data-about="Coding contest aggregator website for exploring contests and problems."
-                    data-description="Designed to fetch and display coding contest data using APIs, allowing users to explore contests and problems through a responsive and interactive interface."
-                    data-tech="HTML5|CSS3|JavaScript|APIs"
-                    data-features="User authentication (Login/Signup)|Contest listing & details page|Problem browsing interface|Responsive design for all devices|Interactive UI with dynamic updates"
-                    data-skills="Frontend Development|Responsive UI" data-demo="https://contesthub-h4i5.onrender.com/"
-                    data-github="https://github.com/YerraRahul23/ContestHub"
-                    data-image="../public/media/contest-hub.png">
-                    View Project
-                </button>
-            </div>
-        </div>
-
-        <!-- 7 NoteSync -->
-        <div class="project-card personal">
+        <!-- 7 NOTESYNC - WIDE -->
+        <div class="project-card wide personal" data-title="NoteSync - Real-Time Collaborative Note-Taking"
+            data-about="Real-time collaborative whiteboard and notes application built with React, Socket.IO, and Express."
+            data-description="NoteSync allows multiple users to collaborate in real-time within shared rooms. Draw together on a shared whiteboard, take collaborative notes, and see live updates as your teammates work."
+            data-tech="Frontend: React 18 |Vite | Tailwind CSS | Socket.IO Client | Backend: Node.js | Express | Socket.IO | Realtime: WebSockets via Socket.IO | Deployment: Vercel (frontend), Render (backend)"
+            data-features="Realtime Whiteboard — Draw, color, resize brushes. Changes sync instantly to all users in the room. | Collaborative Notes — Add, edit, and delete notes. Everyone sees updates in real time. | Room-Based Collaboration — Create or join rooms with a unique room code. | Live User Sync — See who's online. Room creator gets a crown icon. | Responsive UI — Sidebar, whiteboard, and notes panel adapt to screen size. | Dark Theme — Modern glassmorphism design with smooth transitions."
+            data-skills="Frontend Development|UI/UX Design|Real-Time Collaboration|API Integration|State Management|Responsive Design"
+            data-github="https://github.com/YerraRahul23/NoteSync" data-demo="https://note-sync-rho.vercel.app/"
+            data-image="../public/media/NoteSync.png">
             <div class="project-image">
                 <img src="../public/media/NoteSync.png" alt="NoteSync App">
-            </div>
-            <div class="project-content">
-                <h3>NoteSync</h3>
-                <p>
-                    Real-time collaborative whiteboard and notes app with React 18, Vite, Tailwind CSS & Socket.IO
-                    Client.
-                </p>
-                <br>
-                <button class="view-btn" data-title="NoteSync - Real-Time Collaborative Note-Taking"
-                    data-about="Real-time collaborative whiteboard and notes application built with React, Socket.IO, and Express."
-                    data-description="NoteSync allows multiple users to collaborate in real-time within shared rooms. Draw together on a shared whiteboard, take collaborative notes, and see live updates as your teammates work."
-                    data-tech="Frontend: React 18 |Vite | Tailwind CSS | Socket.IO Client | Backend: Node.js | Express | Socket.IO | Realtime: WebSockets via Socket.IO | Deployment: Vercel (frontend), Render (backend)"
-                    data-features="Realtime Whiteboard — Draw, color, resize brushes. Changes sync instantly to all users in the room. | Collaborative Notes — Add, edit, and delete notes. Everyone sees updates in real time. | Room-Based Collaboration — Create or join rooms with a unique room code. Room name support for better organization. | Live User Sync — See who's online. Room creator gets a crown icon. | Responsive UI — Sidebar, whiteboard, and notes panel adapt to screen size. Collapsible panels. | Dark Theme — Modern glassmorphism design with smooth transitions."
-                    data-skills="Frontend Development|UI/UX Design|Real-Time Collaboration|API Integration|State Management|Responsive Design|Mobile App Development"
-                    data-github="https://github.com/YerraRahul23/NoteSync" data-image="../public/media/NoteSync.png"
-                    data-demo="https://note-sync-rho.vercel.app/">
-                    View Project
-                </button>
-            </div>
-        </div>
-        <div class="project-card personal">
-            <div class="project-image">
-                <img src="../public/media/AskAce2.png" alt="AskAce App">
-            </div>
-            <div class="project-content">
-                <h3>AskAce - AI College Assistant</h3>
-                <p>
-                    AI-powered college assistant app built with Flutter & Firebase, featuring chatbot support,
-                    role-based dashboards, and real-time campus information.
-                </p>
-                <br>
-                <button class="view-btn" data-title="AskAce - AI College Assistant"
-                    data-about="A full-featured mobile application developed for ACE Engineering College that combines an AI chatbot, real-time data system, and role-based dashboards for students, faculty, and administrators."
-                    data-description="AskAce is a scalable Flutter + Firebase application designed to digitize campus operations. It includes a public information portal, AI chatbot for queries, department modules, placement tracking, and secure login with role-based access. The app integrates backend APIs for AI responses and uses Firestore for dynamic content rendering."
-                    data-tech="Flutter|Dart|Firebase Authentication|Cloud Firestore|Cloud Functions|REST API|Speech-to-Text|Markdown Renderer"
-                    data-features="AI Chatbot (AskAce)|Voice Input|Role-Based Dashboards (Student/Faculty/Admin)|Real-Time Data Fetching|Department Modules|Placement Section|Authentication System|Admin Panel|PYQ Management"
-                    data-skills="Mobile App Development|API Integration|Firebase Backend|State Management|UI/UX Design|AI Integration|Problem Solving"
-                    data-app="https://drive.google.com/file/d/17Kx4aNQISlqp2oqBSCdIlDXP_GILiqFO/view?usp=sharing"
-                    data-image="../public/media/AskAce2.png">
-
-                    View Project
-                </button>
+                <div class="image-overlay">
+                    <span class="category-badge web">Web App</span>
+                    <div class="overlay-content">
+                        <h3>NoteSync</h3>
+                        <p>Real-time collaborative whiteboard and notes app with React, Socket.IO, and Vite.</p>
+                        <div class="tech-pills">
+                            <span class="tech-pill">React 18</span>
+                            <span class="tech-pill">Socket.IO</span>
+                            <span class="tech-pill">Vite</span>
+                            <span class="tech-pill">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -533,11 +1331,9 @@
                     <a id="modal-github-link" target="_blank" class="github-btn">
                         GitHub →
                     </a>
-
                     <a id="modal-demo-link" target="_blank" class="github-btn">
                         Website →
                     </a>
-
                     <a id="modal-app-link" target="_blank" class="github-btn">
                         App →
                     </a>
@@ -545,6 +1341,7 @@
             </div>
         </div>
     </div>
+
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-top">
@@ -584,8 +1381,10 @@
                 const filter = button.dataset.filter;
                 cards.forEach(card => {
                     if (filter === "all" || card.classList.contains(filter)) {
-                        card.style.display = "block";
-                    } else { card.style.display = "none"; }
+                        card.classList.remove("hidden");
+                    } else {
+                        card.classList.add("hidden");
+                    }
                 });
             });
         });
@@ -593,20 +1392,20 @@
         const modal = document.querySelector(".project-modal");
         const overlay = document.querySelector(".project-modal-overlay");
         const closeBtn = document.querySelector(".modal-close");
-        const viewBtns = document.querySelectorAll(".view-btn");
+        const projectCards = document.querySelectorAll(".project-card");
 
-        viewBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-                document.getElementById("modal-title").textContent = btn.dataset.title;
-                document.getElementById("modal-image").src = btn.dataset.image;
-                document.getElementById("modal-about").textContent = btn.dataset.about;
-                document.getElementById("modal-description").textContent = btn.dataset.description;
+        projectCards.forEach(card => {
+            card.addEventListener("click", () => {
+                document.getElementById("modal-title").textContent = card.dataset.title;
+                document.getElementById("modal-image").src = card.dataset.image;
+                document.getElementById("modal-about").textContent = card.dataset.about;
+                document.getElementById("modal-description").textContent = card.dataset.description;
 
                 const techList = document.getElementById("modal-tech-list");
                 const techRight = document.getElementById("modal-tech-right");
                 techList.innerHTML = "";
                 techRight.innerHTML = "";
-                btn.dataset.tech.split("|").forEach(item => {
+                card.dataset.tech.split("|").forEach(item => {
                     const li = document.createElement("li");
                     li.textContent = item;
                     techList.appendChild(li.cloneNode(true));
@@ -615,7 +1414,7 @@
 
                 const featureList = document.getElementById("modal-features-list");
                 featureList.innerHTML = "";
-                btn.dataset.features.split("|").forEach(item => {
+                card.dataset.features.split("|").forEach(item => {
                     const li = document.createElement("li");
                     li.textContent = item;
                     featureList.appendChild(li);
@@ -623,40 +1422,37 @@
 
                 const skillsList = document.getElementById("modal-skills-list");
                 skillsList.innerHTML = "";
-                btn.dataset.skills.split("|").forEach(item => {
+                card.dataset.skills.split("|").forEach(item => {
                     const li = document.createElement("li");
                     li.textContent = item;
                     skillsList.appendChild(li);
                 });
 
-                document.getElementById("modal-github-link").href = btn.dataset.github;
-                document.getElementById("modal-demo-link").href = btn.dataset.demo;
-                document.getElementById("modal-app-link").href = btn.dataset.app;
+                document.getElementById("modal-github-link").href = card.dataset.github;
+                document.getElementById("modal-demo-link").href = card.dataset.demo;
+                document.getElementById("modal-app-link").href = card.dataset.app;
                 modal.style.display = "block";
                 overlay.style.display = "block";
                 const githubLink = document.getElementById("modal-github-link");
                 const demoLink = document.getElementById("modal-demo-link");
                 const appLink = document.getElementById("modal-app-link");
 
-                /* GITHUB */
-                if (btn.dataset.github) {
-                    githubLink.href = btn.dataset.github;
+                if (card.dataset.github) {
+                    githubLink.href = card.dataset.github;
                     githubLink.style.display = "inline-block";
                 } else {
                     githubLink.style.display = "none";
                 }
 
-                /* DEMO */
-                if (btn.dataset.demo) {
-                    demoLink.href = btn.dataset.demo;
+                if (card.dataset.demo) {
+                    demoLink.href = card.dataset.demo;
                     demoLink.style.display = "inline-block";
                 } else {
                     demoLink.style.display = "none";
                 }
 
-                /* APP */
-                if (btn.dataset.app) {
-                    appLink.href = btn.dataset.app;
+                if (card.dataset.app) {
+                    appLink.href = card.dataset.app;
                     appLink.style.display = "inline-block";
                 } else {
                     appLink.style.display = "none";
