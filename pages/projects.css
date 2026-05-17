@@ -1,0 +1,141 @@
+.footer {
+    background: #e7e4db;
+    padding: 80px 80px 40px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.footer-right {
+    display: flex;
+    gap: 60px;
+    align-items: start;
+}
+
+.footer-email span {
+    font-size: 14px;
+    color: #777;
+}
+
+.footer-email h3 a {
+    font-size: 32px;
+    margin-top: 10px;
+    color: #0e3b2e;
+    text-decoration: none;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: start;
+    align-items: start; */
+    gap: 10px;
+}
+
+.footer-links h4,
+.footer-social h4 {
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-social a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 885px) {
+
+    .cta-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .cta-left h2 {
+        font-size: 48px;
+    }
+
+    .cta-right {
+        max-width: 600px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footer {
+        padding: 60px 20px 30px;
+    }
+
+}
+
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 885px) {
+
+    .footer {
+        padding: 60px 20px 30px;
+    }
+
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 35px;
+    }
+
+    .footer-email h3 {
+        font-size: 24px;
+        word-break: break-word;
+    }
+
+    .footer-links,
+    .footer-social {
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-links h4,
+    .footer-address h4,
+    .footer-social h4 {
+        margin-bottom: 6px;
+        font-size: 18px;
+    }
+
+    .footer-links a,
+    .footer-social a,
+    .footer-address p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .footer-bottom {
+        margin-top: 30px;
+        font-size: 13px;
+    }
+
+}
