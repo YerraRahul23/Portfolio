@@ -69,3 +69,31 @@ function typeEffect() {
 }
 
 typeEffect();
+
+
+/* ========================= */
+/* Fullscreen Fade Cards     */
+/* ========================= */
+
+(function () {
+    const cards = document.querySelectorAll('.project-card');
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                const card = entry.target;
+                if (entry.isIntersecting) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+        },
+        {
+            threshold: 0.5
+        }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+})();
