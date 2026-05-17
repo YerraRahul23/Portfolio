@@ -23,3 +23,4 @@ cards.forEach((card, index) => {
     }
 
 });
+

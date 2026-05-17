@@ -7,7 +7,3 @@
 .env.local
 .env.*.local
 
-#testing
-test-mode.css
-test-mode.html
-test-mode.js
