@@ -44,7 +44,11 @@
 
     <!-- <header class="header">
         <div class="logo">Yerra Rahul</div>
-        <div class="menu-toggle">☰</div>
+        <div class="menu-toggle" id="menuToggle">
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+        </div>
 
 
         <nav class="pill-nav">
@@ -108,16 +112,109 @@
     -->
     <header class="header">
         <div class="logo">Yerra Rahul</div>
-        <div class="menu-toggle">☰</div>
-
-
-        <nav class="pill-nav">
-            <a href="#home">HOME</a>
-            <a href="#development">ABOUT</a>
-            <a href="#projects">PROJECTS</a>
-            <a href="pages/Contact.html">CONTACT</a>
-        </nav>
+        <div class="menu-toggle" id="menuToggle">
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+            <span class="menu-toggle__bar"></span>
+        </div>
     </header>
+
+    <!-- ============ FULLSCREEN OVERLAY NAV ============ -->
+    <div class="nav-overlay" id="navOverlay">
+        <div class="nav-overlay__inner">
+
+            <!-- Left: AI HUD Terminal Panel (desktop only) -->
+            <div class="ai-hud">
+
+                <!-- TOP: Terminal Window -->
+                <div class="hud-terminal">
+                    <div class="terminal-header">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                        <span class="terminal-title">personaGPT@engine:~</span>
+                    </div>
+                    <div class="terminal-body" id="terminalBody">
+                        <span class="terminal-cursor"></span>
+                    </div>
+                </div>
+
+                <!-- MIDDLE: System Metrics Cards -->
+                <div class="hud-metrics">
+                    <div class="metric-card">
+                        <div class="metric-label"><i class="fas fa-microchip"></i> AI Core</div>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width:78%"></div>
+                        </div>
+                        <span class="metric-value">78%</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label"><i class="fas fa-brain"></i> LLM Engine</div>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width:92%"></div>
+                        </div>
+                        <span class="metric-value">92%</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label"><i class="fas fa-memory"></i> Vector DB</div>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width:64%"></div>
+                        </div>
+                        <span class="metric-value">64%</span>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label"><i class="fas fa-server"></i> GPU</div>
+                        <div class="metric-bar">
+                            <div class="metric-fill" style="width:85%"></div>
+                        </div>
+                        <span class="metric-value">85%</span>
+                    </div>
+                </div>
+
+                <!-- BOTTOM: Graph + Neural Viz -->
+                <div class="hud-graphs">
+                    <canvas id="hudWaveform"></canvas>
+                    <div class="hud-activity">
+                        <div class="activity-dot"></div>
+                        <span class="activity-label">AI Inference Active</span>
+                        <div class="activity-pulse"></div>
+                    </div>
+                </div>
+
+                <!-- Neural Network Dots (decorative) -->
+                <div class="neural-dots" id="neuralDots"></div>
+            </div>
+
+            <!-- Right: Navigation Links -->
+            <div class="nav-links">
+                <a href="#home" class="nav-link" data-text="HOME">
+                    <span class="nav-link__text">HOME</span>
+                    <span class="nav-link__line"></span>
+                </a>
+                <a href="#development" class="nav-link" data-text="ABOUT">
+                    <span class="nav-link__text">ABOUT</span>
+                    <span class="nav-link__line"></span>
+                </a>
+                <a href="#projects" class="nav-link" data-text="PROJECTS">
+                    <span class="nav-link__text">PROJECTS</span>
+                    <span class="nav-link__line"></span>
+                </a>
+                <a href="pages/Contact.html" class="nav-link" data-text="CONTACT">
+                    <span class="nav-link__text">CONTACT</span>
+                    <span class="nav-link__line"></span>
+                </a>
+            </div>
+
+            <!-- Bottom: Social Links -->
+            <div class="nav-social">
+                <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/YerraRahul23" target="_blank">GitHub</a>
+                <a href="https://www.instagram.com/calvin__rahul/" target="_blank">Instagram</a>
+                <a href="mailto:yerrarahul23@gmail.com">Email</a>
+            </div>
+
+        </div>
+    </div>
     <!-- ============ NEW HOME SECTION ============ -->
 
     <section class="home" id="home">
