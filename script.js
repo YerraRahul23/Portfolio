@@ -97,3 +97,71 @@ typeEffect();
 
     cards.forEach((card) => observer.observe(card));
 })();
+
+
+/* ============ NEW HOME SECTION JS ============ */
+
+(function () {
+
+    const home = document.querySelector('.home');
+    if (!home) return; // Only run on pages with the new home section
+
+    /* ── 1. Fade-Up Entrance Animations ── */
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const techCards = document.querySelectorAll('.tech-card');
+
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    fadeElements.forEach(el => fadeObserver.observe(el));
+    techCards.forEach(el => fadeObserver.observe(el));
+
+    /* ── 2. Animated Progress Bars ── */
+    const progressObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                const fill = entry.target.querySelector('.progress-fill');
+                if (fill) {
+                    const progress = entry.target.getAttribute('data-progress');
+                    if (progress) {
+                        fill.style.width = progress + '%';
+                    }
+                }
+                progressObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.tech-card').forEach(card => progressObserver.observe(card));
+
+    /* ── 3. Floating Particles ── */
+    const particlesContainer = document.getElementById('particles-container');
+    if (particlesContainer) {
+        const particleCount = window.innerWidth < 600 ? 20 : 40;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 3 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+            particle.style.animationDelay = (Math.random() * 10) + 's';
+            particle.style.opacity = Math.random() * 0.3 + 0.1;
+            particlesContainer.appendChild(particle);
+        }
+    }
+
+})();
