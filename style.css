@@ -326,7 +326,7 @@ a {
         position: sticky;
         top: 0;
         z-index: 1000;
-        background: #e7e4db;
+        /* background: #e7e4db; */
     }
 
 
@@ -1344,16 +1344,18 @@ a {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    /* background: rgba(255, 255, 255, 0.6); */
+    /* backdrop-filter: blur(18px); */
+    /* -webkit-backdrop-filter: blur(18px); */
     border-radius: 28px;
     padding: 42px 38px;
-    margin-top: 50px;
+    margin-top: 100px;
+    margin-bottom: 40px;
     box-shadow:
         0 20px 80px rgba(0, 0, 0, 0.08),
         0 8px 32px rgba(123, 97, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(253, 218, 255, 0.8);
+
 }
 
 .hero-greeting {
@@ -1392,7 +1394,8 @@ a {
     margin-bottom: 32px;
 }
 
-/* ── TECH STACK GRID ── */
+/* ═══ OLD TECH STACK GRID (commented out) ═══ */
+/*
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -1457,7 +1460,6 @@ a {
     letter-spacing: 1px;
 }
 
-/* Progress Bar */
 .progress-bar {
     width: 100%;
     height: 4px;
@@ -1479,6 +1481,397 @@ a {
     font-size: 10px;
     font-weight: 600;
     color: #7b61ff;
+}
+*/
+
+/* ═══ OLD TECH BADGE WALL (commented out) ═══ */
+/*
+.tech-badge-wall {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.badge-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.badge-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7b61ff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-left: 4px;
+    opacity: 0.8;
+}
+
+.badge-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px 6px 10px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: default;
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+}
+
+.tech-badge.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.tech-badge i {
+    font-size: 14px;
+    color: #7b61ff;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.tech-badge span {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #1e2f2f;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.tech-badge:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 20px rgba(123, 97, 255, 0.15), 0 0 0 1px rgba(123, 97, 255, 0.15);
+    border-color: rgba(123, 97, 255, 0.2);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.tech-badge:hover i {
+    color: #7b61ff;
+    filter: drop-shadow(0 0 4px rgba(123, 97, 255, 0.3));
+}
+
+.tech-badge.visible {
+    transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tech-badge[data-delay="0"] { transition-delay: 0.00s; }
+.tech-badge[data-delay="1"] { transition-delay: 0.03s; }
+.tech-badge[data-delay="2"] { transition-delay: 0.06s; }
+.tech-badge[data-delay="3"] { transition-delay: 0.09s; }
+.tech-badge[data-delay="4"] { transition-delay: 0.12s; }
+.tech-badge[data-delay="5"] { transition-delay: 0.15s; }
+.tech-badge[data-delay="6"] { transition-delay: 0.18s; }
+.tech-badge[data-delay="7"] { transition-delay: 0.21s; }
+.tech-badge[data-delay="8"] { transition-delay: 0.24s; }
+.tech-badge[data-delay="9"] { transition-delay: 0.27s; }
+.tech-badge[data-delay="10"] { transition-delay: 0.30s; }
+.tech-badge[data-delay="11"] { transition-delay: 0.33s; }
+.tech-badge[data-delay="12"] { transition-delay: 0.36s; }
+.tech-badge[data-delay="13"] { transition-delay: 0.39s; }
+.tech-badge[data-delay="14"] { transition-delay: 0.42s; }
+.tech-badge[data-delay="15"] { transition-delay: 0.45s; }
+.tech-badge[data-delay="16"] { transition-delay: 0.48s; }
+.tech-badge[data-delay="17"] { transition-delay: 0.51s; }
+.tech-badge[data-delay="18"] { transition-delay: 0.54s; }
+.tech-badge[data-delay="19"] { transition-delay: 0.57s; }
+.tech-badge[data-delay="20"] { transition-delay: 0.60s; }
+.tech-badge[data-delay="21"] { transition-delay: 0.63s; }
+.tech-badge[data-delay="22"] { transition-delay: 0.66s; }
+.tech-badge[data-delay="23"] { transition-delay: 0.69s; }
+.tech-badge[data-delay="24"] { transition-delay: 0.72s; }
+.tech-badge[data-delay="25"] { transition-delay: 0.75s; }
+.tech-badge[data-delay="26"] { transition-delay: 0.78s; }
+.tech-badge[data-delay="27"] { transition-delay: 0.81s; }
+.tech-badge[data-delay="28"] { transition-delay: 0.84s; }
+*/
+
+/* ═══ NEW TECH BANNER WALL ═══ */
+.tech-banner-wall {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    max-width: 90%;
+    margin: 10px 20px 30px 20px;
+    padding: 0 4px;
+}
+
+/* ── Individual Tech Banner ── */
+.tech-banner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 14px 26px 14px 20px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(123, 97, 255, 0.04);
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(16px) scale(0.94);
+    flex-shrink: 0;
+}
+
+/* Subtle gradient tint overlay */
+.tech-banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(123, 97, 255, 0.06), transparent 50%, rgba(159, 122, 234, 0.04));
+    border-radius: inherit;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tech-banner.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.tech-banner i {
+    font-size: 20px;
+    color: #7b61ff;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: filter 0.3s ease;
+}
+
+.tech-banner span {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #1e2f2f;
+    white-space: nowrap;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Banner Hover ── */
+.tech-banner:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 14px 36px rgba(123, 97, 255, 0.18),
+        0 0 0 1px rgba(123, 97, 255, 0.18);
+    border-color: rgba(123, 97, 255, 0.25);
+    background: rgba(255, 255, 255, 0.78);
+}
+
+.tech-banner:hover::before {
+    background: linear-gradient(135deg, rgba(123, 97, 255, 0.1), transparent 50%, rgba(159, 122, 234, 0.08));
+}
+
+.tech-banner:hover i {
+    color: #7b61ff;
+    filter: drop-shadow(0 0 6px rgba(123, 97, 255, 0.35));
+}
+
+/* ── Stagger Entrance ── */
+.tech-banner.visible {
+    transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Floating Animation ── */
+@keyframes bannerFloat {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.tech-banner.visible {
+    animation: bannerFloat 4s ease-in-out infinite;
+}
+
+.tech-banner[data-delay="0"] {
+    animation-delay: 0.0s;
+    transition-delay: 0.00s;
+}
+
+.tech-banner[data-delay="1"] {
+    animation-delay: 0.15s;
+    transition-delay: 0.03s;
+}
+
+.tech-banner[data-delay="2"] {
+    animation-delay: 0.3s;
+    transition-delay: 0.06s;
+}
+
+.tech-banner[data-delay="3"] {
+    animation-delay: 0.45s;
+    transition-delay: 0.09s;
+}
+
+.tech-banner[data-delay="4"] {
+    animation-delay: 0.6s;
+    transition-delay: 0.12s;
+}
+
+.tech-banner[data-delay="5"] {
+    animation-delay: 0.75s;
+    transition-delay: 0.15s;
+}
+
+.tech-banner[data-delay="6"] {
+    animation-delay: 0.9s;
+    transition-delay: 0.18s;
+}
+
+.tech-banner[data-delay="7"] {
+    animation-delay: 1.05s;
+    transition-delay: 0.21s;
+}
+
+.tech-banner[data-delay="8"] {
+    animation-delay: 1.2s;
+    transition-delay: 0.24s;
+}
+
+.tech-banner[data-delay="9"] {
+    animation-delay: 1.35s;
+    transition-delay: 0.27s;
+}
+
+.tech-banner[data-delay="10"] {
+    animation-delay: 1.5s;
+    transition-delay: 0.30s;
+}
+
+.tech-banner[data-delay="11"] {
+    animation-delay: 1.65s;
+    transition-delay: 0.33s;
+}
+
+.tech-banner[data-delay="12"] {
+    animation-delay: 1.8s;
+    transition-delay: 0.36s;
+}
+
+.tech-banner[data-delay="13"] {
+    animation-delay: 1.95s;
+    transition-delay: 0.39s;
+}
+
+.tech-banner[data-delay="14"] {
+    animation-delay: 2.1s;
+    transition-delay: 0.42s;
+}
+
+.tech-banner[data-delay="15"] {
+    animation-delay: 2.25s;
+    transition-delay: 0.45s;
+}
+
+.tech-banner[data-delay="16"] {
+    animation-delay: 2.4s;
+    transition-delay: 0.48s;
+}
+
+.tech-banner[data-delay="17"] {
+    animation-delay: 2.55s;
+    transition-delay: 0.51s;
+}
+
+.tech-banner[data-delay="18"] {
+    animation-delay: 2.7s;
+    transition-delay: 0.54s;
+}
+
+.tech-banner[data-delay="19"] {
+    animation-delay: 2.85s;
+    transition-delay: 0.57s;
+}
+
+.tech-banner[data-delay="20"] {
+    animation-delay: 3.0s;
+    transition-delay: 0.60s;
+}
+
+.tech-banner[data-delay="21"] {
+    animation-delay: 3.15s;
+    transition-delay: 0.63s;
+}
+
+.tech-banner[data-delay="22"] {
+    animation-delay: 3.3s;
+    transition-delay: 0.66s;
+}
+
+.tech-banner[data-delay="23"] {
+    animation-delay: 3.45s;
+    transition-delay: 0.69s;
+}
+
+.tech-banner[data-delay="24"] {
+    animation-delay: 3.6s;
+    transition-delay: 0.72s;
+}
+
+.tech-banner[data-delay="25"] {
+    animation-delay: 3.75s;
+    transition-delay: 0.75s;
+}
+
+.tech-banner[data-delay="26"] {
+    animation-delay: 3.9s;
+    transition-delay: 0.78s;
+}
+
+.tech-banner[data-delay="27"] {
+    animation-delay: 4.05s;
+    transition-delay: 0.81s;
+}
+
+.tech-banner[data-delay="28"] {
+    animation-delay: 4.2s;
+    transition-delay: 0.84s;
+}
+
+.tech-banner[data-delay="29"] {
+    animation-delay: 4.35s;
+    transition-delay: 0.87s;
 }
 
 /* ── BUTTONS ── */
@@ -1589,6 +1982,8 @@ a {
     }
 
     .hero-content {
+        margin-top: 100px;
+        margin-bottom: 70px;
         padding: 40px 30px;
         border-radius: 28px;
     }
@@ -1601,9 +1996,50 @@ a {
         font-size: 18px;
     }
 
-    .tech-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+    /* ── MOBILE SKILL WALL OVERRIDE (Tablet) ── */
+    .tech-banner-wall {
+        justify-content: center;
+        gap: 8px;
+        max-width: 100%;
+        margin-bottom: 26px;
+        padding: 0;
+    }
+
+    .tech-banner {
+        flex-shrink: 1;
+        height: auto;
+        padding: 10px 16px 10px 12px;
+        gap: 8px;
+        border-radius: 10px;
+    }
+
+    .tech-banner i {
+        font-size: 15px;
+        width: 18px;
+    }
+
+    .tech-banner span {
+        font-size: 11px;
+        letter-spacing: 1px;
+    }
+
+    /* Tablet width modifiers */
+    .sm-tech {
+        flex: 0 1 auto;
+    }
+
+    .md-tech {
+        flex: 0 1 auto;
+    }
+
+    .lg-tech {
+        flex: 0 1 auto;
+        padding: 10px 20px 10px 14px;
+    }
+
+    .xl-tech {
+        flex: 0 1 auto;
+        padding: 10px 24px 10px 16px;
     }
 
 }
@@ -1616,8 +2052,11 @@ a {
     }
 
     .hero-content {
+        /* margin-top: 50px; */
         padding: 30px 20px;
         border-radius: 24px;
+        max-width: 100%;
+
     }
 
     .hero-greeting {
@@ -1637,17 +2076,51 @@ a {
         margin-bottom: 24px;
     }
 
-    .tech-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
+    /* ── MOBILE SKILL WALL OVERRIDE ── */
+    .tech-banner-wall {
+        justify-content: center;
+        gap: 6px;
+        max-width: 100%;
+        margin-bottom: 20px;
+        padding: 0;
     }
 
-    .tech-card {
-        padding: 12px 8px;
+    .tech-banner {
+        flex-shrink: 1;
+        height: auto;
+        padding: 8px 12px 8px 10px;
+        gap: 6px;
+        border-radius: 8px;
+        animation: none !important;
     }
 
-    .tech-name {
-        font-size: 11px;
+    .tech-banner i {
+        font-size: 12px;
+        width: 16px;
+    }
+
+    .tech-banner span {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+    }
+
+    /* Mobile width modifiers */
+    .sm-tech {
+        flex: 0 1 auto;
+    }
+
+    .md-tech {
+        flex: 0 1 auto;
+    }
+
+    .lg-tech {
+        flex: 1 1 auto;
+        min-width: 70px;
+    }
+
+    .xl-tech {
+        flex: 1 1 auto;
+        min-width: 85px;
     }
 
     .hero-buttons {
@@ -1681,8 +2154,46 @@ a {
 /* Small Mobile */
 @media (max-width: 400px) {
 
-    .tech-grid {
-        grid-template-columns: 1fr;
+    .tech-banner-wall {
+        gap: 5px;
+    }
+
+    .tech-banner {
+        flex-shrink: 1;
+        height: auto;
+        padding: 6px 10px 6px 8px;
+        gap: 5px;
+        border-radius: 6px;
+        animation: none !important;
+    }
+
+    .tech-banner i {
+        font-size: 10px;
+        width: 14px;
+    }
+
+    .tech-banner span {
+        font-size: 8px;
+        letter-spacing: 0.6px;
+    }
+
+    /* Small mobile width modifiers */
+    .sm-tech {
+        flex: 0 1 auto;
+    }
+
+    .md-tech {
+        flex: 0 1 auto;
+    }
+
+    .lg-tech {
+        flex: 1 1 auto;
+        min-width: 60px;
+    }
+
+    .xl-tech {
+        flex: 1 1 auto;
+        min-width: 70px;
     }
 
     .hero-name {

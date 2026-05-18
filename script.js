@@ -109,6 +109,7 @@ typeEffect();
     /* ── 1. Fade-Up Entrance Animations ── */
     const fadeElements = document.querySelectorAll('.fade-up');
     const techCards = document.querySelectorAll('.tech-card');
+    const techBadges = document.querySelectorAll('.tech-banner');
 
     const observerOptions = {
         threshold: 0.15,
@@ -126,24 +127,25 @@ typeEffect();
 
     fadeElements.forEach(el => fadeObserver.observe(el));
     techCards.forEach(el => fadeObserver.observe(el));
+    techBadges.forEach(el => fadeObserver.observe(el));
 
-    /* ── 2. Animated Progress Bars ── */
-    const progressObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const fill = entry.target.querySelector('.progress-fill');
-                if (fill) {
-                    const progress = entry.target.getAttribute('data-progress');
-                    if (progress) {
-                        fill.style.width = progress + '%';
-                    }
-                }
-                progressObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
+    /* ── 2. Animated Progress Bars (commented out — replaced by badge wall) ── */
+    // const progressObserver = new IntersectionObserver((entries) => {
+    //     entries.forEach((entry) => {
+    //         if (entry.isIntersecting) {
+    //             const fill = entry.target.querySelector('.progress-fill');
+    //             if (fill) {
+    //                 const progress = entry.target.getAttribute('data-progress');
+    //                 if (progress) {
+    //                     fill.style.width = progress + '%';
+    //                 }
+    //             }
+    //             progressObserver.unobserve(entry.target);
+    //         }
+    //     });
+    // }, { threshold: 0.3 });
 
-    document.querySelectorAll('.tech-card').forEach(card => progressObserver.observe(card));
+    // document.querySelectorAll('.tech-card').forEach(card => progressObserver.observe(card));
 
     /* ── 3. Floating Particles ── */
     const particlesContainer = document.getElementById('particles-container');
