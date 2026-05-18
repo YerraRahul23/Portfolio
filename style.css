@@ -46,7 +46,6 @@ a {
 /* HEADER */
 
 .header {
-    width: 100%;
     padding: 20px 80px;
     display: flex;
     justify-content: space-between;
@@ -1073,16 +1072,8 @@ a {
 }
 
 .projects-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: auto;
-    padding: 0 clamp(16px, 4vw, 40px) 100px;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-    grid-auto-flow: dense;
-    align-items: start;
-    position: relative;
-    z-index: 1;
 }
 
 .projects-header {
@@ -1433,8 +1424,6 @@ a {
 /* ================= FOOTER ================= */
 
 .footer {
-    width: 100%;
-    overflow: hidden;
     background: #e7e4db;
     padding: 80px 80px 40px;
 }
