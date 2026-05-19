@@ -1637,6 +1637,7 @@ a {
 
 /* ── HOME SECTION OVERRIDE ── */
 .home {
+    color: #000;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -1644,7 +1645,7 @@ a {
     position: relative;
     overflow: hidden;
     padding: 0px 20px;
-    margin-top: -110px;
+    /* margin-top: -110px; */
 }
 
 /* Full-viewport soft backdrop glow */
