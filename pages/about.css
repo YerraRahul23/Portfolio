@@ -884,7 +884,7 @@ body {
 
 .skills-bg-text {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: clamp(160px, 25vw, 400px);
@@ -898,6 +898,10 @@ body {
 }
 
 .skills-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: relative;
     z-index: 1;
     max-width: 100%;
@@ -914,7 +918,7 @@ body {
     justify-content: center;
     gap: 14px;
     padding: 20px 0;
-    width: 100%;
+    width: 80%;
 }
 
 .skill-pill {
@@ -1497,6 +1501,10 @@ body {
         padding: 80px 40px 100px;
     }
 
+    .skills-bg-text {
+        top: 50%;
+    }
+
     .philosophy-section {
         padding: 100px 40px;
     }
@@ -1614,6 +1622,10 @@ body {
     .skill-pill[data-weight="light"] {
         font-size: 11px;
         padding: 6px 14px;
+    }
+
+    .skills-wall {
+        width: 100%;
     }
 
     .philosophy-section {
@@ -1783,6 +1795,7 @@ body {
     }
 
     .skills-wall {
+        width: 100%;
         gap: 10px;
     }
 

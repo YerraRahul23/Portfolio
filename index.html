@@ -785,9 +785,54 @@
             </div>
 
         </div>
+        <div class="hero-scroll-indicator">
+            <span class="hero-scroll-text">Scroll</span>
+            <span class="hero-scroll-line"></span>
+        </div>
 
     </section>
+    <style>
+        .hero-scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 1;
+        }
 
+        .hero-scroll-text {
+            font-size: 10px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #000000;
+        }
+
+        .hero-scroll-line {
+            width: 1px;
+            height: 30px;
+            background: linear-gradient(180deg, #000000, transparent);
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollBounce {
+
+            0%,
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scaleY(0.5);
+                opacity: 0.3;
+            }
+        }
+    </style>
 
     <!-- ABOUT / DEVELOPMENT SECTION -->
 
