@@ -1039,7 +1039,7 @@ body.modal-open .nav-overlay {
         gap: 35px;
     }
 
-    .footer-email h3 {
+    .footer-email h3 a {
         font-size: 24px;
         word-break: break-word;
     }

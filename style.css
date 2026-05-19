@@ -1544,7 +1544,7 @@ a {
         flex-direction: column-reverse;
     }
 
-    ..footer-container {
+    .footer-container {
         padding: 0;
     }
 
