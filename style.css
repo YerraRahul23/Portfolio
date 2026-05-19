@@ -2490,7 +2490,7 @@ a {
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
 
     .home {
         min-height: 100vh;
