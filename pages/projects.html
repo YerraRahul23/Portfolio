@@ -460,8 +460,12 @@
                 document.getElementById("modal-github-link").href = card.dataset.github;
                 document.getElementById("modal-demo-link").href = card.dataset.demo;
                 document.getElementById("modal-app-link").href = card.dataset.app;
-                modal.style.display = "block";
-                overlay.style.display = "block";
+
+                // Open modal with class-based toggle + body scroll lock
+                document.body.classList.add("modal-open");
+                modal.classList.add("active");
+                overlay.classList.add("active");
+
                 const githubLink = document.getElementById("modal-github-link");
                 const demoLink = document.getElementById("modal-demo-link");
                 const appLink = document.getElementById("modal-app-link");
@@ -490,8 +494,9 @@
         });
 
         function closeModal() {
-            modal.style.display = "none";
-            overlay.style.display = "none";
+            document.body.classList.remove("modal-open");
+            modal.classList.remove("active");
+            overlay.classList.remove("active");
         }
         closeBtn.addEventListener("click", closeModal);
         overlay.addEventListener("click", closeModal);

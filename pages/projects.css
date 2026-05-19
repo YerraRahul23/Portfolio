@@ -12,6 +12,15 @@
     --shadow-hover: 0 20px 48px rgba(123, 97, 255, 0.15);
     --radius-lg: 28px;
     --radius-md: 16px;
+
+    /* Z-index layering system */
+    --z-decoration: 0;
+    --z-content: 1;
+    --z-nav-overlay: 999;
+    --z-header: 1000;
+    --z-menu-toggle: 1001;
+    --z-modal-overlay: 9999;
+    --z-modal: 10000;
 }
 
 * {
@@ -27,6 +36,7 @@ body {
     overflow-x: hidden;
     padding-inline: clamp(16px, 4vw, 40px);
 }
+
 
 /* Background Decorations */
 .bg-decoration {
@@ -413,7 +423,7 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     display: none;
-    z-index: 999;
+    z-index: var(--z-modal-overlay);
     animation: fadeIn 0.3s ease;
 }
 
@@ -440,7 +450,7 @@ body {
     border-radius: 28px;
     padding: 40px;
     display: none;
-    z-index: 1000;
+    z-index: var(--z-modal);
     max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
@@ -485,6 +495,38 @@ body {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 40px;
+}
+
+/* ========== MODAL-OPEN STATE (body class) ========== */
+
+/* Lock body scroll completely */
+body.modal-open {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Hide header and hamburger menu smoothly */
+body.modal-open .header {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+body.modal-open .menu-toggle {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Active class to show modal elements */
+.project-modal-overlay.active,
+.project-modal.active {
+    display: block;
 }
 
 @media(max-width: 900px) {
