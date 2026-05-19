@@ -461,8 +461,19 @@
                 document.getElementById("modal-demo-link").href = card.dataset.demo;
                 document.getElementById("modal-app-link").href = card.dataset.app;
 
-                // Open modal with class-based toggle + body scroll lock
+                // Close nav overlay if open (prevents stacking conflicts)
+                if (navOverlay.classList.contains("active")) {
+                    menuToggle.classList.remove("active");
+                    navOverlay.classList.remove("active");
+                    document.body.style.overflow = "";
+                }
+
+                // Open modal with class-based toggle + mobile-safe body scroll lock
+                // Prevent duplicate calls
+                if (document.body.classList.contains("modal-open")) return;
                 document.body.classList.add("modal-open");
+                // Force layout reflow before adding active classes for smooth animation
+                void modal.offsetHeight;
                 modal.classList.add("active");
                 overlay.classList.add("active");
 
@@ -493,10 +504,22 @@
             });
         });
 
+        let closeModalTimeout = null;
+
         function closeModal() {
-            document.body.classList.remove("modal-open");
+            if (closeModalTimeout) return; // Prevent double-closing during animation
+            if (!document.body.classList.contains("modal-open")) return;
+
+            // Remove active classes first (triggers CSS transition)
             modal.classList.remove("active");
             overlay.classList.remove("active");
+
+            // Wait for CSS transition (350ms) to finish before removing body lock
+            // This prevents layout flash and maintains scroll position
+            closeModalTimeout = setTimeout(() => {
+                document.body.classList.remove("modal-open");
+                closeModalTimeout = null;
+            }, 380); // Slightly longer than CSS transition for safety
         }
         closeBtn.addEventListener("click", closeModal);
         overlay.addEventListener("click", closeModal);
