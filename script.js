@@ -488,3 +488,69 @@ typeEffect();
     }
 
 })();
+/* ============================================= */
+/*  CLEAN MANIFESTO WORD REVEAL                  */
+/* ============================================= */
+
+(function () {
+
+    const elements = document.querySelectorAll(
+        '.intro-text, .philosophy-quote-text'
+    );
+
+    elements.forEach((element) => {
+
+        // Preserve <br> tags safely
+        const html = element.innerHTML
+            .replace(/<br\s*\/?>/gi, ' ###BR### ');
+
+        const words = html.split(/\s+/);
+
+        element.innerHTML = words.map(word => {
+
+            // Restore line breaks
+            if (word === '###BR###') {
+                return '<br>';
+            }
+
+            return `<span class="word-reveal">${word}</span>`;
+        }).join(' ');
+
+        const revealWords = element.querySelectorAll('.word-reveal');
+
+        function updateReveal() {
+
+            const rect = element.getBoundingClientRect();
+            const viewportHeight = window.innerHeight;
+
+            // Start revealing when element top enters at 70% viewport
+            const startTrigger = viewportHeight * 0.7;
+            // Complete reveal when element top reaches 30% viewport
+            const endTrigger = viewportHeight * 0.3;
+
+            // Normalized: 0 at entry, 1 at completion, clamped 0–1
+            let progress = (startTrigger - rect.top) / (startTrigger - endTrigger);
+            progress = Math.max(0, Math.min(1, progress));
+
+            revealWords.forEach((word, index) => {
+
+                const threshold = index / revealWords.length;
+
+                if (progress > threshold) {
+                    word.classList.add('active');
+                } else {
+                    word.classList.remove('active');
+                }
+
+            });
+        }
+
+        updateReveal();
+
+        window.addEventListener('scroll', updateReveal, {
+            passive: true
+        });
+
+    });
+
+})();
