@@ -41,6 +41,7 @@ body {
 .about-grid {
     display: grid;
     max-width: 1400px;
+    margin-top: 100px;
     width: 100%;
     grid-template-columns: 1.3fr 1.1fr 1fr 1.1fr;
     grid-template-rows: auto auto auto;
