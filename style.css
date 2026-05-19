@@ -1352,8 +1352,13 @@ a {
 /* ================= CTA SECTION ================= */
 
 .cta-section {
-    padding: 120px 80px;
-    background: #f2f0ea;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    background: rgb(242, 240, 234);
 }
 
 .cta-container {
@@ -1409,28 +1414,51 @@ a {
 
 /* ================= FOOTER ================= */
 
-.footer {
-    background: #e7e4db;
-    padding: 80px 80px 40px;
-}
+/* .footer {
+    padding: 10px 10px 10px 10px;
+} */
 
 .footer-container {
-    max-width: 1200px;
-    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding: 0px 30px;
+    /* max-width: 1200px; */
+    /* margin: auto; */
 }
 
 .footer-top {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: start;
-    flex-wrap: wrap;
-    margin-bottom: 60px;
+    align-items: center;
+    /* flex-wrap: wrap; */
+    /* margin-bottom: 20px; */
 }
 
 .footer-right {
     display: flex;
     gap: 60px;
     align-items: start;
+}
+
+.footer-email {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-email a:hover {
+    cursor: pointer;
+    /* text-decoration: underline; */
+    border-bottom: 2px solid #9f7aea;
+    color: #9f7aea;
+    transition: 0.3s ease;
+
 }
 
 .footer-email span {
@@ -1441,15 +1469,25 @@ a {
 .footer-email h3 {
     font-size: 32px;
     margin-top: 10px;
+    /* margin-right: 20px; */
     color: #0e3b2e;
 }
 
 .footer-links {
     display: flex;
-    flex-direction: column;
-    /* justify-content: start;
-    align-items: start; */
-    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 30px;
+    gap: 30px;
+}
+
+.footer-links a:hover {
+    cursor: pointer;
+    /* text-decoration: underline; */
+    border-bottom: 2px solid #9f7aea;
+    color: #9f7aea;
+    transition: 0.3s ease;
 }
 
 .footer-links h4,
@@ -1457,19 +1495,19 @@ a {
     margin-bottom: 10px;
 }
 
-.footer-links a,
-.footer-social a {
+.footer-links a {
     text-decoration: none;
     color: #333;
-    font-size: 14px;
+    font-size: 30px;
+    /* gap: 90px; */
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: 30px;
-    border-top: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
     font-size: 14px;
-    color: #666;
+    color: #000000;
 }
 
 
@@ -1491,14 +1529,23 @@ a {
         max-width: 600px;
     }
 
-    .footer-top {
+    /* .footer-top {
         flex-direction: column;
         gap: 40px;
         text-align: center;
-    }
+    } */
 
     .footer {
-        padding: 60px 20px 30px;
+        /* flex-direction: column-reverse; */
+        padding: 10 10 10 10;
+    }
+
+    .footer-top {
+        flex-direction: column-reverse;
+    }
+
+    ..footer-container {
+        padding: 0;
     }
 
 }
@@ -1507,36 +1554,37 @@ a {
 
 @media (max-width: 885px) {
 
-    .footer {
+    /* .footer {
         padding: 60px 20px 30px;
-    }
+    } */
 
-    .footer-top {
+    /* .footer-top {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 35px;
-    }
+    } */
 
     .footer-email h3 {
         font-size: 24px;
+        margin-bottom: 20px;
         word-break: break-word;
     }
 
-    .footer-links,
+    /* .footer-links,
     .footer-social {
         align-items: center;
         gap: 8px;
-    }
+    } */
 
-    .footer-links h4,
+    /* .footer-links h4,
     .footer-address h4,
     .footer-social h4 {
         margin-bottom: 6px;
         font-size: 18px;
-    }
+    } */
 
-    .footer-links a,
+    /* .footer-links a,
     .footer-social a,
     .footer-address p {
         font-size: 14px;
@@ -1546,7 +1594,7 @@ a {
     .footer-bottom {
         margin-top: 30px;
         font-size: 13px;
-    }
+    } */
 
 }
 
@@ -2638,14 +2686,75 @@ a {
 /* ── Section ── */
 .rb-projects-section {
     padding: 140px 80px;
-    background: #e7e4db;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
+    background:
+        /* Warm beige base with subtle gradient variation */
+        linear-gradient(160deg, #e5ddc7 0%, #e7e4db 25%, #f0ece4 50%, #e7e4db 75%, #ece9e0 100%),
+        /* Soft ambient cream light from top-left */
+        radial-gradient(ellipse 70% 50% at 30% 20%, rgba(201, 43, 43, 0.25) 60%, transparent 0%),
+        /* Subtle grain/noise texture */
+        repeating-conic-gradient(rgba(0, 0, 0, 0.012) 0% 25%, transparent 0% 0%);
+    background-size: 100% 100%, 100% 100%, 3px 3px;
+}
+
+/* ── Large blurred purple ambient glow (top-right) ── */
+.rb-projects-section::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 65%;
+    height: 80%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(159, 122, 234, 0.10) 100%, transparent 0%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(60px);
+    animation: rbProjectsFloatA 12s ease-in-out infinite alternate;
+}
+
+/* ── Large soft cream fill light (bottom-left) ── */
+.rb-projects-section::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 55%;
+    height: 60%;
+    background: radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.30) 100%, transparent 0%);
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(50px);
+    animation: rbProjectsFloatB 10s ease-in-out infinite alternate;
+}
+
+/* ── Slow floating animation for ambient glows ── */
+@keyframes rbProjectsFloatA {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(-25px, 18px) scale(1.05);
+    }
+}
+
+@keyframes rbProjectsFloatB {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate(18px, -12px) scale(1.06);
+    }
 }
 
 .rb-projects-container {
     max-width: 1260px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── Header ── */
