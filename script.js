@@ -114,6 +114,134 @@ typeEffect();
     cards.forEach((card) => observer.observe(card));
 })();
 
+/* ============ ABOUT PAGE INTERACTIONS ============ */
+
+(function () {
+    const heroSection = document.querySelector('.hero-section');
+    if (!heroSection) return; // Only on about page
+
+    /* ── 1. Section Reveal on Scroll ── */
+    const revealSections = document.querySelectorAll('.reveal-section');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                sectionObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.08,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealSections.forEach((section) => sectionObserver.observe(section));
+
+    /* ── 2. Mouse-Reactive Glow Follower ── */
+    const glowFollower = document.getElementById('glowFollower');
+    if (glowFollower) {
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+        let isMouseOnPage = false;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!isMouseOnPage) {
+                isMouseOnPage = true;
+                glowFollower.classList.add('active');
+            }
+        });
+
+        document.addEventListener('mouseleave', () => {
+            isMouseOnPage = false;
+            glowFollower.classList.remove('active');
+        });
+
+        function animateGlow() {
+            currentX += (mouseX - currentX) * 0.08;
+            currentY += (mouseY - currentY) * 0.08;
+            if (glowFollower) {
+                glowFollower.style.transform = `translate(${currentX - 200}px, ${currentY - 200}px)`;
+            }
+            requestAnimationFrame(animateGlow);
+        }
+        animateGlow();
+    }
+
+    /* ── 3. Hero Portrait Parallax ── */
+    const heroPortrait = document.getElementById('heroPortrait');
+    if (heroPortrait) {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (!isTouchDevice) {
+            document.querySelector('.hero-section').addEventListener('mousemove', (e) => {
+                const rect = heroPortrait.getBoundingClientRect();
+                const x = (e.clientX - rect.left - rect.width / 2) / 30;
+                const y = (e.clientY - rect.top - rect.height / 2) / 30;
+                heroPortrait.style.transform = `translate(${x}px, ${y}px)`;
+            });
+
+            document.querySelector('.hero-section').addEventListener('mouseleave', () => {
+                heroPortrait.style.transform = 'translate(0, 0)';
+            });
+        }
+    }
+
+    /* ── 4. Experience sections scrolling entrance ── */
+    const expSections = document.querySelectorAll('.exp-section');
+    const expObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.15 });
+
+    expSections.forEach((section) => expObserver.observe(section));
+
+    /* ── 5. Skill Pill hover magnetic effect ── */
+    const skillPills = document.querySelectorAll('.skill-pill');
+    skillPills.forEach((pill) => {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        if (isTouchDevice) return;
+
+        pill.addEventListener('mousemove', (e) => {
+            const rect = pill.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const moveX = (x - centerX) / 8;
+            const moveY = (y - centerY) / 8;
+            pill.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.04)`;
+        });
+
+        pill.addEventListener('mouseleave', () => {
+            pill.style.transform = '';
+        });
+    });
+
+    /* ── 6. Floating Particles (only for about page) ── */
+    const particlesContainer = document.getElementById('particles-container');
+    if (particlesContainer && !particlesContainer.querySelector('.particle')) {
+        const particleCount = window.innerWidth < 600 ? 10 : 18;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            const size = Math.random() * 2.5 + 1.5;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.bottom = '-10px';
+            particle.style.animationDuration = (Math.random() * 15 + 12) + 's';
+            particle.style.animationDelay = (Math.random() * 10) + 's';
+            particle.style.opacity = Math.random() * 0.2 + 0.05;
+            particlesContainer.appendChild(particle);
+        }
+    }
+})();
+
 /* ============ AI HUD TERMINAL & ANIMATIONS ============ */
 
 (function () {

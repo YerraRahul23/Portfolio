@@ -9,7 +9,6 @@
         content="Learn more about Yerra Rahul — AIML Engineer, developer, and creator of intelligent AI-powered applications.">
     <link rel="icon" type="image/x-icon" href="../public/media/user/profile.jpeg">
 
-    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="about.css">
 
     <link
@@ -20,6 +19,7 @@
 
 <body>
 
+    <!-- ============ LOADER ============ -->
     <div class="rb-loader" id="rbLoader">
         <div class="rb-loader-overlay"></div>
         <div class="rb-loader-inner">
@@ -47,6 +47,7 @@
                         loader.classList.add('rb-loader-hidden');
                         setTimeout(function () {
                             document.body.style.overflow = '';
+                            document.body.classList.add('js-ready');
                         }, 1000);
                     }
                 }, remainingTime);
@@ -54,7 +55,7 @@
         })();
     </script>
 
-
+    <!-- ============ HEADER ============ -->
     <header class="header">
         <div class="logo">Yerra Rahul</div>
         <div class="menu-toggle" id="menuToggle">
@@ -68,10 +69,7 @@
     <div class="nav-overlay" id="navOverlay">
         <div class="nav-overlay__inner">
 
-            <!-- Left: AI HUD Terminal Panel (desktop only) -->
             <div class="ai-hud">
-
-                <!-- TOP: Terminal Window -->
                 <div class="hud-terminal">
                     <div class="terminal-header">
                         <span class="terminal-dot red"></span>
@@ -84,7 +82,6 @@
                     </div>
                 </div>
 
-                <!-- MIDDLE: System Metrics Cards -->
                 <div class="hud-metrics">
                     <div class="metric-card">
                         <div class="metric-label"><i class="fas fa-microchip"></i> AI Core</div>
@@ -116,7 +113,6 @@
                     </div>
                 </div>
 
-                <!-- BOTTOM: Graph + Neural Viz -->
                 <div class="hud-graphs">
                     <canvas id="hudWaveform"></canvas>
                     <div class="hud-activity">
@@ -126,11 +122,9 @@
                     </div>
                 </div>
 
-                <!-- Neural Network Dots (decorative) -->
                 <div class="neural-dots" id="neuralDots"></div>
             </div>
 
-            <!-- Right: Navigation Links -->
             <div class="nav-links">
                 <a href="../index.html#home" class="nav-link" data-text="HOME">
                     <span class="nav-link__text">HOME</span>
@@ -150,7 +144,6 @@
                 </a>
             </div>
 
-            <!-- Bottom: Social Links -->
             <div class="nav-social">
                 <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/YerraRahul23" target="_blank">GitHub</a>
@@ -161,232 +154,296 @@
         </div>
     </div>
 
-    <!-- =================== ABOUT BENTO GRID =================== -->
-    <section class="about-section">
-        <div class="about-grid">
+    <!-- ============ BACKGROUND SYSTEM ============ -->
+    <div class="about-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+        <div class="ambient-blob blob-3"></div>
+        <div class="ambient-blob blob-4"></div>
+        <div class="noise-texture"></div>
+    </div>
 
-            <!-- PROFILE CARD (row 1-2, col 1) -->
-            <div class="bento-card profile-card">
-                <div class="profile-top">
-                    <div class="profile-img-wrapper">
-                        <img src="../public/media/user/profile.jpeg" alt="Yerra Rahul" class="profile-img">
-                    </div>
-                    <span class="available-badge">
-                        <span class="dot"></span> Available
-                    </span>
+    <!-- ============ GLOW FOLLOWER ============ -->
+    <div class="glow-follower" id="glowFollower"></div>
+
+    <!-- ============ PARTICLES ============ -->
+    <div id="particles-container"></div>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 1 — FULLSCREEN HERO                                      -->
+    <!-- ================================================================ -->
+    <section class="hero-section reveal-section">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    <span class="hero-badge-text">Available for opportunities</span>
                 </div>
-
-                <h1 class="profile-name">Yerra Rahul</h1>
-                <p class="profile-role">
-                    AIML Developer & Full-Stack Developer
-                    <br><br>
+                <h1 class="hero-name">Yerra Rahul</h1>
+                <div class="hero-role-wrapper">
+                    <span class="hero-role-label"></span>
+                    <span class="hero-role" id="typing-role">Full-Stack Developer</span>
+                    <span class="hero-cursor">|</span>
+                </div>
+                <p class="hero-bio">
                     Building scalable AI and web applications focused on performance and real-world impact.
                 </p>
-
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 20px;">
-                    <div class="profile-socials">
-                        <a href="https://github.com/YerraRahul23" target="_blank" aria-label="GitHub"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank" aria-label="LinkedIn"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/calvin__rahul/" target="_blank" aria-label="Instagram"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="mailto:yerrarahul23@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <div class="hero-actions">
+                    <div class="hero-socials">
+                        <a href="https://github.com/YerraRahul23" target="_blank" aria-label="GitHub"
+                            class="hero-social-btn">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank" aria-label="LinkedIn"
+                            class="hero-social-btn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/calvin__rahul/" target="_blank" aria-label="Instagram"
+                            class="hero-social-btn">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="mailto:yerrarahul23@gmail.com" aria-label="Email" class="hero-social-btn">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
-                    <div>
-                        <button class="portfolio">
-                            <a href="https://drive.google.com/file/d/16keto8IWdpWUNcTYjTY_-VbFDToOjxvR/view?usp=sharing"
-                                style="color: white;" download>
-                                Resume
-                            </a>
-                        </button>
-                    </div>
+                    <a href="https://drive.google.com/file/d/16keto8IWdpWUNcTYjTY_-VbFDToOjxvR/view?usp=sharing"
+                        class="hero-resume-btn">
+                        <span class="hero-resume-text">Resume</span>
+                        <i class="fas fa-arrow-down hero-resume-icon"></i>
+                    </a>
                 </div>
             </div>
-
-            <!-- BIO TEXT (row 1, col 2-3) -->
-            <div class="bento-card bio-card">
-                <p class="bio-text">
-                    I build AI-powered and full-stack applications with a focus on simplicity and usability. My interest
-                    lies in machine learning, backend systems, and scalable solutions.
-                    <br>
-                    I’m constantly learning, experimenting, and refining my skills to create projects that are useful,
-                    efficient, and meaningful.
-                </p>
-            </div>
-
-            <!-- WORK EXPERIENCE (row 1-2, col 4) -->
-            <div class="bento-card content-card hero-image">
-                <div class="card-header">
-                    <i class="fas fa-briefcase card-header-icon"></i>
-                    <h2 class="card-title">Work Experience</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>AI Developer Intern</h3>
-                                <span class="timeline-date">Jun 2025 - Jul 2025</span>
-                            </div>
-                            <span class="timeline-company">VISWAM.AI
-                                <br>
-                                <a
-                                    href="https://drive.google.com/file/d/1D3zMak-FbiSnJTNTJoqrUjJS-AHyh8Ah/view?usp=sharing">Certificate
-                                    -></a></span>
-                            <ul class="timeline-details">
-                                <li>Engineered RAG-based systems for enterprise knowledge retrieval</li>
-                                <li>Fine-tuned LLMs for optimized inference performance</li>
-                                <li>Integrated AI pipelines with secure backend APIs</li>
-                            </ul>
-                        </div>
+            <div class="hero-visual">
+                <div class="hero-portrait-wrapper" id="heroPortrait">
+                    <div class="hero-portrait-glow"></div>
+                    <div class="hero-portrait-frame">
+                        <img src="../public/media/user/profile.jpeg" alt="Yerra Rahul" class="hero-portrait-img">
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Freelance Web Developer</h3>
-                                <span class="timeline-date">Nov 2025 — Present</span>
-                            </div>
-                            <span class="timeline-company">Self-Employed</span>
-                            <ul class="timeline-details">
-                                <li>Built responsive websites for local businesses</li>
-                                <li>Designed UI/UX and delivered production-ready code</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <div class="hero-portrait-ring"></div>
                 </div>
             </div>
-
-            <!-- SKILLS CARD (row 2, col 2-3) -->
-            <div class="bento-card skills-card">
-                <div class="card-header">
-                    <i class="fas fa-code card-header-icon"></i>
-                    <h2 class="card-title">Tech Skills</h2>
-                </div>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4>Languages</h4>
-                        <div class="skill-tags">
-                            <span>C/C++</span> <span>Python</span> <span>HTML/CSS</span> <span>JS</span>
-                            <span>Java</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Libraries</h4>
-                        <div class="skill-tags">
-                            <span>NumPy</span> <span>Pandas</span> <span>Matplotlib</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Framework</h4>
-                        <div class="skill-tags">
-                            <span>React.js</span> <span>YOLO</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Data Handling</h4>
-                        <div class="skill-tags">
-                            <span>SQL</span> <span>MySQL</span> <span>RDBMS</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Developer tools</h4>
-                        <div class="skill-tags">
-                            <span>Git</span> <span>GitHub</span> <span>VS Code</span> <span>PyCharm</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4>Other</h4>
-                        <div class="skill-tags">
-                            <span>Problem Solving</span> <span>Complexity Analysis</span> <span>DSA</span>
-                            <span>OOP</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- EDUCATION (row 3, col 1) -->
-            <div class="bento-card content-card landscape-image">
-                <div class="card-header">
-                    <i class="fas fa-graduation-cap card-header-icon"></i>
-                    <h2 class="card-title">Education</h2>
-                </div>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>B.Tech — AIML</h3>
-                                <span class="timeline-date">Aug 2023 — Present</span>
-                            </div>
-                            <span class="timeline-company">ACE College Engineering</span>
-                            <ul class="timeline-details">
-                                <li>Specialization in AI & Machine Learning</li>
-                                <li>CGPA: 7.5</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Intermediate (MPC)</h3>
-                                <span class="timeline-date">2021 — 2023</span>
-                            </div>
-                            <span class="timeline-company">Mahabub Junior College</span>
-                            <ul class="timeline-details">
-                                <li>Percentage: 60%</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PHILOSOPHY TEXT (row 3, col 2) -->
-            <div class="bento-card philosophy-card">
-                <p class="philosophy-text">
-                    I engineer AI solutions that are practical, scalable, and impact-driven. Whether developing
-                    RAG-based knowledge systems or real-time ML pipelines, I prioritize clean architecture, efficient
-                    inference, and real-world usability.
-            </div>
-
-            <!-- COMBINED STATS: Social & Contact (row 3, col 4) -->
-            <div class="bento-card combined-stat-card" style="background-image: url('https://imgs.search.brave.com/e1FON80ql_Z5jxiDAdcPI748E3AiGJ6--vqpuKwGJMU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb29s/YmFja2dyb3VuZHMu/aW1naXgubmV0LzIx/OVZVTWExU094QVNL/cUNFMk9nVDQvYmUx/YzgxMDM0NDU4N2Jk/N2Y2ZjIwMzMzN2Qy/MzYwMmEvcmFuZ2Vy/LTRkZjZjMWI2LnBu/Zz93PTM4NDAmcT02/MCZhdXRvPWZvcm1h/dCxjb21wcmVzcw');
-                background-size: cover; background-position: center;">
-            </div>
-
+        </div>
+        <div class="hero-scroll-indicator">
+            <span class="hero-scroll-text">Scroll</span>
+            <span class="hero-scroll-line"></span>
         </div>
     </section>
 
-    <!-- ================= FOOTER ================= -->
-    <!-- <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-top">
-                <div class="footer-email">
-                    <span>Email me for quick conversation</span>
-                    <h3><a href="mailto:yerrarahul23@gmail.com">yerrarahul23@gmail.com</a></h3>
-                </div>
-                <div class="footer-right">
-                    <div class="footer-links">
-                        <h4>Quick Links</h4>
-                        <a href="../index.html#development">Back</a>
-                        <a href="../index.html">Home</a>
-                        <a href="Contact.html">Contact</a>
-                    </div>
-                    <div class="footer-links">
-                        <h4>Follow</h4>
-                        <a href="https://www.linkedin.com/in/yerrarahul/">LinkedIn</a>
-                        <a href="https://github.com/YerraRahul23">GitHub</a>
-                        <a href="https://www.instagram.com/calvin__rahul/">Instagram</a>
-                    </div>
-                </div>
+    <!-- ================================================================ -->
+    <!-- SECTION 2 — ABOUT / INTRODUCTION                                 -->
+    <!-- ================================================================ -->
+    <section class="intro-section reveal-section">
+        <div class="intro-grid">
+            <div class="intro-label-wrap">
+                <span class="intro-label">ABOUT</span>
             </div>
-            <div class="footer-bottom">
-                © 2026 Yerra Rahul | All Rights Reserved
+            <div class="intro-content">
+                <div class="intro-accent"></div>
+                <p class="intro-text">
+                    I build AI-powered and full-stack applications with a focus on simplicity and usability. My interest
+                    lies in machine learning, backend systems, and scalable solutions.
+                    <br><br>
+                    I'm constantly learning, experimenting, and refining my skills to create projects that are useful,
+                    efficient, and meaningful.
+                </p>
             </div>
         </div>
-    </footer> -->
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 3 — CINEMATIC EXPERIENCE STORIES                         -->
+    <!-- ================================================================ -->
+    <section class="exp-section reveal-section" id="exp-1">
+        <div class="exp-glow"></div>
+        <div class="exp-sticky">
+            <div class="exp-inner">
+                <div class="exp-left">
+                    <span class="exp-year-bg">2025</span>
+                    <div class="exp-role-block">
+                        <span class="exp-role-line">AI Developer</span>
+                        <span class="exp-role-line exp-role-sub">Intern</span>
+                    </div>
+                </div>
+                <div class="exp-right">
+                    <div class="exp-panel">
+                        <span class="exp-company">VISWAM.AI</span>
+                        <span class="exp-duration">Jun 2025 – Jul 2025</span>
+                        <ul class="exp-achievements">
+                            <li>Engineered RAG-based systems for enterprise knowledge retrieval</li>
+                            <li>Fine-tuned LLMs for optimized inference performance</li>
+                            <li>Integrated AI pipelines with secure backend APIs</li>
+                        </ul>
+                        <a href="https://drive.google.com/file/d/1D3zMak-FbiSnJTNTJoqrUjJS-AHyh8Ah/view?usp=sharing"
+                            class="exp-cert">Certificate →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="exp-section reveal-section" id="exp-2">
+        <div class="exp-glow exp-glow-2"></div>
+        <div class="exp-sticky">
+            <div class="exp-inner">
+                <div class="exp-left">
+                    <span class="exp-year-bg">2026</span>
+                    <div class="exp-role-block">
+                        <span class="exp-role-line">Freelance</span>
+                        <span class="exp-role-line exp-role-sub">Developer</span>
+                    </div>
+                </div>
+                <div class="exp-right">
+                    <div class="exp-panel">
+                        <span class="exp-company">Self-Employed</span>
+                        <span class="exp-duration">Nov 2025 — Present</span>
+                        <ul class="exp-achievements">
+                            <li>Built responsive websites for local businesses</li>
+                            <li>Designed UI/UX and delivered production-ready code</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 4 — SKILLS WALL                                          -->
+    <!-- ================================================================ -->
+    <section class="skills-section reveal-section">
+        <div class="skills-bg-text">STACK</div>
+        <div class="skills-inner">
+            <div class="section-header skills-header">
+                <span class="section-eyebrow">Skills</span>
+                <h2 class="section-title">Tools & Technologies</h2>
+            </div>
+            <div class="skills-wall" id="skillsWall">
+                <span class="skill-pill" data-weight="heavy">C/C++</span>
+                <span class="skill-pill" data-weight="heavy">Python</span>
+                <span class="skill-pill" data-weight="medium">HTML/CSS</span>
+                <span class="skill-pill" data-weight="medium">JavaScript</span>
+                <span class="skill-pill" data-weight="light">Java</span>
+                <span class="skill-pill" data-weight="medium">NumPy</span>
+                <span class="skill-pill" data-weight="medium">Pandas</span>
+                <span class="skill-pill" data-weight="light">Matplotlib</span>
+                <span class="skill-pill" data-weight="heavy">React.js</span>
+                <span class="skill-pill" data-weight="medium">YOLO</span>
+                <span class="skill-pill" data-weight="medium">SQL</span>
+                <span class="skill-pill" data-weight="light">MySQL</span>
+                <span class="skill-pill" data-weight="light">RDBMS</span>
+                <span class="skill-pill" data-weight="medium">Git</span>
+                <span class="skill-pill" data-weight="light">GitHub</span>
+                <span class="skill-pill" data-weight="light">VS Code</span>
+                <span class="skill-pill" data-weight="light">PyCharm</span>
+                <span class="skill-pill" data-weight="heavy">Problem Solving</span>
+                <span class="skill-pill" data-weight="medium">Complexity Analysis</span>
+                <span class="skill-pill" data-weight="medium">DSA</span>
+                <span class="skill-pill" data-weight="medium">OOP</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 5 — PHILOSOPHY / QUOTE                                   -->
+    <!-- ================================================================ -->
+    <section class="philosophy-section reveal-section">
+        <div class="philosophy-glow-bg"></div>
+        <div class="philosophy-inner">
+            <div class="philosophy-quote-mark">"</div>
+            <p class="philosophy-quote-text">
+                I engineer AI solutions that are practical, scalable, and impact-driven. Whether developing
+                RAG-based knowledge systems or real-time ML pipelines, I prioritize clean architecture, efficient
+                inference, and real-world usability.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================================================================ -->
+    <!-- SECTION 6 — EDUCATION                                            -->
+    <!-- ================================================================ -->
+    <!-- <section class="education-section reveal-section">
+        <div class="section-header">
+            <span class="section-eyebrow">Education</span>
+            <h2 class="section-title">Academic Journey</h2>
+        </div>
+        <div class="edu-timeline">
+            <div class="edu-timeline-line"></div>
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-card">
+                    <span class="edu-date">Aug 2023 — Present</span>
+                    <h3 class="edu-degree">B.Tech — AIML</h3>
+                    <span class="edu-institution">ACE College Engineering</span>
+                    <div class="edu-meta">
+                        <div class="edu-meta-item">
+                            <span class="edu-meta-label">Specialization</span>
+                            <span class="edu-meta-value">AI & Machine Learning</span>
+                        </div>
+                        <div class="edu-meta-item">
+                            <span class="edu-meta-label">CGPA</span>
+                            <span class="edu-meta-value">7.5</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-item">
+                <div class="edu-dot"></div>
+                <div class="edu-card">
+                    <span class="edu-date">2021 — 2023</span>
+                    <h3 class="edu-degree">Intermediate (MPC)</h3>
+                    <span class="edu-institution">Mahabub Junior College</span>
+                    <div class="edu-meta">
+                        <div class="edu-meta-item">
+                            <span class="edu-meta-label">Percentage</span>
+                            <span class="edu-meta-value">60%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section> -->
+
+    <!-- ================================================================ -->
+    <!-- SECTION 7 — CONNECT                                              -->
+    <!-- ================================================================ -->
+    <section class="connect-section reveal-section">
+        <div class="connect-bg-glow"></div>
+        <div class="connect-inner">
+            <h2 class="connect-heading">Let's Build Something Intelligent</h2>
+            <div class="connect-links">
+                <a href="https://github.com/YerraRahul23" target="_blank" class="connect-link">
+                    <div class="connect-link-icon github-bg">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <span class="connect-link-title">GitHub</span>
+                    <span class="connect-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank" class="connect-link">
+                    <div class="connect-link-icon linkedin-bg">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <span class="connect-link-title">LinkedIn</span>
+                    <span class="connect-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="https://www.instagram.com/calvin__rahul/" target="_blank" class="connect-link">
+                    <div class="connect-link-icon instagram-bg">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span class="connect-link-title">Instagram</span>
+                    <span class="connect-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+                <a href="mailto:yerrarahul23@gmail.com" class="connect-link">
+                    <div class="connect-link-icon email-bg">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span class="connect-link-title">Email</span>
+                    <span class="connect-link-arrow"><i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <script src="../script.js"></script>
 
