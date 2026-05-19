@@ -1639,7 +1639,7 @@ body.modal-open .nav-overlay {
 
 .nav-social {
     position: absolute;
-    bottom: 40px;
+    bottom: 150px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -1743,8 +1743,9 @@ body.modal-open .nav-overlay {
     }
 
     .nav-overlay__inner {
-        flex-direction: column;
-        justify-content: center;
+        /* flex-direction: column; */
+        /* justify-content: center;
+        align-items: c; */
         padding: 100px 30px 80px;
         gap: 0;
     }
@@ -1773,8 +1774,8 @@ body.modal-open .nav-overlay {
 
     .nav-social {
         gap: 24px;
-        bottom: 30px;
-        flex-wrap: wrap;
+        /* bottom: 130px; */
+        /* flex-wrap: wrap; */
         justify-content: center;
         padding: 0 20px;
     }
@@ -1791,7 +1792,7 @@ body.modal-open .nav-overlay {
     }
 
     .nav-social {
-        gap: 18px;
+        gap: 26px;
     }
 
     .nav-social a {
