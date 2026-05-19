@@ -6,139 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Yerra Rahul</title>
     <link rel="icon" type="image/x-icon" href="../public/media/profile.jpeg">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="Contact.css">
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <style>
-        .contact-section {
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-left h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .contact-left p {
-            color: #555;
-            margin-bottom: 40px;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        }
-
-        .contact-form h2 {
-            margin-bottom: 25px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border: 1px solid #ccc;
-            font-size: 14px;
-        }
-
-        textarea {
-            resize: none;
-            height: 120px;
-        }
-
-        .submit-btn {
-            background: #7b61ff;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #5a46d8;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: row;
-            gap: 30px;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: #1e2f2f;
-            text-decoration: none;
-            transition: 0.3s ease;
-        }
-
-        .icon:hover {
-            background: #7b61ff;
-            color: white;
-            transform: translateY(-5px);
-        }
-
-        .footer {
-            background-color: #f2f0ea;
-        }
-
-        .open-to h4 {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .open-to ul {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .open-to li {
-            margin-bottom: 6px;
-            position: relative;
-            padding-left: 18px;
-        }
-
-        .open-to li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #6c63ff;
-        }
-
-        @media(max-width:900px) {
-            .contact-section {
-                grid-template-columns: 1fr;
-                margin: 50px auto;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -152,14 +25,11 @@
         </div>
     </header>
 
-    <!-- ============ FULLSCREEN OVERLAY NAV ============ -->
     <div class="nav-overlay" id="navOverlay">
         <div class="nav-overlay__inner">
 
-            <!-- Left: AI HUD Terminal Panel (desktop only) -->
             <div class="ai-hud">
 
-                <!-- TOP: Terminal Window -->
                 <div class="hud-terminal">
                     <div class="terminal-header">
                         <span class="terminal-dot red"></span>
@@ -172,7 +42,6 @@
                     </div>
                 </div>
 
-                <!-- MIDDLE: System Metrics Cards -->
                 <div class="hud-metrics">
                     <div class="metric-card">
                         <div class="metric-label"><i class="fas fa-microchip"></i> AI Core</div>
@@ -204,7 +73,6 @@
                     </div>
                 </div>
 
-                <!-- BOTTOM: Graph + Neural Viz -->
                 <div class="hud-graphs">
                     <canvas id="hudWaveform"></canvas>
                     <div class="hud-activity">
@@ -214,11 +82,9 @@
                     </div>
                 </div>
 
-                <!-- Neural Network Dots (decorative) -->
                 <div class="neural-dots" id="neuralDots"></div>
             </div>
 
-            <!-- Right: Navigation Links -->
             <div class="nav-links">
                 <a href="../index.html#home" class="nav-link" data-text="HOME">
                     <span class="nav-link__text">HOME</span>
@@ -238,7 +104,6 @@
                 </a>
             </div>
 
-            <!-- Bottom: Social Links -->
             <div class="nav-social">
                 <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank">LinkedIn</a>
                 <a href="https://github.com/YerraRahul23" target="_blank">GitHub</a>
@@ -249,77 +114,251 @@
         </div>
     </div>
 
-    <section class="contact-section">
+    <main class="contact-main">
 
-        <div class="contact-left">
-            <h1>Let's Work Together</h1>
-            <p>Feel free to reach out for collaborations or projects 👋</p>
-            <div class="open-to">
-                <h4>Open to:</h4>
-                <ul>
-                    <li>AI/ML Projects</li>
-                    <li>Full-Stack Web Development</li>
-                    <li>Internship Opportunities</li>
-                </ul>
+        <section class="hero-section">
+            <div class="hero-badges">
+                <span class="badge badge-availability">
+                    <span class="badge-dot pulse"></span>
+                    Available for projects
+                </span>
+                <span class="badge badge-response">
+                    <i class="fas fa-bolt"></i>
+                    Response: ~2 hours
+                </span>
+                <span class="badge badge-timezone">
+                    <i class="fas fa-globe"></i>
+                    PST (UTC-8)
+                </span>
+                <span class="badge badge-status">
+                    <i class="fas fa-circle-check"></i>
+                    Systems Online
+                </span>
             </div>
-            <br>
-            <div class="contact-info">
 
-                <div class="info-item">
-                    <a href="mailto:yerrarahul23@gmail.com?subject=Hiring%20Inquiry&body=Hi%20Rahul,%0A%0AI%20would%20like%20to%20discuss%20a%20project%20with%20you."
+            <h1 class="hero-heading">
+                <span class="hero-heading-line">Let's Build Intelligent Experiences</span>
+                <!-- <span class="hero-heading-line gradient-text">Intelligent</span>
+                <span class="hero-heading-line">Experiences</span> -->
+            </h1>
+
+            <!-- <p class="hero-subtitle">
+                <span class="typing-text" id="typingText"></span>
+                <span class="cursor">|</span>
+            </p> -->
+        </section>
+
+        <!-- <section class="status-cards-section">
+            <div class="status-cards-grid">
+                <div class="status-card" data-delay="">
+                    <div class="status-card-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Systems Engineer</h3>
+                    <p>Building autonomous AI infrastructure</p>
+                    <div class="status-card-glow"></div>
+                </div>
+
+                <div class="status-card" data-delay="1">
+                    <div class="status-card-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>LLM Interfaces</h3>
+                    <p>Conversational AI & prompt engineering</p>
+                    <div class="status-card-glow"></div>
+                </div>
+
+                <div class="status-card" data-delay="2">
+                    <div class="status-card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Realtime AI Products</h3>
+                    <p>Live inference & streaming pipelines</p>
+                    <div class="status-card-glow"></div>
+                </div>
+
+                <div class="status-card" data-delay="3">
+                    <div class="status-card-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Full Stack Architecture</h3>
+                    <p>End-to-end ML integration</p>
+                    <div class="status-card-glow"></div>
+                </div>
+            </div>
+        </section> -->
+
+        <section class="contact-split">
+
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <h2>Start a Conversation</h2>
+                    <p>Tell me about your project and let's build something extraordinary.</p>
+                </div>
+
+                <form id="contact-form" class="premium-form">
+                    <div class="form-row">
+                        <div class="form-group premium-input">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Your Name</label>
+                            <div class="input-glow"></div>
+                        </div>
+
+                        <div class="form-group premium-input">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                            <div class="input-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-row">
+                        <div class="form-group premium-select">
+                            <select id="project-type" name="projectType">
+                                <option value="" disabled selected></option>
+                                <option value="saas">SaaS Application</option>
+                                <option value="ai-ml">AI/ML Product</option>
+                                <option value="webapp">Web Application</option>
+                                <option value="api">API Development</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <label for="project-type">Project Type</label>
+                            <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="form-group premium-select">
+                            <select id="budget" name="budget">
+                                <option value="" disabled selected></option>
+                                <option value="under-5k">&lt; $5,000</option>
+                                <option value="5k-15k">$5,000 - $15,000</option>
+                                <option value="15k-50k">$15,000 - $50,000</option>
+                                <option value="50k+">$50,000+</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                            <label for="budget">Budget Range</label>
+                            <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="form-group premium-select single">
+                        <select id="timeline" name="timeline">
+                            <option value="" disabled selected></option>
+                            <option value="immediate">Immediate (&lt; 1 month)</option>
+                            <option value="1-3months">1-3 months</option>
+                            <option value="3-6months">3-6 months</option>
+                            <option value="flexible">Flexible</option>
+                        </select>
+                        <label for="timeline">Timeline (Optional)</label>
+                        <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
+                    </div> -->
+
+                    <div class="form-group premium-input">
+                        <textarea id="message" name="message" placeholder=" " required></textarea>
+                        <label for="message">Your Message</label>
+                        <div class="input-glow"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn premium">
+                        <span class="btn-text">Send Message</span>
+                        <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                        <span class="btn-shine"></span>
+                    </button>
+
+                    <p id="form-status" class="form-status"></p>
+                </form>
+            </div>
+
+            <div class="quick-contacts">
+                <h3>Quick Connect</h3>
+                <div class="quick-cards-grid">
+
+                    <a href="mailto:yerrarahul23@gmail.com?subject=Project%20Inquiry" class="quick-card"
                         target="_blank">
-                        <i class="fas fa-envelope icon"></i>
+                        <div class="quick-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="quick-card-content">
+                            <h4>Email</h4>
+                            <p>yerrarahul23@gmail.com</p>
+                        </div>
+                        <div class="quick-card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </a>
-                </div>
-                <div class="info-item">
-                    <a href="https://github.com/YerraRahul23" target="_blank">
-                        <i class="fab fa-github icon"></i>
+
+                    <a href="https://github.com/YerraRahul23" class="quick-card" target="_blank">
+                        <div class="quick-card-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="quick-card-content">
+                            <h4>GitHub</h4>
+                            <p>View my code</p>
+                        </div>
+                        <div class="quick-card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </a>
-                </div>
 
-                <div class="info-item">
-                    <a href="https://www.linkedin.com/in/yerrarahul/" target="_blank">
-                        <i class="fab fa-linkedin-in icon"></i>
+                    <a href="https://www.linkedin.com/in/yerrarahul/" class="quick-card" target="_blank">
+                        <div class="quick-card-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div class="quick-card-content">
+                            <h4>LinkedIn</h4>
+                            <p>Let's connect</p>
+                        </div>
+                        <div class="quick-card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </a>
-                </div>
 
-                <div class="info-item">
-                    <a href="https://www.instagram.com/calvin__rahul/" target="_blank">
-                        <i class="fab fa-instagram icon"></i>
+                    <a href="https://www.instagram.com/calvin__rahul/" class="quick-card" target="_blank">
+                        <div class="quick-card-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="quick-card-content">
+                            <h4>Instagram</h4>
+                            <p>Behind the scenes</p>
+                        </div>
+                        <div class="quick-card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
                     </a>
+
+                    <a href="https://drive.google.com/file/d/16keto8IWdpWUNcTYjTY_-VbFDToOjxvR/view?usp=sharing"
+                        class="quick-card" target="_blank">
+                        <div class="quick-card-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="quick-card-content">
+                            <h4>Resume</h4>
+                            <p>Download CV</p>
+                        </div>
+                        <div class="quick-card-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+
                 </div>
 
+                <div class="open-to-box">
+                    <div class="open-to-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Open to</span>
+                    </div>
+                    <div class="open-to-items">
+                        <span class="open-to-tag">AI/ML Projects</span>
+                        <span class="open-to-tag">Full-Stack Development</span>
+                        <span class="open-to-tag">Internships</span>
+                    </div>
+                </div>
             </div>
 
-            <div style="margin-top: 20px;">
-                <h3>Typically respond within 24 hours.</h3>
-            </div>
-        </div>
+        </section>
 
-        <form id="contact-form" class="contact-form">
-            <h2>Send Message</h2>
+    </main>
 
-            <div class="form-group">
-                <input type="text" placeholder="Your Name" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <input type="email" placeholder="Your Email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <textarea name="message" placeholder="Your Message" required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Send Message <i class="fas fa-paper-plane"
-                    style="margin-left: 5px;"></i></button>
-            <p id="form-status" style="margin-top:15px;"></p>
-        </form>
-
-    </section>
-
-    <!-- ================= FOOTER ================= -->
     <footer class="footer">
+        <div class="footer-glow"></div>
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-email">
@@ -329,7 +368,7 @@
                 <div class="footer-right">
                     <div class="footer-links">
                         <h4>Quick Links</h4>
-                        <a href="../index.html#development">Back</a>
+                        <a href="../index.html#contact">Back</a>
                         <a href="../index.html">Home</a>
                         <a href="Contact.html">Contact</a>
                     </div>
@@ -346,8 +385,68 @@
             </div>
         </div>
     </footer>
+
     <script src="../script.js"></script>
     <script>
+        // ===== Toast Notification System =====
+        function showToast(type, title, subtitle) {
+            const container = document.getElementById("toast-container");
+
+            const toast = document.createElement("div");
+            toast.className = "toast " + type;
+
+            const icons = {
+                success: '<i class="fas fa-check-circle"></i>',
+                error: '<i class="fas fa-times-circle"></i>',
+                warning: '<i class="fas fa-exclamation-triangle"></i>'
+            };
+
+            toast.innerHTML = `
+                <div class="toast-icon">${icons[type] || icons.success}</div>
+                <div class="toast-content">
+                    <div class="toast-title">${title}</div>
+                    <div class="toast-subtitle">${subtitle}</div>
+                </div>
+                <button class="toast-close" aria-label="Close"><i class="fas fa-times"></i></button>
+            `;
+
+            container.appendChild(toast);
+
+            // Trigger reflow for animation
+            void toast.offsetWidth;
+            toast.classList.add("show");
+
+            // Mouse glow effect
+            toast.addEventListener("mousemove", function (e) {
+                const rect = toast.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                toast.style.setProperty("--mx", x + "px");
+                toast.style.setProperty("--my", y + "px");
+            });
+
+            // Close button
+            const closeBtn = toast.querySelector(".toast-close");
+            closeBtn.addEventListener("click", function () {
+                dismissToast(toast);
+            });
+
+            // Auto-dismiss after 4 seconds
+            const timeout = setTimeout(function () {
+                dismissToast(toast);
+            }, 4000);
+
+            function dismissToast(t) {
+                clearTimeout(timeout);
+                t.classList.remove("show");
+                t.classList.add("exit");
+                t.addEventListener("transitionend", function () {
+                    if (t.parentNode) t.parentNode.removeChild(t);
+                }, { once: true });
+            }
+        }
+
+        // ===== Contact Form =====
         const form = document.getElementById("contact-form");
         const status = document.getElementById("form-status");
 
@@ -377,19 +476,26 @@
                     status.innerHTML = "✅ Message sent successfully!";
                     status.style.color = "green";
                     form.reset();
+                    showToast("success", "Message sent successfully!", "I'll get back to you soon.");
                 } else {
                     status.innerHTML = "❌ Failed to send message.";
                     status.style.color = "red";
                     console.error(data);
+                    showToast("error", "Failed to send message.", "Please try again.");
                 }
 
             } catch (error) {
                 status.innerHTML = "❌ Network error.";
                 status.style.color = "red";
                 console.error(error);
+                showToast("warning", "Network error.", "Check your connection.");
             }
         });
     </script>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
 </body>
 
 </html>

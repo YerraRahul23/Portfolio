@@ -34,7 +34,7 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     overflow-x: hidden;
-    padding-inline: clamp(16px, 4vw, 40px);
+    /* padding-inline: clamp(16px, 4vw, 40px); */
 }
 
 
@@ -678,7 +678,7 @@ body.modal-open .nav-overlay {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
-        padding: 0 20px 60px;
+        padding: 0 60px 60px;
     }
 
     .project-card {
@@ -695,9 +695,9 @@ body.modal-open .nav-overlay {
 
 /* Mobile (≤768px) - single column stack */
 @media(max-width: 768px) {
-    body {
+    /* body {
         padding-inline: clamp(14px, 4vw, 20px);
-    }
+    } */
 
     .header {
         padding: 12px 0;
@@ -766,7 +766,7 @@ body.modal-open .nav-overlay {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        padding: 0 0 50px;
+        padding: 0 20px 50px;
     }
 
     .project-card {
@@ -1073,7 +1073,7 @@ body.modal-open .nav-overlay {
 
 
 .header {
-    padding: 20px 80px;
+    padding: 20px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
