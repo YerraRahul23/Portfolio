@@ -19,6 +19,162 @@
 </head>
 
 <body>
+    <style>
+        .rb-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #F3EFE9 0%, #FCFAF7 50%, #EBE5D9 100%);
+            transition: opacity 1s cubic-bezier(0.65, 0, 0.35, 1), transform 1s cubic-bezier(0.65, 0, 0.35, 1);
+            pointer-events: auto;
+        }
+
+        .rb-loader-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(147, 112, 219, 0.04) 0%, transparent 60%);
+        }
+
+        .rb-loader-inner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .rb-loader-line {
+            width: 140px;
+            height: 1px;
+            background: #9370DB;
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.6);
+            margin-bottom: 24px;
+            transform-origin: left center;
+            transform: scaleX(0);
+            animation: rbLineScan 2s cubic-bezier(0.75, 0, 0.25, 1) forwards;
+            will-change: transform, opacity;
+        }
+
+        .rb-loader-text {
+            display: flex;
+            gap: 12px;
+        }
+
+        .rb-loader-text span {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 6px;
+            color: #1A1A1A;
+            text-transform: uppercase;
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(10px);
+            animation: rbTextReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            will-change: transform, opacity, filter;
+        }
+
+        .rb-loader-text span:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .rb-loader-text span:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .rb-loader-hidden {
+            opacity: 0;
+            transform: translateY(-2vh);
+            pointer-events: none;
+        }
+
+        @keyframes rbLineScan {
+            0% {
+                transform: scaleX(0);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 1;
+            }
+
+            85% {
+                transform: scaleX(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scaleX(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes rbTextReveal {
+            0% {
+                opacity: 0;
+                filter: blur(8px);
+                transform: translateY(10px);
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0);
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .rb-loader-text span {
+                font-size: 26px;
+                letter-spacing: 10px;
+            }
+
+            .rb-loader-line {
+                width: 180px;
+            }
+        }
+    </style>
+
+    <div class="rb-loader" id="rbLoader">
+        <div class="rb-loader-overlay"></div>
+        <div class="rb-loader-inner">
+            <div class="rb-loader-line"></div>
+            <div class="rb-loader-text">
+                <span>About</span>
+                <span>Me</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            document.body.style.overflow = 'hidden';
+            var minTime = 2200;
+            var startTime = Date.now();
+
+            window.addEventListener('load', function () {
+                var elapsedTime = Date.now() - startTime;
+                var remainingTime = Math.max(0, minTime - elapsedTime);
+
+                setTimeout(function () {
+                    var loader = document.getElementById('rbLoader');
+                    if (loader) {
+                        loader.classList.add('rb-loader-hidden');
+                        setTimeout(function () {
+                            document.body.style.overflow = '';
+                        }, 1000);
+                    }
+                }, remainingTime);
+            });
+        })();
+    </script>
+
 
     <header class="header">
         <div class="logo">Yerra Rahul</div>
@@ -325,7 +481,7 @@
     </section>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="footer">
+    <!-- <footer class="footer">
         <div class="footer-container">
             <div class="footer-top">
                 <div class="footer-email">
@@ -335,7 +491,6 @@
                 <div class="footer-right">
                     <div class="footer-links">
                         <h4>Quick Links</h4>
-                        <!-- <a href="../index.html#development">Works</a> -->
                         <a href="../index.html#development">Back</a>
                         <a href="../index.html">Home</a>
                         <a href="Contact.html">Contact</a>
@@ -352,7 +507,7 @@
                 © 2026 Yerra Rahul | All Rights Reserved
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <script src="../script.js"></script>
 
