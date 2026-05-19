@@ -2499,7 +2499,7 @@ a {
     }
 
     .hero-content {
-        margin-top: 200px;
+        /* margin-top: 200px; */
         padding: 30px 20px;
         border-radius: 24px;
         max-width: 100%;
