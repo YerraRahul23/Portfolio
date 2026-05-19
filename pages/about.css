@@ -878,6 +878,8 @@ body {
     z-index: 5;
     padding: 200px 60px 120px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .skills-bg-text {
@@ -898,8 +900,8 @@ body {
 .skills-inner {
     position: relative;
     z-index: 1;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0;
 }
 
 .skills-header {
@@ -912,6 +914,7 @@ body {
     justify-content: center;
     gap: 14px;
     padding: 20px 0;
+    width: 100%;
 }
 
 .skill-pill {
