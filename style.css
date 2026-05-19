@@ -1063,7 +1063,8 @@ a {
 
 
 
-/* ================= PROJECTS SECTION ================= */
+/* ================= OLD PROJECTS SECTION (commented out) ================= */
+/*
 .info-block h4 {
     color: #7b61ff;
     padding-bottom: 5px;
@@ -1097,7 +1098,6 @@ a {
     line-height: 1.6;
 }
 
-/* 3D hover: skill badges lift */
 .badge-container span {
     display: inline-block;
     padding: 4px 12px;
@@ -1114,7 +1114,6 @@ a {
     background: rgba(123, 97, 255, 0.1);
 }
 
-/* 3D depth: section headings with layered pseudo-elements */
 .projects-header h2 {
     position: relative;
     display: inline-block;
@@ -1164,7 +1163,6 @@ a {
     pointer-events: none;
 }
 
-/* Project Row */
 .project-card {
     background-color: white;
     border-radius: 20px;
@@ -1181,10 +1179,6 @@ a {
     justify-content: space-between;
     margin-bottom: 50px;
 }
-
-/* .project-row.reverse {
-    flex-direction: row-reverse;
-} */
 
 .project-text {
     flex: 1;
@@ -1225,7 +1219,6 @@ a {
     perspective: 1000px;
 }
 
-/* 3D tilt: project card image on hover */
 .project-image img {
     width: 100%;
     border-radius: 20px;
@@ -1236,11 +1229,8 @@ a {
 }
 
 .project-image img:hover {
-    /* transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateZ(8px); */
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
 }
-
-/* View More */
 
 .view-more {
     text-align: center;
@@ -1261,11 +1251,6 @@ a {
     color: white;
 }
 
-/* ========================= */
-/* RESPONSIVE SYSTEM */
-/* ========================= */
-
-/* -------- Large Screens (Laptop/Desktop) -------- */
 @media (min-width: 1200px) {
 
     .project-row {
@@ -1284,7 +1269,6 @@ a {
     }
 }
 
-/* -------- Tablet (Landscape + Portrait) -------- */
 @media (max-width: 1024px) {
 
     .projects-section {
@@ -1304,13 +1288,11 @@ a {
     }
 }
 
-/* -------- Small Tablets -------- */
 @media (max-width: 900px) {
 
     .project-row,
     .project-row.reverse {
         flex-direction: column;
-        /* text-align: center; */
         gap: 40px;
     }
 
@@ -1330,7 +1312,6 @@ a {
 
 }
 
-/* -------- Mobile -------- */
 @media (max-width: 600px) {
 
     .projects-section {
@@ -1364,6 +1345,8 @@ a {
     }
 
 }
+*/
+/* ================= END OLD PROJECTS SECTION CSS ================= */
 
 
 /* ================= CTA SECTION ================= */
@@ -1569,11 +1552,10 @@ a {
 
 
 /* ========================= */
-/* Fullscreen Fade Cards     */
+/* Fullscreen Fade Cards (commented out) */
 /* ========================= */
-
+/*
 .project-card {
-    /* min-height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1605,11 +1587,6 @@ a {
     margin-right: auto;
 }
 
-
-/* ========================= */
-/* Mobile Optimization       */
-/* ========================= */
-
 @media (max-width: 900px) {
 
     .project-card {
@@ -1631,6 +1608,10 @@ a {
     }
 
 }
+*/
+/* ========================= */
+/* End Fullscreen Fade Cards */
+/* ========================= */
 
 
 /* ============ NEW HOME SECTION ============ */
@@ -2648,3 +2629,421 @@ a {
     }
 
 }
+
+
+/* ============================================ */
+/* NEW REDESIGNED PROJECTS SECTION (rb-projects) */
+/* ============================================ */
+
+/* ── Section ── */
+.rb-projects-section {
+    padding: 140px 80px;
+    background: #e7e4db;
+    position: relative;
+    overflow: hidden;
+}
+
+.rb-projects-container {
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+/* ── Header ── */
+.rb-projects-header {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.rb-projects-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #9f7aea;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.rb-projects-label::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: #9f7aea;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
+.rb-projects-heading {
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 800;
+    color: #1e2f2f;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.rb-projects-intro {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ── Grid ── */
+.rb-projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+/* ── Card ── */
+.rb-project-card {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    background: #f5f3ef;
+    border-radius: 24px;
+    padding: 50px 60px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+}
+
+.rb-project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.rb-project-card--reverse {
+    flex-direction: row-reverse;
+}
+
+/* ── Index Number ── */
+.rb-project-index {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    font-size: 100px;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.rb-project-card--reverse .rb-project-index {
+    left: auto;
+    right: -10px;
+}
+
+/* ── Content ── */
+.rb-project-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.rb-project-label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9f7aea;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.rb-project-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 800;
+    color: #1e2f2f;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+}
+
+.rb-project-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 520px;
+}
+
+/* ── Tags ── */
+.rb-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.rb-project-tags span {
+    display: inline-block;
+    padding: 5px 14px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #444;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.rb-project-tags span:hover {
+    background: rgba(159, 122, 234, 0.12);
+    transform: translateY(-2px);
+}
+
+/* ── Link ── */
+.rb-project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e2f2f;
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.3s ease;
+}
+
+.rb-project-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #9f7aea;
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rb-project-link:hover {
+    color: #9f7aea;
+}
+
+.rb-project-link:hover::after {
+    width: 100%;
+}
+
+.rb-link-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.rb-project-link:hover .rb-link-arrow {
+    transform: translateX(5px);
+}
+
+/* ── Image ── */
+.rb-project-image {
+    flex: 0 0 420px;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.08);
+}
+
+.rb-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.rb-project-card:hover .rb-project-image img {
+    transform: scale(1.05);
+}
+
+/* ── Footer / View All ── */
+.rb-projects-footer {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.rb-projects-view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1e2f2f;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: 40px;
+    border: 1.5px solid #1e2f2f;
+    transition: all 0.3s ease;
+}
+
+.rb-projects-view-all:hover {
+    background: #1e2f2f;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.rb-projects-view-all:hover .rb-link-arrow {
+    transform: translateX(5px);
+}
+
+/* ── Fade-Up Animation (CSS only — no JS dependency) ── */
+.rb-fade-up {
+    animation: rbFadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes rbFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Stagger delays for cards & header items */
+.rb-projects-header .rb-fade-up:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.rb-projects-header .rb-fade-up:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.rb-projects-grid .rb-project-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.rb-projects-grid .rb-project-card:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.rb-projects-grid .rb-project-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.rb-projects-grid .rb-project-card:nth-child(4) {
+    animation-delay: 0.55s;
+}
+
+.rb-projects-footer.rb-fade-up {
+    animation-delay: 0.7s;
+}
+
+/* ── Responsive: Tablet ── */
+@media (max-width: 1024px) {
+
+    .rb-projects-section {
+        padding: 100px 40px;
+    }
+
+    .rb-project-card {
+        gap: 50px;
+        padding: 40px 40px;
+    }
+
+    .rb-project-image {
+        flex: 0 0 320px;
+    }
+
+    .rb-project-title {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+
+    .rb-project-index {
+        font-size: 70px;
+    }
+
+    .rb-projects-header {
+        margin-bottom: 70px;
+    }
+
+    .rb-projects-grid {
+        gap: 70px;
+    }
+
+}
+
+/* ── Responsive: Mobile ── */
+@media (max-width: 768px) {
+
+    .rb-projects-section {
+        padding: 80px 20px;
+    }
+
+    .rb-project-card,
+    .rb-project-card--reverse {
+        flex-direction: column;
+        gap: 30px;
+        padding: 36px 28px;
+        border-radius: 20px;
+    }
+
+    .rb-project-image {
+        flex: none;
+        width: 100%;
+        border-radius: 16px;
+    }
+
+    .rb-project-image img {
+        width: 100%;
+        height: auto;
+    }
+
+    .rb-project-index {
+        font-size: 50px;
+        top: -5px;
+        left: 10px;
+    }
+
+    .rb-project-card--reverse .rb-project-index {
+        left: 10px;
+        right: auto;
+    }
+
+    .rb-project-desc {
+        font-size: 13px;
+    }
+
+    .rb-project-tags {
+        gap: 6px;
+    }
+
+    .rb-project-tags span {
+        font-size: 10px;
+        padding: 4px 10px;
+    }
+
+    .rb-projects-header {
+        margin-bottom: 50px;
+    }
+
+    .rb-projects-grid {
+        gap: 50px;
+    }
+
+    .rb-projects-footer {
+        margin-top: 50px;
+    }
+
+    .rb-projects-view-all {
+        width: 100%;
+        justify-content: center;
+    }
+
+}
+
+/* ============================================ */
+/* END NEW REDESIGNED PROJECTS SECTION         */
+/* ============================================ */
