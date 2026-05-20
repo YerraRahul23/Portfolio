@@ -10,7 +10,7 @@ body {
 }
 
 * {
-    font-family: "Poppins", sans-serif;
+    /* font-family: "Poppins", sans-serif; */
 }
 
 /* ============================================= */
@@ -672,6 +672,7 @@ body {
     /* font-size: clamp(16px, 1.4vw, 20px); */
     font-size: clamp(20px, 2.5vw, 30px);
     /* font-weight: 350; */
+    /* font-family: cursive; */
     font-style: italic;
     /* line-height: 1.7; */
     line-height: 1.85;
@@ -2013,6 +2014,7 @@ body {
     padding: 40px 60px;
     position: relative;
     gap: 60px;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* ── LEFT: AI HUD Terminal Panel (desktop only) ── */
