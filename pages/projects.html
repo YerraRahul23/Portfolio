@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Yerra Rahul</title>
-    <link rel="icon" type="image/x-icon" href="../public/media/profile.jpeg">
+    <link rel="icon" type="image/x-icon" href="../public/media/user/profile.jpeg">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
@@ -338,7 +338,7 @@
             data-features="AI Chatbot (AskAce)|Voice Input|Role-Based Dashboards (Student/Faculty/Admin)|Real-Time Data Fetching|Department Modules|Placement Section|Authentication System|Admin Panel|PYQ Management"
             data-skills="Mobile App Development|API Integration|Firebase Backend|State Management|UI/UX Design|AI Integration|Problem Solving"
             data-app="https://drive.google.com/file/d/17Kx4aNQISlqp2oqBSCdIlDXP_GILiqFO/view?usp=sharing"
-            data-image="../public/media/AskAce2.png">
+            data-video="../public/media/videos/AskAce.mp4" data-image="../public/media/AskAce2.png">
             <div class="showcase-content">
                 <div class="showcase-media">
                     <div class="ambient-glow"></div>
@@ -568,7 +568,7 @@
             data-description="Includes food gallery, booking form, services section." data-tech="HTML5|CSS3|JavaScript"
             data-features="Responsive design|Interactive UI|Booking section"
             data-skills="Frontend Development|Responsive UI" data-demo="https://pappas-kitchen.vercel.app/"
-            data-image="../public/media/Untitled design.png">
+            data-image="../public/media/Untitled design.png" data-video="../public/media/videos/food.mp4">
             <div class="grid-card-inner">
                 <div class="grid-card-media">
                     <img src="../public/media/Untitled design.png" alt="Catering Website Project">
@@ -597,6 +597,7 @@
             data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
             data-features="Face detection|Unknown alert|Threshold matching" data-skills="Computer Vision|Deep Learning"
             data-github="https://github.com/YerraRahul23/Face-Recognition-"
+            data-video="../public/media/videos/face-recognition.mp4"
             data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
             <div class="grid-card-inner">
                 <div class="grid-card-media">
@@ -629,7 +630,7 @@
         <div class="modal-container">
             <!-- Left Panel: Sticky Media Preview -->
             <div class="modal-media-panel">
-                <img id="modal-image" alt="Project Image">
+                <div class="modal-media" id="modalMedia"></div>
                 <div class="media-overlay"></div>
             </div>
             <!-- Right Panel: Scrollable Case Study Info -->
@@ -739,7 +740,49 @@
                     return;
                 }
                 document.getElementById("modal-title").textContent = card.dataset.title;
-                document.getElementById("modal-image").src = card.dataset.image;
+
+                // Dynamic video or image preview in modal-media container
+                const modalMedia = document.getElementById("modalMedia");
+                if (modalMedia) {
+                    modalMedia.innerHTML = "";
+                    const videoUrl = card.dataset.video;
+                    const imageUrl = card.dataset.image;
+
+                    function loadFallbackImage() {
+                        modalMedia.innerHTML = "";
+                        if (imageUrl) {
+                            const img = document.createElement("img");
+                            img.className = "modal-image";
+                            img.src = imageUrl;
+                            img.alt = card.dataset.title || "Project Image";
+                            modalMedia.appendChild(img);
+                        }
+                    }
+
+                    if (videoUrl) {
+                        const video = document.createElement("video");
+                        video.className = "modal-video";
+                        video.src = videoUrl;
+                        video.autoplay = true;
+                        // video.muted = true;
+                        video.loop = true;
+                        // video.playsInline = true;
+                        // video.controls = true;
+
+                        video.addEventListener("error", () => {
+                            console.warn("Video failed to load, falling back to image:", videoUrl);
+                            loadFallbackImage();
+                        });
+
+                        modalMedia.appendChild(video);
+                        video.play().catch(error => {
+                            console.log("Autoplay was prevented or video failed to play:", error);
+                        });
+                    } else {
+                        loadFallbackImage();
+                    }
+                }
+
                 document.getElementById("modal-about").textContent = card.dataset.about;
                 document.getElementById("modal-description").textContent = card.dataset.description;
 
@@ -834,6 +877,14 @@
             if (closeModalTimeout) return; // Prevent double-closing during animation
             if (!document.body.classList.contains("modal-open")) return;
 
+            // Stop and clean up any playing video immediately on close to save resources
+            const video = document.querySelector("#modalMedia video");
+            if (video) {
+                video.pause();
+                video.src = "";
+                video.load();
+            }
+
             // Remove active classes first (triggers CSS transition)
             modal.classList.remove("active");
             overlay.classList.remove("active");
@@ -843,6 +894,13 @@
                 document.body.classList.remove("modal-open");
                 if (contentPanel) contentPanel.scrollTop = 0;
                 if (progressBar) progressBar.style.width = "0%";
+
+                // Clear media container content after animation
+                const modalMedia = document.getElementById("modalMedia");
+                if (modalMedia) {
+                    modalMedia.innerHTML = "";
+                }
+
                 closeModalTimeout = null;
             }, 380);
         }
