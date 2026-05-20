@@ -142,8 +142,8 @@
         <div class="rb-loader-inner">
             <div class="rb-loader-line"></div>
             <div class="rb-loader-text">
-                <span>Featured</span>
-                <span>Projects</span>
+                <span>Vibe</span>
+                <span>Coding</span>
             </div>
         </div>
     </div>
@@ -171,10 +171,18 @@
         })();
     </script>
 
+    <div class="noise-overlay"></div>
     <div class="bg-decoration">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+        <div class="bg-grid"></div>
+        <div class="blob-wrapper" style="--parallax-speed: 0.12;">
+            <div class="blob blob-1"></div>
+        </div>
+        <div class="blob-wrapper" style="--parallax-speed: -0.08;">
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="blob-wrapper" style="--parallax-speed: 0.05;">
+            <div class="blob blob-3"></div>
+        </div>
     </div>
     <header class="header">
         <div class="logo">Yerra Rahul</div>
@@ -282,21 +290,48 @@
         </div>
     </div>
 
-    <section class="projects-header">
-        <h1>My Projects</h1>
-        <p>AI systems, web applications and modern software solutions.</p>
+    <section class="projects-hero">
+        <div class="projects-header fade-up">
+            <h1>What I Build</h1>
+            <p>AI systems, web applications and modern software solutions.</p>
+        </div>
+
+        <div class="hero-stats fade-up">
+            <div class="stat-card">
+                <span class="stat-num">7+</span>
+                <span class="stat-label">Total Projects</span>
+            </div>
+            <!-- <div class="dino-showcase-card">
+                <div class="dino-scene">
+                    <div class="dino-particle p-1"></div>
+                    <div class="dino-particle p-2"></div>
+                    <div class="dino-particle p-3"></div>
+                    <div class="dino"></div>
+                    <div class="cactus cactus-1"></div>
+                    <div class="cactus cactus-2"></div>
+                    <div class="ground"></div>
+                </div>
+                <div class="dino-score">
+                    <span class="score-label">AI MODE</span>
+                    <span class="score-value">00000</span>
+                </div>
+            </div> -->
+            <div class="stat-card">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Interactive</span>
+            </div>
+        </div>
+
+        <div class="project-filters fade-up">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="client">Client</button>
+            <button class="filter-btn" data-filter="personal">Personal</button>
+        </div>
     </section>
 
-    <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="client">Client</button>
-        <button class="filter-btn" data-filter="personal">Personal</button>
-    </div>
-
-    <section class="projects-container">
-
-        <!-- 1 ASKACE - FEATURED (LARGE) -->
-        <div class="project-card featured personal" data-title="AskAce - AI College Assistant"
+    <!-- 1 ASKACE - FEATURED SHOWCASE -->
+    <div class="featured-wrapper">
+        <div class="project-card featured-showcase personal" data-title="AskAce - AI College Assistant"
             data-about="A full-featured mobile application developed for ACE Engineering College that combines an AI chatbot, real-time data system, and role-based dashboards for students, faculty, and administrators."
             data-description="AskAce is a scalable Flutter + Firebase application designed to digitize campus operations. It includes a public information portal, AI chatbot for queries, department modules, placement tracking, and secure login with role-based access. The app integrates backend APIs for AI responses and uses Firestore for dynamic content rendering."
             data-tech="Flutter|Dart|Firebase Authentication|Cloud Firestore|Cloud Functions|REST API|Speech-to-Text|Markdown Renderer"
@@ -304,154 +339,61 @@
             data-skills="Mobile App Development|API Integration|Firebase Backend|State Management|UI/UX Design|AI Integration|Problem Solving"
             data-app="https://drive.google.com/file/d/17Kx4aNQISlqp2oqBSCdIlDXP_GILiqFO/view?usp=sharing"
             data-image="../public/media/AskAce2.png">
-            <div class="project-image">
-                <img src="../public/media/AskAce2.png" alt="AskAce App">
-                <div class="image-overlay">
-                    <span class="category-badge ai">AI</span>
-                    <div class="overlay-content">
-                        <h3>AskAce - AI College Assistant</h3>
-                        <p>AI-powered college assistant with chatbot, role-based dashboards, and real-time campus info.
-                        </p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">Flutter</span>
-                            <span class="tech-pill">Firebase</span>
-                            <span class="tech-pill">AI Chatbot</span>
+            <div class="showcase-content">
+                <div class="showcase-media">
+                    <div class="ambient-glow"></div>
+                    <div class="glow-ring"></div>
+                    <div class="device-phone-wrapper">
+                        <div class="device-phone">
+                            <div class="device-notch"></div>
+                            <div class="device-screen">
+                                <img src="../public/media/AskAce2.png" alt="AskAce App Screen">
+                            </div>
                         </div>
+                    </div>
+                    <div class="floating-badge badge-top-left">
+                        <i class="fas fa-robot"></i>
+                        <span>AI Assistant</span>
+                    </div>
+                    <div class="floating-badge badge-bottom-right">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Role Dashboards</span>
+                    </div>
+                </div>
+                <div class="showcase-details">
+                    <div class="badge-row">
+                        <span class="category-badge ai">Featured Project</span>
+                        <span class="category-badge mobile">Mobile</span>
+                    </div>
+                    <h2 class="showcase-title">AskAce - AI College Assistant</h2>
+                    <p class="showcase-desc">A full-featured mobile application developed for ACE Engineering College
+                        that combines an AI chatbot, real-time data system, and role-based dashboards for students,
+                        faculty, and administrators.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Flutter</span>
+                        <span class="tech-pill">Firebase</span>
+                        <span class="tech-pill">AI Chatbot</span>
+                        <span class="tech-pill">Cloud Functions</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://drive.google.com/file/d/17Kx4aNQISlqp2oqBSCdIlDXP_GILiqFO/view?usp=sharing"
+                            target="_blank" class="cta-btn primary" onclick="event.stopPropagation()">
+                            <i class="fas fa-download"></i> Get App
+                        </a>
+                        <button class="cta-btn secondary">
+                            Explore Project →
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <!-- 2 OBJECT DETECTION - TALL -->
-        <div class="project-card tall personal" data-title="Object Detection with YOLO"
-            data-about="Python project using YOLO and OpenCV for real-time object detection. Detects and tracks multiple objects in video streams, calculates distances and sizes using coordinates, and overlays bounding boxes with labels."
-            data-description="The Object Detection project is designed to identify and locate various objects in images or video streams using advanced computer vision techniques. The core of this project leverages YOLO (You Only Look Once), a cutting-edge object detection algorithm known for its real-time performance."
-            data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
-            data-skills="Computer Vision|Deep Learning|Object Tracking"
-            data-github="https://github.com/YerraRahul23/Object_Detection"
-            data-image="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
-            <div class="project-image">
-                <img
-                    src="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
-                <div class="image-overlay">
-                    <span class="category-badge ai">Computer Vision</span>
-                    <div class="overlay-content">
-                        <h3>Object Detection</h3>
-                        <p>Real-time object detection using YOLO & OpenCV.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">Python</span>
-                            <span class="tech-pill">YOLO</span>
-                            <span class="tech-pill">OpenCV</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3 VOICE ASSISTANT - NORMAL -->
-        <div class="project-card normal personal" data-title="Voice Assistant"
-            data-about="The project is designed to provide a seamless user experience through natural language processing (NLP) for understanding user inputs and speech synthesis for generating voice responses."
-            data-description="The Voice Assistant project is a hands-free, voice-activated system built with Python, enabling users to interact with their device using natural language commands."
-            data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
-            data-features="Speech recognition|Speech synthesis|Web integration"
-            data-skills="NLP|API Integration|Automation" data-github="https://github.com/YerraRahul23/Voice_Assistant"
-            data-image="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
-            <div class="project-image">
-                <img
-                    src="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
-                <div class="image-overlay">
-                    <span class="category-badge ai">NLP</span>
-                    <div class="overlay-content">
-                        <h3>Voice Assistant</h3>
-                        <p>Voice-based assistant built using Python & NLP.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">Python</span>
-                            <span class="tech-pill">NLP</span>
-                            <span class="tech-pill">Speech API</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4 CATERING - NORMAL -->
-        <div class="project-card normal client" data-title="Catering Services – Client Project"
-            data-about="Modern responsive catering website."
-            data-description="Includes food gallery, booking form, services section." data-tech="HTML5|CSS3|JavaScript"
-            data-features="Responsive design|Interactive UI|Booking section"
-            data-skills="Frontend Development|Responsive UI" data-demo="https://pappas-kitchen.vercel.app/"
-            data-image="../public/media/Untitled design.png">
-            <div class="project-image">
-                <img src="../public/media/Untitled design.png" alt="Catering Website Project">
-                <div class="image-overlay">
-                    <span class="category-badge client">Client</span>
-                    <div class="overlay-content">
-                        <h3>Catering Services Website</h3>
-                        <p>Responsive catering website built using HTML CSS JS.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS3</span>
-                            <span class="tech-pill">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5 CONTESTHUB - WIDE -->
-        <div class="project-card wide personal" data-title="Contesthub"
-            data-about="Coding contest aggregator website for exploring contests and problems."
-            data-description="Designed to fetch and display coding contest data using APIs, allowing users to explore contests and problems through a responsive and interactive interface."
-            data-tech="HTML5|CSS3|JavaScript|APIs"
-            data-features="User authentication (Login/Signup)|Contest listing & details page|Problem browsing interface|Responsive design for all devices|Interactive UI with dynamic updates"
-            data-skills="Frontend Development|Responsive UI" data-demo="https://contesthub-h4i5.onrender.com/"
-            data-github="https://github.com/YerraRahul23/ContestHub" data-image="../public/media/contest-hub.png">
-            <div class="project-image">
-                <img src="../public/media/contest-hub.png" alt="Contesthub">
-                <div class="image-overlay">
-                    <span class="category-badge web">Web App</span>
-                    <div class="overlay-content">
-                        <h3>Contesthub</h3>
-                        <p>Coding contest aggregator website for exploring contests and problems.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">HTML5</span>
-                            <span class="tech-pill">CSS3</span>
-                            <span class="tech-pill">JavaScript</span>
-                            <span class="tech-pill">APIs</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 6 FACIAL RECOGNITION - NORMAL -->
-        <div class="project-card normal personal" data-title="Face Detection & Recognition"
-            data-about="Real-time face recognition using OpenCV & DeepFace."
-            data-description="This project demonstrates real-time face detection and recognition using Python. Built with OpenCV, DeepFace, NumPy, and Pygame, it identifies faces from the webcam, compares them with known images, and triggers alerts."
-            data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
-            data-features="Face detection|Unknown alert|Threshold matching" data-skills="Computer Vision|Deep Learning"
-            data-github="https://github.com/YerraRahul23/Face-Recognition-"
-            data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
-            <div class="project-image">
-                <img
-                    src="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
-                <div class="image-overlay">
-                    <span class="category-badge ai">Computer Vision</span>
-                    <div class="overlay-content">
-                        <h3>Face Detection & Recognition</h3>
-                        <p>Real-time face recognition using DeepFace.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">Python</span>
-                            <span class="tech-pill">OpenCV</span>
-                            <span class="tech-pill">DeepFace</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7 NOTESYNC - WIDE -->
-        <div class="project-card wide personal" data-title="NoteSync - Real-Time Collaborative Note-Taking"
+    <!-- HORIZONTAL SHOWCASE SECTIONS -->
+    <div class="showcases-wrapper">
+        <!-- 2 NOTESYNC - HORIZONTAL SHOWCASE -->
+        <div class="project-card horizontal-showcase personal"
+            data-title="NoteSync - Real-Time Collaborative Note-Taking"
             data-about="Real-time collaborative whiteboard and notes application built with React, Socket.IO, and Express."
             data-description="NoteSync allows multiple users to collaborate in real-time within shared rooms. Draw together on a shared whiteboard, take collaborative notes, and see live updates as your teammates work."
             data-tech="Frontend: React 18 |Vite | Tailwind CSS | Socket.IO Client | Backend: Node.js | Express | Socket.IO | Realtime: WebSockets via Socket.IO | Deployment: Vercel (frontend), Render (backend)"
@@ -459,58 +401,281 @@
             data-skills="Frontend Development|UI/UX Design|Real-Time Collaboration|API Integration|State Management|Responsive Design"
             data-github="https://github.com/YerraRahul23/NoteSync" data-demo="https://note-sync-rho.vercel.app/"
             data-image="../public/media/NoteSync.png">
-            <div class="project-image">
-                <img src="../public/media/NoteSync.png" alt="NoteSync App">
-                <div class="image-overlay">
-                    <span class="category-badge web">Web App</span>
-                    <div class="overlay-content">
-                        <h3>NoteSync</h3>
-                        <p>Real-time collaborative whiteboard and notes app with React, Socket.IO, and Vite.</p>
-                        <div class="tech-pills">
-                            <span class="tech-pill">React 18</span>
-                            <span class="tech-pill">Socket.IO</span>
-                            <span class="tech-pill">Vite</span>
-                            <span class="tech-pill">Tailwind</span>
+            <div class="showcase-content">
+                <div class="showcase-media">
+                    <div class="device-browser">
+                        <div class="browser-header">
+                            <span class="browser-dot red"></span>
+                            <span class="browser-dot yellow"></span>
+                            <span class="browser-dot green"></span>
+                            <span class="browser-title">notesync.vercel.app</span>
                         </div>
+                        <div class="browser-screen">
+                            <img src="../public/media/NoteSync.png" alt="NoteSync Real-Time Platform">
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-details">
+                    <div class="showcase-meta">
+                        <span class="project-number">01</span>
+                        <span class="category-badge web">Real-Time & Web</span>
+                    </div>
+                    <h2 class="showcase-title">NoteSync</h2>
+                    <p class="showcase-desc">Real-time collaborative whiteboard and notes application built with React,
+                        Socket.IO, and Express. Draw together, take notes, and sync work instantly.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">React 18</span>
+                        <span class="tech-pill">Socket.IO</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">WebSockets</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://note-sync-rho.vercel.app/" target="_blank" class="cta-btn primary"
+                            onclick="event.stopPropagation()">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/YerraRahul23/NoteSync" target="_blank" class="cta-btn outline"
+                            onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <button class="cta-btn secondary">
+                            Explore Project →
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
 
-    </section>
+        <!-- 3 CONTESTHUB - HORIZONTAL SHOWCASE -->
+        <div class="project-card horizontal-showcase personal" data-title="Contesthub"
+            data-about="Coding contest aggregator website for exploring contests and problems."
+            data-description="Designed to fetch and display coding contest data using APIs, allowing users to explore contests and problems through a responsive and interactive interface."
+            data-tech="HTML5|CSS3|JavaScript|APIs"
+            data-features="User authentication (Login/Signup)|Contest listing & details page|Problem browsing interface|Responsive design for all devices|Interactive UI with dynamic updates"
+            data-skills="Frontend Development|Responsive UI" data-demo="https://contesthub-h4i5.onrender.com/"
+            data-github="https://github.com/YerraRahul23/ContestHub" data-image="../public/media/contest-hub.png">
+            <div class="showcase-content">
+                <div class="showcase-media">
+                    <div class="device-browser">
+                        <div class="browser-header">
+                            <span class="browser-dot red"></span>
+                            <span class="browser-dot yellow"></span>
+                            <span class="browser-dot green"></span>
+                            <span class="browser-title">contesthub.onrender.com</span>
+                        </div>
+                        <div class="browser-screen">
+                            <img src="../public/media/contest-hub.png" alt="ContestHub Platform">
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-details">
+                    <div class="showcase-meta">
+                        <span class="project-number">02</span>
+                        <span class="category-badge web">APIs & Web</span>
+                    </div>
+                    <h2 class="showcase-title">Contesthub</h2>
+                    <p class="showcase-desc">Coding contest aggregator website. Fetches and displays coding contest data
+                        and problems from multiple platforms in real-time.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">JavaScript</span>
+                        <span class="tech-pill">API Integration</span>
+                        <span class="tech-pill">CSS3</span>
+                        <span class="tech-pill">Web App</span>
+                    </div>
+                    <div class="showcase-actions">
+                        <a href="https://contesthub-h4i5.onrender.com/" target="_blank" class="cta-btn primary"
+                            onclick="event.stopPropagation()">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        </a>
+                        <a href="https://github.com/YerraRahul23/ContestHub" target="_blank" class="cta-btn outline"
+                            onclick="event.stopPropagation()">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <button class="cta-btn secondary">
+                            Explore Project →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- GALLERY GRID SECTION -->
+    <div class="projects-grid">
+        <!-- 4 OBJECT DETECTION - GRID CARD -->
+        <div class="project-card grid-card one personal" data-title="Object Detection with YOLO"
+            data-about="Python project using YOLO and OpenCV for real-time object detection. Detects and tracks multiple objects in video streams, calculates distances and sizes using coordinates, and overlays bounding boxes with labels."
+            data-description="The Object Detection project is designed to identify and locate various objects in images or video streams using advanced computer vision techniques. The core of this project leverages YOLO (You Only Look Once), a cutting-edge object detection algorithm known for its real-time performance."
+            data-tech="Python|YOLO|OpenCV" data-features="Real-time detection|High accuracy|Video processing"
+            data-skills="Computer Vision|Deep Learning|Object Tracking"
+            data-github="https://github.com/YerraRahul23/Object_Detection"
+            data-image="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067">
+            <div class="grid-card-inner">
+                <div class="grid-card-media">
+                    <img src="https://camo.githubusercontent.com/b08719a5762ad7d84bc4ce3a8ab5cbc3a68ef00c655dbf56a6b2719c77ab66ce/68747470733a2f2f7777772e6d7967726561746c6561726e696e672e636f6d2f626c6f672f77702d636f6e74656e742f75706c6f6164732f323032302f30372f426c6f672d46656174757265642d446174612d7072652d70726f63657373696e672d31303030583730302d30322e6a7067"
+                        alt="Object Detection Project">
+                    <span class="category-badge ai">Computer Vision</span>
+                </div>
+                <div class="grid-card-content">
+                    <h3 class="grid-card-title">Object Detection with YOLO</h3>
+                    <p class="grid-card-desc">Real-time object detection using YOLO and OpenCV. Identifies, tracks, and
+                        overlays labels on multiple objects in video streams.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">YOLO</span>
+                        <span class="tech-pill">OpenCV</span>
+                    </div>
+                    <div class="grid-card-cta">
+                        Explore Project <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5 VOICE ASSISTANT - GRID CARD -->
+        <div class="project-card grid-card personal" data-title="Voice Assistant"
+            data-about="The project is designed to provide a seamless user experience through natural language processing (NLP) for understanding user inputs and speech synthesis for generating voice responses."
+            data-description="The Voice Assistant project is a hands-free, voice-activated system built with Python, enabling users to interact with their device using natural language commands."
+            data-tech="Python|SpeechRecognition|Pyttsx3|Web APIs"
+            data-features="Speech recognition|Speech synthesis|Web integration"
+            data-skills="NLP|API Integration|Automation" data-github="https://github.com/YerraRahul23/Voice_Assistant"
+            data-image="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270">
+            <div class="grid-card-inner">
+                <div class="grid-card-media">
+                    <img src="https://camo.githubusercontent.com/83df987d8142e486cdc21409d632ed54dbdddee7b0e53183eefa63b935eb33db/68747470733a2f2f63646e2e626f7470656e6775696e2e636f6d2f6173736574732f776562736974652f486f775f566f6963655f417373697374616e74735f6172655f5472616e73666f726d696e675f4f75725f4461696c795f4c697665735f663562363465653632362e77656270"
+                        alt="Voice Assistant Project">
+                    <span class="category-badge ai">NLP & Voice</span>
+                </div>
+                <div class="grid-card-content">
+                    <h3 class="grid-card-title">Voice Assistant</h3>
+                    <p class="grid-card-desc">Voice-activated desktop system using SpeechRecognition and Pyttsx3.
+                        Supports hands-free browser execution and device automation.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">SpeechRecognition</span>
+                        <span class="tech-pill">NLP</span>
+                    </div>
+                    <div class="grid-card-cta">
+                        Explore Project <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6 CATERING - GRID CARD -->
+        <div class="project-card grid-card client" data-title="Catering Services – Client Project"
+            data-about="Modern responsive catering website."
+            data-description="Includes food gallery, booking form, services section." data-tech="HTML5|CSS3|JavaScript"
+            data-features="Responsive design|Interactive UI|Booking section"
+            data-skills="Frontend Development|Responsive UI" data-demo="https://pappas-kitchen.vercel.app/"
+            data-image="../public/media/Untitled design.png">
+            <div class="grid-card-inner">
+                <div class="grid-card-media">
+                    <img src="../public/media/Untitled design.png" alt="Catering Website Project">
+                    <span class="category-badge client">Client Project</span>
+                </div>
+                <div class="grid-card-content">
+                    <h3 class="grid-card-title">Catering Services Website</h3>
+                    <p class="grid-card-desc">Modern catering landing page with interactive food gallery, smooth
+                        navigation, and a dynamic booking module.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">HTML5</span>
+                        <span class="tech-pill">CSS3</span>
+                        <span class="tech-pill">JavaScript</span>
+                    </div>
+                    <div class="grid-card-cta">
+                        Explore Project <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7 FACIAL RECOGNITION - GRID CARD -->
+        <div class="project-card grid-card personal" data-title="Face Detection & Recognition"
+            data-about="Real-time face recognition using OpenCV & DeepFace."
+            data-description="This project demonstrates real-time face detection and recognition using Python. Built with OpenCV, DeepFace, NumPy, and Pygame, it identifies faces from the webcam, compares them with known images, and triggers alerts."
+            data-tech="Python|OpenCV|DeepFace|NumPy|Pygame"
+            data-features="Face detection|Unknown alert|Threshold matching" data-skills="Computer Vision|Deep Learning"
+            data-github="https://github.com/YerraRahul23/Face-Recognition-"
+            data-image="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230">
+            <div class="grid-card-inner">
+                <div class="grid-card-media">
+                    <img src="https://camo.githubusercontent.com/c9303b7e78b0ea0e03f3afbd7cf33d4860d6628b763d86ff1b947ff622bb8552/68747470733a2f2f6d656469612e6c6963646e2e636f6d2f646d732f696d6167652f76322f443444313241514659417771436e56504368672f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f61727469636c652d636f7665725f696d6167652d736872696e6b5f3732305f313238302f302f313639313034353037383037393f653d3231343734383336343726763d6265746126743d7872776b727a46377272746472692d5a5f325a79654c5146356a4d5133646670705f2d3452653879717230"
+                        alt="Face Recognition Project">
+                    <span class="category-badge ai">Computer Vision</span>
+                </div>
+                <div class="grid-card-content">
+                    <h3 class="grid-card-title">Face Detection & Recognition</h3>
+                    <p class="grid-card-desc">Real-time face detection and matching built with OpenCV and DeepFace.
+                        Generates sound alerts for unauthorized profiles.</p>
+                    <div class="tech-pills">
+                        <span class="tech-pill">Python</span>
+                        <span class="tech-pill">DeepFace</span>
+                        <span class="tech-pill">OpenCV</span>
+                    </div>
+                    <div class="grid-card-cta">
+                        Explore Project <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL REDESIGN: FULLSCREEN IMMERSIVE CASE-STUDY STYLE -->
     <div class="project-modal-overlay"></div>
-
     <div class="project-modal">
+        <div class="modal-progress-bar"></div>
         <div class="modal-close">✕</div>
         <div class="modal-container">
-            <div class="modal-left">
-                <img id="modal-image">
-                <h2 id="modal-title"></h2>
-                <h3>About</h3>
-                <p id="modal-about"></p>
-                <h3>Description</h3>
-                <p id="modal-description"></p>
-                <h3>Key Technologies</h3>
-                <ul id="modal-tech-list"></ul>
-                <h3>Features</h3>
-                <ul id="modal-features-list"></ul>
+            <!-- Left Panel: Sticky Media Preview -->
+            <div class="modal-media-panel">
+                <img id="modal-image" alt="Project Image">
+                <div class="media-overlay"></div>
             </div>
-            <div class="modal-right">
-                <div class="info-box">
-                    <h3>Skills</h3>
-                    <ul id="modal-skills-list"></ul>
-                    <h3>Tech Stack</h3>
-                    <ul id="modal-tech-right"></ul>
-                    <a id="modal-github-link" target="_blank" class="github-btn">
-                        GitHub →
-                    </a>
-                    <a id="modal-demo-link" target="_blank" class="github-btn">
-                        Website →
-                    </a>
-                    <a id="modal-app-link" target="_blank" class="github-btn">
-                        App →
-                    </a>
+            <!-- Right Panel: Scrollable Case Study Info -->
+            <div class="modal-content-panel">
+                <div class="modal-content-inner">
+                    <span class="modal-category-label">CASE STUDY</span>
+                    <h2 id="modal-title">Project Title</h2>
+
+                    <div class="modal-section">
+                        <h3>About the Project</h3>
+                        <p id="modal-about">Project details go here...</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Deep Dive Description</h3>
+                        <p id="modal-description">Detailed description goes here...</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Key Features</h3>
+                        <ul id="modal-features-list"></ul>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Core Skills</h3>
+                        <ul id="modal-skills-list"></ul>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3>Technologies Used</h3>
+                        <ul id="modal-tech-list"></ul>
+                        <!-- Hidden right list to maintain JS compatibility -->
+                        <ul id="modal-tech-right" style="display: none;"></ul>
+                    </div>
+
+                    <div class="modal-actions">
+                        <a id="modal-github-link" target="_blank" class="cta-btn primary">
+                            <i class="fab fa-github"></i> GitHub Source
+                        </a>
+                        <a id="modal-demo-link" target="_blank" class="cta-btn primary">
+                            <i class="fas fa-globe"></i> Visit Website
+                        </a>
+                        <a id="modal-app-link" target="_blank" class="cta-btn primary">
+                            <i class="fas fa-mobile-alt"></i> View App
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -569,7 +734,10 @@
         const projectCards = document.querySelectorAll(".project-card");
 
         projectCards.forEach(card => {
-            card.addEventListener("click", () => {
+            card.addEventListener("click", (e) => {
+                if (e.target.closest("a") && e.target.closest("a").getAttribute("href")) {
+                    return;
+                }
                 document.getElementById("modal-title").textContent = card.dataset.title;
                 document.getElementById("modal-image").src = card.dataset.image;
                 document.getElementById("modal-about").textContent = card.dataset.about;
@@ -649,6 +817,17 @@
             });
         });
 
+        const contentPanel = document.querySelector(".modal-content-panel");
+        const progressBar = document.querySelector(".modal-progress-bar");
+        if (contentPanel && progressBar) {
+            contentPanel.addEventListener("scroll", () => {
+                const scrollTop = contentPanel.scrollTop;
+                const scrollHeight = contentPanel.scrollHeight - contentPanel.clientHeight;
+                const percentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                progressBar.style.width = `${percentage}%`;
+            });
+        }
+
         let closeModalTimeout = null;
 
         function closeModal() {
@@ -660,11 +839,12 @@
             overlay.classList.remove("active");
 
             // Wait for CSS transition (350ms) to finish before removing body lock
-            // This prevents layout flash and maintains scroll position
             closeModalTimeout = setTimeout(() => {
                 document.body.classList.remove("modal-open");
+                if (contentPanel) contentPanel.scrollTop = 0;
+                if (progressBar) progressBar.style.width = "0%";
                 closeModalTimeout = null;
-            }, 380); // Slightly longer than CSS transition for safety
+            }, 380);
         }
         closeBtn.addEventListener("click", closeModal);
         overlay.addEventListener("click", closeModal);
@@ -711,6 +891,145 @@
                 navOverlay.classList.remove("active");
                 document.body.style.overflow = "";
             }
+        });
+    </script>
+    <script>
+        /* ====================================
+           MOUSE SPOTLIGHT & SCROLL REVEALS
+        ==================================== */
+        document.addEventListener("DOMContentLoaded", () => {
+            // Global mouse spotlight coordinates
+            document.addEventListener("mousemove", e => {
+                document.documentElement.style.setProperty("--global-mouse-x", `${e.clientX}px`);
+                document.documentElement.style.setProperty("--global-mouse-y", `${e.clientY}px`);
+            });
+
+            // Live Dino score counter
+            const scoreVal = document.querySelector('.score-value');
+            if (scoreVal) {
+                let score = 0;
+                setInterval(() => {
+                    score = (score + 1) % 100000;
+                    scoreVal.textContent = String(score).padStart(5, '0');
+                }, 80);
+            }
+
+            // 3D tilt effect on AskAce phone
+            const featuredCard = document.querySelector(".featured-showcase");
+            const devicePhone = document.querySelector(".device-phone");
+            if (featuredCard && devicePhone) {
+                featuredCard.addEventListener("mousemove", e => {
+                    const rect = featuredCard.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const tiltX = ((y - centerY) / centerY) * -12;
+                    const tiltY = ((x - centerX) / centerX) * 12;
+                    devicePhone.style.setProperty("--tilt-rx", `${tiltX}deg`);
+                    devicePhone.style.setProperty("--tilt-ry", `${tiltY}deg`);
+                });
+
+                featuredCard.addEventListener("mouseleave", () => {
+                    devicePhone.style.setProperty("--tilt-rx", `5deg`);
+                    devicePhone.style.setProperty("--tilt-ry", `-10deg`);
+                });
+            }
+
+            // Magnetic buttons pull effect
+            const magneticBtns = document.querySelectorAll(".cta-btn");
+            magneticBtns.forEach(btn => {
+                btn.addEventListener("mousemove", e => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    if (btn.classList.contains("secondary")) {
+                        // Move icon/arrow more than button text for cool secondary effect
+                        btn.style.transform = `translateX(${x * 0.25}px)`;
+                    } else {
+                        btn.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px) scale(1.02)`;
+                    }
+                });
+
+                btn.addEventListener("mouseleave", () => {
+                    btn.style.transform = "";
+                });
+            });
+
+            // Card mouse spotlight listener
+            const cards = document.querySelectorAll(".project-card");
+            cards.forEach(card => {
+                card.addEventListener("mousemove", e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty("--mouse-x", `${x}px`);
+                    card.style.setProperty("--mouse-y", `${y}px`);
+                });
+            });
+
+            // 3D tilt on project grid cards
+            const gridCards = document.querySelectorAll(".grid-card");
+            gridCards.forEach(card => {
+                const inner = card.querySelector(".grid-card-inner");
+                // const innerOne = card.querySelector(".project-card");
+                if (!inner) return;
+
+                card.addEventListener("mousemove", e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const tiltX = ((y - centerY) / centerY) * -8;
+                    const tiltY = ((x - centerX) / centerX) * 8;
+                    inner.style.setProperty("--card-tilt-rx", `${tiltX}deg`);
+                    inner.style.setProperty("--card-tilt-ry", `${tiltY}deg`);
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    inner.style.setProperty("--card-tilt-rx", `0deg`);
+                    inner.style.setProperty("--card-tilt-ry", `0deg`);
+                });
+            });
+
+            // Scroll parallax on blobs (ticking with requestAnimationFrame for 60fps smoothness)
+            const blobWrappers = document.querySelectorAll(".blob-wrapper");
+            let scrollY = window.pageYOffset;
+            let ticking = false;
+
+            window.addEventListener("scroll", () => {
+                scrollY = window.pageYOffset;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        blobWrappers.forEach(wrapper => {
+                            const speed = parseFloat(wrapper.style.getPropertyValue("--parallax-speed")) || 0;
+                            wrapper.style.setProperty("--scroll-translate", `${scrollY * speed}px`);
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            // Scroll reveal intersection observer
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("in-view");
+                    }
+                });
+            }, {
+                threshold: 0.05,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            // Observe all revealable items
+            const elementsToReveal = document.querySelectorAll(".fade-up, .project-card");
+            elementsToReveal.forEach(el => {
+                revealObserver.observe(el);
+            });
         });
     </script>
 </body>
