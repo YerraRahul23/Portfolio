@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <script>try{if(sessionStorage.getItem('pt_transition')){sessionStorage.removeItem('pt_transition');document.documentElement.classList.add('pt-entrance');}}catch(e){}</script>
+    <script>try{sessionStorage.removeItem('pt_transition')}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yerra Rahul Portfolio</title>
@@ -155,10 +155,6 @@
 
     <script>
         (function () {
-            if (sessionStorage.getItem('pt_transition')) {
-                return;
-            }
-
             document.body.style.overflow = 'hidden';
             var minTime = 2200;
             var startTime = Date.now();
