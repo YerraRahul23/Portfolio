@@ -2,12 +2,13 @@
   'use strict';
 
   var DURATION = 650;
-  var wrap = null;
+  var overlay = null;
   var transitioning = false;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ── Initialise ── */
   function init() {
-    wrapContent();
+    createOverlay();
 
     if (document.documentElement.classList.contains('pt-entrance')) {
       document.documentElement.classList.remove('pt-entrance');
@@ -17,41 +18,46 @@
     interceptNavigation();
   }
 
-  function wrapContent() {
-    wrap = document.createElement('div');
-    wrap.className = 'page-transition-wrap';
-
-    while (document.body.firstChild) {
-      wrap.appendChild(document.body.firstChild);
-    }
-
-    document.body.appendChild(wrap);
+  /* ── Create fixed overlay ── */
+  function createOverlay() {
+    if (document.getElementById('ptOverlay')) return;
+    overlay = document.createElement('div');
+    overlay.id = 'ptOverlay';
+    overlay.className = 'pt-overlay';
+    document.body.appendChild(overlay);
+    /* Force paint so the initial state is applied */
+    void overlay.offsetHeight;
   }
 
+  /* ── Entrance (fade in from another page) ── */
   function handleEntrance() {
+    /* Hide the rb-loader if it exists (transition came from another page) */
     var loader = document.getElementById('rbLoader');
     if (loader) loader.style.display = 'none';
 
-    if (reduced) return;
+    if (reduced) {
+      overlay.style.opacity = '0';
+      overlay.style.pointerEvents = 'none';
+      return;
+    }
 
-    wrap.style.opacity = '0';
-    wrap.style.transform = 'scale(0.99)';
-    wrap.style.filter = 'blur(4px)';
-
-    void wrap.offsetHeight;
+    /* Start state: overlay is visible (set by CSS .pt-entrance .pt-overlay) */
+    /* Force reflow then fade out */
+    void overlay.offsetHeight;
 
     transitioning = true;
-    wrap.style.transition = 'opacity ' + DURATION + 'ms ease, transform ' + DURATION + 'ms ease, filter ' + DURATION + 'ms ease';
-    wrap.style.opacity = '1';
-    wrap.style.transform = 'scale(1)';
-    wrap.style.filter = 'blur(0)';
+    overlay.style.transition = 'opacity ' + DURATION + 'ms ease, filter ' + DURATION + 'ms ease';
+    overlay.style.opacity = '0';
+    overlay.style.filter = 'blur(0)';
 
     setTimeout(function () {
-      wrap.style.transition = '';
+      overlay.style.transition = '';
+      overlay.style.pointerEvents = 'none';
       transitioning = false;
-    }, DURATION);
+    }, DURATION + 50);
   }
 
+  /* ── Exit (fade out before navigating) ── */
   function playExit(url) {
     if (transitioning) return;
 
@@ -62,10 +68,16 @@
     }
 
     transitioning = true;
-    wrap.style.transition = 'opacity ' + DURATION + 'ms ease, transform ' + DURATION + 'ms ease, filter ' + DURATION + 'ms ease';
-    wrap.style.opacity = '0';
-    wrap.style.transform = 'scale(0.99)';
-    wrap.style.filter = 'blur(4px)';
+    overlay.style.pointerEvents = 'auto';
+    overlay.style.opacity = '0';
+    overlay.style.filter = 'blur(4px)';
+    overlay.style.transition = 'none';
+
+    void overlay.offsetHeight;
+
+    overlay.style.transition = 'opacity ' + DURATION + 'ms ease, filter ' + DURATION + 'ms ease';
+    overlay.style.opacity = '1';
+    overlay.style.filter = 'blur(4px)';
 
     setTimeout(function () {
       sessionStorage.setItem('pt_transition', 'true');
@@ -73,6 +85,24 @@
     }, DURATION);
   }
 
+  /* ── BFCache / pageshow handler ── */
+  function onPageShow(event) {
+    if (event.persisted) {
+      /* Page restored from BFCache (Back/Forward) – clean everything */
+      document.documentElement.classList.remove('pt-entrance');
+      var el = document.getElementById('ptOverlay');
+      if (el) {
+        el.style.transition = 'none';
+        el.style.opacity = '0';
+        el.style.filter = 'none';
+        el.style.pointerEvents = 'none';
+      }
+      document.body.style.overflow = '';
+      transitioning = false;
+    }
+  }
+
+  /* ── Intercept internal navigation clicks ── */
   function interceptNavigation() {
     document.addEventListener('click', function (e) {
       if (e.button !== 0) return;
@@ -107,18 +137,19 @@
     });
   }
 
+  /* ── Helper: should this link be skipped? ── */
   function shouldSkip(link, href) {
     if (href.startsWith('#') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        href.startsWith('javascript:') ||
-        href === '' ||
-        href === '#') {
+      href.startsWith('mailto:') ||
+      href.startsWith('tel:') ||
+      href.startsWith('javascript:') ||
+      href === '' ||
+      href === '#') {
       return true;
     }
 
     if (link.hasAttribute('download') ||
-        link.getAttribute('target') === '_blank') {
+      link.getAttribute('target') === '_blank') {
       return true;
     }
 
@@ -132,15 +163,20 @@
     }
   }
 
+  /* ── Helper: resolve relative URLs ── */
   function resolveUrl(href) {
     var a = document.createElement('a');
     a.href = href;
     return a.href;
   }
 
+  /* ── Boot ── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
+
+  /* Always listen for BFCache restores */
+  window.addEventListener('pageshow', onPageShow);
 })();

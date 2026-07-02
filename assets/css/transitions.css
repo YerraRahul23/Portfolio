@@ -1,17 +1,36 @@
+/* ── Page Transition Overlay ── */
+.pt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #F3EFE9;
+  opacity: 0;
+  filter: blur(0);
+  pointer-events: none;
+  will-change: opacity, filter;
+}
+
+/* When entering from a transition, the overlay starts visible */
+html.pt-entrance .pt-overlay {
+  opacity: 1;
+  filter: blur(4px);
+}
+
+/* Hide the rb-loader during transition entrance */
 html.pt-entrance #rbLoader {
   display: none !important;
 }
 
-html.pt-entrance .page-transition-wrap {
-  opacity: 0 !important;
-  transform: scale(0.99) !important;
-  filter: blur(4px) !important;
-}
-
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  html.pt-entrance .page-transition-wrap {
-    opacity: 1 !important;
-    transform: none !important;
+  .pt-overlay {
+    transition: none !important;
+    opacity: 0 !important;
+    filter: none !important;
+  }
+
+  html.pt-entrance .pt-overlay {
+    opacity: 0 !important;
     filter: none !important;
   }
 }
