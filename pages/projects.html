@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <script>try{if(sessionStorage.getItem('pt_transition')){sessionStorage.removeItem('pt_transition');document.documentElement.classList.add('pt-entrance');}}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Yerra Rahul</title>
@@ -12,6 +13,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="../assets/css/transitions.css">
 </head>
 
 <body>
@@ -150,6 +152,10 @@
 
     <script>
         (function () {
+            if (sessionStorage.getItem('pt_transition')) {
+                return;
+            }
+
             document.body.style.overflow = 'hidden';
             var minTime = 2200;
             var startTime = Date.now();
@@ -1133,6 +1139,7 @@
             });
         });
     </script>
+    <script src="../assets/js/page-transition.js" defer></script>
 </body>
 
 </html>

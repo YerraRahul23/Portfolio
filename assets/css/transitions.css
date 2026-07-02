@@ -1,0 +1,17 @@
+html.pt-entrance #rbLoader {
+  display: none !important;
+}
+
+html.pt-entrance .page-transition-wrap {
+  opacity: 0 !important;
+  transform: scale(0.99) !important;
+  filter: blur(4px) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.pt-entrance .page-transition-wrap {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

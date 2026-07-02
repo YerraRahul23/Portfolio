@@ -2,11 +2,13 @@
 <html lang="en">
 
 <head>
+    <script>try{if(sessionStorage.getItem('pt_transition')){sessionStorage.removeItem('pt_transition');document.documentElement.classList.add('pt-entrance');}}catch(e){}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Yerra Rahul</title>
     <link rel="icon" type="image/x-icon" href="../public/media/user/profile.jpeg">
     <link rel="stylesheet" href="Contact.css">
+    <link rel="stylesheet" href="../assets/css/transitions.css">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Great+Vibes&display=swap"
         rel="stylesheet">
@@ -150,6 +152,10 @@
 
     <script>
         (function () {
+            if (sessionStorage.getItem('pt_transition')) {
+                return;
+            }
+
             document.body.style.overflow = 'hidden';
             var minTime = 2200;
             var startTime = Date.now();
@@ -651,6 +657,7 @@
     <!-- Toast Notification Container -->
     <div id="toast-container"></div>
 
+    <script src="../assets/js/page-transition.js" defer></script>
 </body>
 
 </html>
