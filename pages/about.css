@@ -1915,31 +1915,59 @@ body {
     gap: 6.5px;
     width: 72px;
     height: 72px;
-    border-radius: 18px;
-    background: #f5f3ef;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
-        0 1px 3px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.35) inset,
+        0 -1px 0 rgba(255, 255, 255, 0.08) inset;
     cursor: pointer;
     z-index: 1002;
     position: relative;
+    overflow: hidden;
     user-select: none;
     -webkit-user-select: none;
-    transition: background 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition:
+        transform 300ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        background 300ms cubic-bezier(0.22, 0.61, 0.36, 1),
+        box-shadow 300ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+    .menu-toggle {
+        background: rgba(243, 239, 233, 0.92);
+    }
+}
+
+.menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 45%;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.45) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
 }
 
 .menu-toggle:hover {
-    transform: translateY(-2px);
-    background: #f8f6f2;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08),
-        0 2px 6px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px) scale(1.04);
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.14),
+        0 1px 0 rgba(255, 255, 255, 0.40) inset,
+        0 -1px 0 rgba(255, 255, 255, 0.10) inset;
 }
 
 .menu-toggle:active {
-    transform: translateY(0);
-    background: #f0eee8;
+    transform: scale(0.96);
 }
 
 /* ── Burger Bars ── */
@@ -1950,9 +1978,13 @@ body {
     height: 2.5px;
     border-radius: 4px;
     background: #333;
-    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all 280ms cubic-bezier(0.22, 0.61, 0.36, 1);
     transform-origin: center;
     will-change: transform, opacity;
+}
+
+.menu-toggle:hover .menu-toggle__bar {
+    background: #555;
 }
 
 /* ── Open state: morph to X ── */
@@ -1972,13 +2004,15 @@ body {
 
 /* ── Open state background shift ── */
 .menu-toggle.active {
-    background: #f0eee8;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06),
-        0 1px 3px rgba(0, 0, 0, 0.04);
+    background: rgba(255, 255, 255, 0.16);
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.35) inset,
+        0 -1px 0 rgba(255, 255, 255, 0.08) inset;
 }
 
 .menu-toggle.active:hover {
-    background: #f3f1ec;
+    background: rgba(255, 255, 255, 0.22);
 }
 
 /* ============ FULLSCREEN OVERLAY NAV ============ */
@@ -2560,7 +2594,7 @@ body {
     .menu-toggle {
         width: 60px;
         height: 60px;
-        border-radius: 16px;
+        border-radius: 26px;
         gap: 6px;
     }
 
@@ -2643,7 +2677,7 @@ body {
     .menu-toggle {
         width: 48px;
         height: 48px;
-        border-radius: 12px;
+        border-radius: 20px;
         gap: 4.5px;
     }
 
